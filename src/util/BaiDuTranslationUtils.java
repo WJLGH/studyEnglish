@@ -4,12 +4,20 @@ import com.baidu.translate.demo.TransApi;
 
 import net.sf.json.JSONObject;
 
-public class BaiDuTranslation {
+public class BaiDuTranslationUtils {
 
 	// http://api.fanyi.baidu.com/api/trans/product/desktop?req=developer
+	// 百度提供给开发者的API秘钥
 	private static final String APP_ID = "20180701000181819";
 	private static final String SECURITY_KEY = "h108F01mZ70v7WNFvySg";
 
+	/**
+	 * 包装过的百度翻译API接口
+	 * 
+	 * @param query
+	 * @param targetLanguage
+	 * @return
+	 */
 	public static String tranlate(String query, String targetLanguage) {
 		TransApi api = new TransApi(APP_ID, SECURITY_KEY);
 		String jsonString = api.getTransResult(query, "auto", targetLanguage);

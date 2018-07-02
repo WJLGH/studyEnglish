@@ -3,16 +3,22 @@ package util;
 import java.util.Scanner;
 
 public class CharacterUtil {
+	// 自定义的 百度api错误信息
+	public static String ERROR = "没有找到";
+
 	/**
 	 * 判断给定字符串是否是否为空，为空返回true，否则返回false
+	 * 
 	 * @param s
 	 * @return
 	 */
 	public static boolean isEmpty(String s) {
 		return "".equals(s);
 	}
+
 	/**
 	 * 判定给定字符串是否为字母，含有非字母返回false，否则返回true
+	 * 
 	 * @param s
 	 * @return
 	 */
@@ -21,19 +27,19 @@ public class CharacterUtil {
 		/**
 		 * 注意：Character中的isLetter会把中文字符当成字母
 		 */
-		for(int i = 0 ;i < s.length();i++) {
-			if(s.charAt(i)<'a'||s.charAt(i)>'z') {
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) < 'a' || s.charAt(i) > 'z') {
 				return false;
 			}
 		}
 		return true;
 	}
+
 	public static void main(String[] args) {
-		Scanner in = new Scanner (System.in);
+		Scanner in = new Scanner(System.in);
 		while (in.hasNext()) {
 			String s = in.nextLine();
 			System.out.println(isWord(s));
 		}
 	}
-	public static String ERROR="没有找到";
 }
