@@ -10,12 +10,16 @@ public class test {
 	public static void main(String[] args)  {
 		Connection conn = JDBCUtils.getConnection();
 		ManagerBean mb = null;
-		String sql = "select * from manager where mid = ?";
+		String sql = "select * from manager where mname = ?";
 		QueryRunner qr = new QueryRunner();
 		try {
-			mb = qr.query(conn, sql, new BeanHandler<ManagerBean>(ManagerBean.class), 10);
+			/**
+			 * 1）多条数据匹配，第一条数据
+			 * 2）如果JavaBean中有数据库没有的成员变量，不设置，
+			 * 3)调用无参构造函数，在调用setter
+			 */
+			mb = qr.query(conn, sql, new BeanHandler<ManagerBean>(ManagerBean.class), "1234");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(mb);
