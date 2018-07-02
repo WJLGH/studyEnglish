@@ -14,17 +14,17 @@
 			数据字典制作：SQLyog
 
 	GitHub
-		项目名称：learnEnglish
-		Java项目名：learnEnglish
+		项目名称：studyEnglish
+		Java项目名：studyEnglish
 		用户名：1179315470@qq.com
 		密码：w1179315470
 		branch：
 			master：
-			ld：李东的分支
-			wjl：王京龙的分支
-			spp：宋培培的分支
+		//	ld：李东的分支
+		//	wjl：王京龙的分支
+			//spp：宋培培的分支
 			
-	Java版本：1.8
+	Java版本：1.6
 	Java IDE：eclipse
 	网络翻译支持：百度翻译apihttp://api.fanyi.baidu.com/api/trans/product/apidoc
 	开发人员操作系统：Windows10
