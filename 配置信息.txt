@@ -1,0 +1,32 @@
+项目环境：
+	
+	服务器
+		操作系统：0ubuntu0.16.04.1
+		域名：123.207.14.231
+		用户名：ubuntu
+		密码：Spp123456...
+		数据库：MySQL Server: 5.7.22
+			用户名：root
+			密码：pp123456
+			数据库名称：learnEnglish
+			数据库连接工具：SQLyog
+			E-R图绘制工具：SQLyog
+			数据字典制作：SQLyog
+
+	GitHub
+		项目名称：learnEnglish
+		Java项目名：learnEnglish
+		用户名：1179315470@qq.com
+		密码：w1179315470
+		branch：
+			master：
+			ld：李东的分支
+			wjl：王京龙的分支
+			spp：宋培培的分支
+			
+	Java版本：1.8
+	Java IDE：eclipse
+	网络翻译支持：百度翻译apihttp://api.fanyi.baidu.com/api/trans/product/apidoc
+	开发人员操作系统：Windows10
+	文本编辑工具：Notepad++
+	
