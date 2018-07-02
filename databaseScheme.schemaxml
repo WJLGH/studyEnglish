@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">studyEnglish</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="manager" view="colnames">
+<left>0</left>
+<top>0</top>
+<width>93</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `manager` (
+  `mid` tinyint(10) NOT NULL AUTO_INCREMENT,
+  `mname` varchar(20) NOT NULL COMMENT '管理员名',
+  `mpwd` varchar(20) NOT NULL COMMENT '管理员密码',
+  `lastlogin` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '最后登录时间',
+  PRIMARY KEY (`mid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="vocabulary" view="colnames">
+<left>147</left>
+<top>48</top>
+<width>85</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `vocabulary` (
+  `vid` tinyint(10) NOT NULL AUTO_INCREMENT,
+  `vname` varchar(20) NOT NULL COMMENT '词汇表名',
+  PRIMARY KEY (`vid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="word" view="colnames">
+<left>384</left>
+<top>10</top>
+<width>75</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `word` (
+  `wid` int(10) NOT NULL AUTO_INCREMENT,
+  `word` varchar(20) NOT NULL COMMENT '英文单词',
+  `eg` text NOT NULL COMMENT '例句',
+  `trans` text NOT NULL COMMENT '例句翻译',
+  `vid` tinyint(10) NOT NULL COMMENT '所属词汇表id',
+  PRIMARY KEY (`wid`),
+  KEY `vid` (`vid`),
+  CONSTRAINT `word_ibfk_1` FOREIGN KEY (`vid`) REFERENCES `vocabulary` (`vid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="meaning" view="colnames">
+<left>528</left>
+<top>27</top>
+<width>89</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `meaning` (
+  `cid` int(10) NOT NULL AUTO_INCREMENT,
+  `chinese` varchar(20) NOT NULL COMMENT '汉语意思',
+  `wid` int(10) NOT NULL COMMENT '所属单词id',
+  PRIMARY KEY (`cid`),
+  KEY `wid` (`wid`),
+  CONSTRAINT `meaning_ibfk_1` FOREIGN KEY (`wid`) REFERENCES `word` (`wid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="user" view="colnames">
+<left>662</left>
+<top>10</top>
+<width>85</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `user` (
+  `uid` tinyint(10) NOT NULL AUTO_INCREMENT,
+  `uname` varchar(20) NOT NULL COMMENT '用户名',
+  `upwd` varchar(20) NOT NULL COMMENT '用户密码',
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="pvocabulary" view="colnames">
+<left>474</left>
+<top>323</top>
+<width>70</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `pvocabulary` (
+  `pvid` int(10) NOT NULL AUTO_INCREMENT,
+  `uid` tinyint(10) NOT NULL COMMENT '所属用户id',
+  `vid` tinyint(10) NOT NULL COMMENT '词汇表id',
+  `pvname` varchar(20) NOT NULL COMMENT '个人词汇表名',
+  PRIMARY KEY (`pvid`),
+  KEY `uid` (`uid`),
+  KEY `vid` (`vid`),
+  CONSTRAINT `pvocabulary_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `pvocabulary_ibfk_2` FOREIGN KEY (`vid`) REFERENCES `vocabulary` (`vid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="pword" view="colnames">
+<left>130</left>
+<top>320</top>
+<width>72</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `pword` (
+  `pwid` int(10) NOT NULL AUTO_INCREMENT,
+  `pvid` int(10) NOT NULL COMMENT '个人单词表id',
+  `wid` int(10) NOT NULL COMMENT '所表示单词id',
+  `sc` int(5) NOT NULL DEFAULT '0' COMMENT '浏览本单词次数',
+  `pc` int(5) NOT NULL DEFAULT '0' COMMENT '识别单词次数',
+  PRIMARY KEY (`pwid`),
+  KEY `pvid` (`pvid`),
+  KEY `wid` (`wid`),
+  CONSTRAINT `pword_ibfk_1` FOREIGN KEY (`pvid`) REFERENCES `pvocabulary` (`pvid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `pword_ibfk_2` FOREIGN KEY (`wid`) REFERENCES `word` (`wid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
