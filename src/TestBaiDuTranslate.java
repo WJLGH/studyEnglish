@@ -7,7 +7,7 @@ public class TestBaiDuTranslate {
     //  http://api.fanyi.baidu.com/api/trans/product/desktop?req=developer
     private static final String APP_ID = "20180701000181819";
     private static final String SECURITY_KEY = "h108F01mZ70v7WNFvySg";
-
+    
     public static void main(String[] args) throws UnsupportedEncodingException {
         TransApi api = new TransApi(APP_ID, SECURITY_KEY);
 
