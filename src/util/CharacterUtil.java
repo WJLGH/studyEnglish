@@ -35,4 +35,5 @@ public class CharacterUtil {
 			System.out.println(isWord(s));
 		}
 	}
+	public static String ERROR="ц╩спур╣╫";
 }
