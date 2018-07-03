@@ -14,6 +14,10 @@ public class JDBCUtils {
 	private static String driverclass = null;
 	private static String url = null;
 	/**
+	 * 这里保证conn在一次登录中保持单例，省去每一次连接的时间
+	 */
+	private static Connection conn = null;
+	/**
 	 * 初始化数据库连接配置
 	 */
 	static {
@@ -41,7 +45,9 @@ public class JDBCUtils {
 	 * @return
 	 */
 	public static Connection getConnection() {
-		Connection conn = null;
+		if (conn != null) {
+			return conn;
+		}
 		try {
 			conn = DriverManager.getConnection(url, user, pwd);
 		} catch (SQLException e) {
@@ -57,15 +63,16 @@ public class JDBCUtils {
 	 * 
 	 * @param con
 	 */
-	public static void closeConnection(Connection con ) {
+	public static void closeConnection(Connection con) {
 		try {
-			if(con != null) {
+			if (con != null) {
 				con.close();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 	public static void closeConnection(Connection con, Statement sta, ResultSet rs) {
 		try {
 			if (rs != null) {
