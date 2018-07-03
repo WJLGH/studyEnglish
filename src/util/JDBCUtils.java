@@ -73,7 +73,7 @@ public class JDBCUtils {
 		}
 	}
 
-	public static void closeConnection(Connection con, Statement sta, ResultSet rs) {
+	public static void closeResource( Statement sta, ResultSet rs) {
 		try {
 			if (rs != null) {
 				rs.close();
@@ -81,26 +81,20 @@ public class JDBCUtils {
 			if (sta != null) {
 				sta.close();
 			}
-			if (con != null) {
-				con.close();
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("数据连接关闭失败");
 		}
 	}
 
-	public static void closeConnection(Connection con, Statement sta) {
+	public static void closeResource(Statement sta) {
 		try {
 			if (sta != null) {
 				sta.close();
 			}
-			if (con != null) {
-				con.close();
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("数据连接关闭失败");
 		}
 	}
 
