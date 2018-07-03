@@ -1,16 +1,33 @@
 package model;
 
+import java.util.List;
+
 public class UserBean {
 	private int uid;
 	private String uname;
 	private String upwd;
-	private String upage;
+	private int upage;
+	private List<WordBean> collect;
 
 	public UserBean() {
 
 	}
 
-	public UserBean(int uid, String uname, String upwd, String upage) {
+	
+
+	public List<WordBean> getCollect() {
+		return collect;
+	}
+
+
+
+	public void setCollect(List<WordBean> collect) {
+		this.collect = collect;
+	}
+
+
+
+	public UserBean(int uid, String uname, String upwd, int upage) {
 		super();
 		this.uid = uid;
 		this.uname = uname;
@@ -42,11 +59,11 @@ public class UserBean {
 		this.upwd = upwd;
 	}
 
-	public String getUpage() {
+	public int getUpage() {
 		return upage;
 	}
 
-	public void setUpage(String upage) {
+	public void setUpage(int upage) {
 		this.upage = upage;
 	}
 

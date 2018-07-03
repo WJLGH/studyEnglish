@@ -7,15 +7,6 @@ public class ManagerBean {
 	private String mname;
 	private String mpwd;
 	private Date lastlogin;
-	private String word;
-	
-	public String getWord() {
-		return word;
-	}
-
-	public void setWord(String word) {
-		this.word = word;
-	}
 
 	public ManagerBean() {
 		System.out.println("wcgz");
@@ -64,7 +55,7 @@ public class ManagerBean {
 	@Override
 	public String toString() {
 		return "ManagerBean [mid=" + mid + ", mname=" + mname + ", mpwd=" + mpwd + ", lastlogin=" + lastlogin
-				+ ", word=" + word + "]";
+				+ "]";
 	}
 
 

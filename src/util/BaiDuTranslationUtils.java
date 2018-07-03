@@ -13,7 +13,7 @@ public class BaiDuTranslationUtils {
 
 	/**
 	 * 包装过的百度翻译API接口
-	 * 
+	 * "en","zh"
 	 * @param query
 	 * @param targetLanguage
 	 * @return
