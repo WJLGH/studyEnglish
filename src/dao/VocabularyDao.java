@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import model.VocabularyBean;
 
 public class VocabularyDao {
@@ -10,14 +12,15 @@ public class VocabularyDao {
 		
 	}
 	
-	public static void deleteVocabularyBean(VocabularyBean v) {
+	public static void deleteVocabularyBean(int vid) {
 		
 	}
 	
-	public static void updataVocabularyBeanName(VocabularyBean v) {
+	public static void updataVocabularyBeanName(int vid,String name) {
 		
 	}
-	public static VocabularyBean query(String name) {
+	
+	public static List<VocabularyBean> query() {
 		return null;
 	}
 }

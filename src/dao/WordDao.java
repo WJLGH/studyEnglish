@@ -14,6 +14,7 @@ public class WordDao {
 	
 	/**
 	 * 用户背单词查询
+	 * 分页查询
 	 * @param page
 	 * @return
 	 */
@@ -49,14 +50,22 @@ public class WordDao {
 	 * 删除单词
 	 * @param word
 	 */
-	public static void deleteWordBean(WordBean word) {
+	public static void deleteWordBean(int wid) {
 		
 	}
 	/**
 	 * 修改单词
 	 * @param word
 	 */
-	public static void updateWordBean(WordBean word) {
+	public static void updateWordBean(int  wid) {
 		
+	}
+	/**
+	 * 查询某个词汇表里的单词
+	 * @param vid
+	 * @return
+	 */
+	public static List<WordBean> queryVocabulary(int vid) {
+		return null;
 	}
 }

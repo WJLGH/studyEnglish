@@ -24,4 +24,7 @@ public class ManagerDao {
 	public static void saveDate(ManagerBean m) {
 		
 	}
+	public static void setPwd(int mid,String pwd) {
+		
+	}
 }
