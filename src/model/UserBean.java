@@ -7,24 +7,11 @@ public class UserBean {
 	private String uname;
 	private String upwd;
 	private int upage;
-	private List<WordBean> collect;
+	
 
 	public UserBean() {
 
 	}
-
-	
-
-	public List<WordBean> getCollect() {
-		return collect;
-	}
-
-
-
-	public void setCollect(List<WordBean> collect) {
-		this.collect = collect;
-	}
-
 
 
 	public UserBean(int uid, String uname, String upwd, int upage) {
