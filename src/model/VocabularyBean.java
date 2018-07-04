@@ -9,6 +9,12 @@ public class VocabularyBean {
 	
 	public VocabularyBean() {
 	}
+    
+	public VocabularyBean(int vid, String vname) {
+		super();
+		this.vid = vid;
+		this.vname = vname;
+	}
 
 	public int getVid() {
 		return vid;
