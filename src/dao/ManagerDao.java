@@ -35,19 +35,20 @@ public class ManagerDao {
 	/**
 	 * 保存最新登陆时间 **************************************有修改 增加了date
 	 * @param m
+	 * @return 
 	 * @throws SQLException 
 	 */
-	public static void saveDate(ManagerBean m,Date date) throws SQLException {  
+	public static boolean saveDate(ManagerBean m) throws SQLException {  
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
 		String sql = "update manager set lastlogin=? where mname=?";
-		runner.update(con,sql,date,m.getMname());
+		return 0 < runner.update(con,sql,new Date(),m.getMname());
 		
 	}
-	public static void setPwd(int mid,String pwd) throws SQLException {
+	public static boolean setPwd(int mid,String pwd) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
 		String sql = "update manager set mpwd=? where mid=?";
-		runner.update(con,sql,pwd,mid);
+		return 0 < runner.update(con,sql,pwd,mid);
 	}
 }

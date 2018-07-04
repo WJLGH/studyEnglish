@@ -20,37 +20,48 @@ public class MeaningDao {
 //			System.out.println(meaningBean);
 //		}
 		
-		deleteMeanigBean(7);
-		deleteMeanigBean(8);
+//		deleteMeanigBean(7);
 		
+//		deleteMeanigBean(8);
+		System.out.println(queryWord(""));
+		System.out.println(queryMeaning("nice"));
 	}
 	
-	public static void deleteMeanigBean(int cid) throws SQLException {
+	public static boolean deleteMeanigBean(int cid) throws SQLException {
 		Connection conn = JDBCUtils.getConnection();
 		String sql = "delete from meaning where cid = ?";
 		QueryRunner qr = new QueryRunner();
-		qr.update(conn,sql, cid);
+		return 0 < qr.update(conn,sql, cid);
 	}
 	
-	public static void addMeaningBean(MeaningBean mb) throws SQLException {
+	public static boolean addMeaningBean(MeaningBean mb) throws SQLException {
 		Connection conn = JDBCUtils.getConnection();
 		String sql = "insert into meaning (chinese,wid) values (?,?)";
 		QueryRunner qr = new QueryRunner();
-		qr.update(conn, sql, mb.getChinese(),mb.getWid());
+		return 0 < qr.update(conn, sql, mb.getChinese(),mb.getWid());
 	}
 	
-	public static List<MeaningBean>  queryMeaning(WordBean word) throws SQLException {
+	public static List<MeaningBean>  queryMeaning(String word) throws SQLException {
 		Connection conn = JDBCUtils.getConnection();
-		String sql = "select * from meaning where wid = ?";
+		String sql  = "SELECT m.`cid`,m.`chinese`,m.`wid` FROM word w,meaning m WHERE w.`word` = ? AND m.`wid` = w.`wid`";
 		QueryRunner qr = new QueryRunner();
-		List<MeaningBean> list = null;
-		return qr.query(conn,sql,new BeanListHandler<MeaningBean>( MeaningBean.class),word.getWid());
+		return qr.query(conn,sql,new BeanListHandler<MeaningBean>( MeaningBean.class),word);
+	}
+	public static List<MeaningBean> queryMeaning(WordBean word) throws SQLException{
+		Connection conn = JDBCUtils.getConnection();
+		QueryRunner qr = new QueryRunner();
+		String sql = "select * from meaning where wid =?";
+		return qr.query(conn, sql, new BeanListHandler<MeaningBean>( MeaningBean.class) , word.getWid());
 	}
 	public static WordBean queryWord(String chinese) throws SQLException {
 		Connection conn = JDBCUtils.getConnection();
 		String sql = "SELECT w.`wid`,w.`word`,w.`eg`,w.`vid`,w.`eg`,w.`trans` FROM meaning AS m, word AS w  WHERE chinese LIKE ? AND m.wid = w.wid ";
 		QueryRunner qr = new QueryRunner();
-		return qr.query(conn, sql, new BeanHandler<WordBean>(WordBean.class), chinese);
+		WordBean wBean = qr.query(conn, sql, new BeanHandler<WordBean>(WordBean.class), chinese);
+		if(wBean != null) {
+			wBean.setMeans(queryMeaning(wBean));
+		}
+		return wBean;
 	}
 	
 }

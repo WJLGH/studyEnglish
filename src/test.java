@@ -1,6 +1,8 @@
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -12,6 +14,7 @@ import dao.VocabularyDao;
 import dao.WordDao;
 import model.CollectBean;
 import model.ManagerBean;
+import model.MeaningBean;
 import model.UserBean;
 import model.VocabularyBean;
 import model.WordBean;
@@ -86,13 +89,22 @@ public class test {
 //		CollectDao.addCollectBean(new CollectBean(1,4));
 //		CollectDao.deleteCollectBean(1, 4);
 //		List<WordBean> list = null;
-//		list=CollectDao.queryUserCollect(1);
+//		list=CollectDao.queryUserCollect(2);
 //		for(WordBean wordBean:list) {
 //			if(wordBean!=null)
 //			System.out.println(wordBean.getWord());
 //		}
-		
-		
-		
+//		
+//		System.out.println(VocabularyDao.queryVid("v1"));;
+//		System.out.println(WordDao.limitQuery(2));
+//		System.out.println(WordDao.zhQueryEn(""));
+//		System.out.println(WordDao.enQueryZh("her"));
+//		System.out.println(WordDao.enQueryZh(""));
+//		System.out.println(WordDao.queryVocabulary(1));
+//		List<MeaningBean> list = new ArrayList<MeaningBean>();
+	//	System.out.println(WordDao.addWordBean(new WordBean(0, "student", "this is a student", "这是一个学生", 1, null)));
+//		Scanner in = new Scanner(System.in);
+//		in.next();
+		System.out.println(WordDao.deleteWordBean(19));
 	}
 }

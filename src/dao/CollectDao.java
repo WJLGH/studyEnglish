@@ -17,7 +17,7 @@ import util.stringutil;
 
 public class CollectDao {
 	/**
-	 * 查询某个用户收藏的单词***************************这是列出所有收藏单词？
+	 * 查询某个用户收藏的单词***************************这是列出所有收藏单词
 	 * 唯一查询
 	 * @param uid
 	 * @return
@@ -26,40 +26,33 @@ public class CollectDao {
 	public static List<WordBean> queryUserCollect(int uid) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
-		String sql = "select distinct s.uid,s.wid from user u left join collect s on u.uid=? ";
-		List<CollectBean> cLists = runner.query(con, sql,new BeanListHandler<CollectBean>(CollectBean.class),uid);
-		List<WordBean> wLists = new ArrayList<WordBean>();
-		for(CollectBean cBean:cLists) {
-			if(cBean.getUid()==uid) {
-			 String sql2 = "select * from word where wid=?";
-			 WordBean wBean = runner.query(con, sql2,new BeanHandler<WordBean>(WordBean.class),cBean.getWid());
-			 wLists.add(wBean);
-			}
-			
-		}
-		return wLists;
+		String sql = "SELECT w.`wid`, w.`word`,w.`eg`,w.`trans`,w.`vid` FROM collect c,word w WHERE c.uid = ? AND c.wid = w.wid";
+		List<WordBean> list = runner.query(con, sql, new BeanListHandler<WordBean>(WordBean.class), uid);
+		return list;
 	}
 	/**
 	 * 增加一个用户收藏的单词********************参数应该是个wordbean？
 	 * @param co
+	 * @return 
 	 * @throws SQLException 
 	 */
-	public static void addCollectBean(CollectBean co) throws SQLException {
+	public static boolean addCollectBean(CollectBean co) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
 		String sql = "insert into collect(uid,wid) values(?,?)";
-		runner.update(con,sql,co.getUid(),co.getWid());
+		return 0 < runner.update(con,sql,co.getUid(),co.getWid());
 	}
 	/**
 	 * 删除一个用户收藏的单词
 	 * @param uid
 	 * @param wid
+	 * @return 
 	 * @throws SQLException 
 	 */
-	public static void deleteCollectBean(int uid,int wid) throws SQLException {
+	public static boolean deleteCollectBean(int sid ) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
-		String sql = "delete from collect where uid=? and wid=?";
-		runner.update(con,sql,uid,wid);
+		String sql = "delete from collect where sid = ?";
+		return 0 < runner.update(con,sql,sid);
 	}
 }
