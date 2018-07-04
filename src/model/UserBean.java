@@ -9,7 +9,7 @@ public class UserBean {
 
 	private String upwd;
 	private int upage;
-<<<<<<< HEAD
+
 	private List<WordBean> collect;
 
 	public UserBean() {
@@ -21,13 +21,7 @@ public class UserBean {
 		this.uname = uname;
 		this.upwd = upwd;
 	}
-=======
-	
->>>>>>> caf826ba7066b81cb3c7f106ac46e9ac82a47f6d
 
-	public UserBean() {
-
-	}
 
 
 	public UserBean(int uid, String uname, String upwd, int upage) {

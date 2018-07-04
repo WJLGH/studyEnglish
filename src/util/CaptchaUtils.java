@@ -17,7 +17,7 @@ public class CaptchaUtils {
 	 * @param width
 	 */
 	public static void getNewCaptcha(int length, int width) {
-		lineCaptcha = CaptchaUtil.createLineCaptcha(length, width, 4, 150);
+		lineCaptcha = CaptchaUtil.createLineCaptcha(length, width, 4, 200);
 	}
 
 	/**

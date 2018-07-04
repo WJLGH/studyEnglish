@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -32,8 +33,6 @@ public class userlogin extends JFrame {
 	private final JPanel panel = new JPanel();
 	private JTextField usernametext;
 	private JPasswordField passwordtext;
-	private JDBCUtils jdbcutils = new JDBCUtils();
-	private UserDao userdao = new UserDao();
 
 	/**
 	 * Launch the application.
@@ -158,7 +157,13 @@ public class userlogin extends JFrame {
 			JOptionPane.showMessageDialog(null, "密码不能为空");
 			return;
 		}
-		UserBean user = UserDao.checkLogin(username, password);
+		UserBean user=null;
+		try {
+			user = UserDao.checkLogin(username, password);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if(user == null) {
 			JOptionPane.showMessageDialog(null,"该用户不存在");	
 		} 
@@ -168,7 +173,7 @@ public class userlogin extends JFrame {
 		}
 	}
 
-	protected void resetValueActionPerformed(ActionEvent evt) {
+	private void resetValueActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 		this.usernametext.setText("");
 		this.passwordtext.setText("");
