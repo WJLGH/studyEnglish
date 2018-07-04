@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import model.VocabularyBean;
 import util.JDBCUtils;
@@ -45,5 +46,15 @@ public class VocabularyDao {
         String sql = "select vid,vname from vocabulary";
         List<VocabularyBean> vBeans = runner.query(con,sql,new BeanListHandler<VocabularyBean>(VocabularyBean.class));
 		return vBeans;
+	}
+	/**
+	 * 查询有几个表********************新增方法
+	 * @throws SQLException 
+	 */
+	public static long vNumber() throws SQLException {
+		QueryRunner runner = new QueryRunner();
+		Connection con = JDBCUtils.getConnection();
+		String sql = "select count(vid) from vocabulary";
+		return runner.query(con,sql, new ScalarHandler<Long>());
 	}
 }

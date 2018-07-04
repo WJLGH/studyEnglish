@@ -8,6 +8,11 @@ public class CollectBean {
 	public CollectBean() {
 	}
 
+	public CollectBean(int uid,int wid) {
+		super();
+		this.uid=uid;
+		this.wid=wid;
+	}
 	public int getSid() {
 		return sid;
 	}

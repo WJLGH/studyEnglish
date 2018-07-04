@@ -5,10 +5,16 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
+import dao.CollectDao;
 import dao.ManagerDao;
+import dao.UserDao;
 import dao.VocabularyDao;
+import dao.WordDao;
+import model.CollectBean;
 import model.ManagerBean;
+import model.UserBean;
 import model.VocabularyBean;
+import model.WordBean;
 import util.JDBCUtils;
 public class test {
 	public static void main(String[] args) throws SQLException  {
@@ -49,14 +55,44 @@ public class test {
 		 */
 //		VocabularyDao.addVocabularyBean(new VocabularyBean(4,"v4"));
 //		VocabularyDao.updataVocabularyBeanName(4, "v5");
-//		VocabularyDao.deleteVocabularyBean(4);
+//		VocabularyDao.deleteVocabularyBean(3);
 //		List<VocabularyBean> vBeans;
 //		vBeans = VocabularyDao.query();
 //		for(VocabularyBean vBean:vBeans) {
 //			System.out.println(vBean);
 //		}
+//		System.out.println(VocabularyDao.vNumber());
 	   /**
-	    * 
+	    * 测试userDao
+	    * 测试成功
 	    */
+//		UserBean uBean = UserDao.checkLogin("user1", "123456");
+//		if(uBean==null) {
+//			System.out.println("没有此用户");
+//		}else {
+//			System.out.println(uBean);
+//		}
+//		UserDao.Logout(new UserBean(1,"user1","123456",5));
+		/**
+		 * 
+		 */
+//		WordBean wordBean = WordDao.zhQueryEn("我的");
+//		System.out.println(wordBean.getWord());
+		/**
+		 * CollectDao测试
+		 * 测试成功
+		 */
+
+//		CollectDao.addCollectBean(new CollectBean(1,4));
+//		CollectDao.deleteCollectBean(1, 4);
+//		List<WordBean> list = null;
+//		list=CollectDao.queryUserCollect(1);
+//		for(WordBean wordBean:list) {
+//			if(wordBean!=null)
+//			System.out.println(wordBean.getWord());
+//		}
+		
+		
+		
 	}
 }

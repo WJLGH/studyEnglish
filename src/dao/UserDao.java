@@ -38,11 +38,13 @@ public class UserDao {
 	 * 退出时，传递给logout一个new userBean
 	 * 保存upage的状态，下次登录时背单词从新的upage开始
 	 * @param user
+	 * @throws SQLException 
 	 */
-	public static void Logout(UserBean user) {
+	public static void Logout(UserBean user) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
-		
+		String sql = "update user set upage=? where uname=?";
+		runner.update(con,sql,user.getUpage(),user.getUname());
 	}
 	
 }
