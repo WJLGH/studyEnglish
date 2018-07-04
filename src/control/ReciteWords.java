@@ -1,5 +1,6 @@
 package control;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -29,7 +30,12 @@ public class ReciteWords {
 	 * 通过用户当前记录的page字段获取新的未背单词
 	 */
 	private void getList() {
-		list = WordDao.limitQuery(user.getUpage());
+		try {
+			list = WordDao.limitQuery(user.getUpage());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("从数据库中获取"+list);
 	}
 	/**
@@ -55,8 +61,9 @@ public class ReciteWords {
 	 * 把当前的单词添加到用户的收藏中
 	 * 传入的是当前单词的wid
 	 * @param wid
+	 * @throws SQLException 
 	 */
-	public void addCollectBean(int wid) {
+	public void addCollectBean(int wid) throws SQLException {
 		CollectBean co = new CollectBean();
 		co.setUid(user.getUid());
 		co.setWid(wid);
@@ -86,8 +93,9 @@ public class ReciteWords {
 	/**
 	 * 列表背诵完成后要
 	 * 进行数据向数据库的更新
+	 * @throws SQLException 
 	 */
-	public void saveUserPage() {
+	public void saveUserPage() throws SQLException {
 		int nPage = user.getUpage() + WordDao.pageSize;
 		user.setUpage(nPage);
 		UserDao.Logout(user);

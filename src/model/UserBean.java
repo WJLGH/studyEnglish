@@ -10,7 +10,10 @@ public class UserBean {
 	private String upwd;
 	private int upage;
 
+<<<<<<< HEAD
 	private List<WordBean> collect;
+=======
+>>>>>>> 22949b88997100e8123c7497deba00ed74bcbd02
 
 	public UserBean() {
 
