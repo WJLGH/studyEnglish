@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 
-public class Captcha {
+public class CaptchaUtils {
 	private static LineCaptcha lineCaptcha = null;
 
 	/**
