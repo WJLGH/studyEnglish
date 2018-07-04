@@ -18,6 +18,7 @@ public class ReciteWords {
 	private UserBean user;
 	private List<WordBean> list;
 	private Iterator<WordBean> ite;
+	private int cnt;
 	/**
 	 * 构造函数传入一个用户作为参数
 	 * @param user
@@ -25,6 +26,9 @@ public class ReciteWords {
 	public ReciteWords(UserBean user) {
 		this.user = user;
 		getList();
+		if(list != null) {
+			cnt = list.size();
+		}
 	}
 	/**
 	 * 通过用户当前记录的page字段获取新的未背单词
@@ -36,7 +40,6 @@ public class ReciteWords {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("从数据库中获取"+list);
 	}
 	/**
 	 * 设置要背诵的单词表
@@ -82,7 +85,6 @@ public class ReciteWords {
 	 */
 	public WordBean getNext() {
 		if (isFinish()) {
-			System.out.println("hh");
 			return null;
 		}
 		if (null == ite || !ite.hasNext()) {
@@ -96,7 +98,7 @@ public class ReciteWords {
 	 * @throws SQLException 
 	 */
 	public void saveUserPage() throws SQLException {
-		int nPage = user.getUpage() + WordDao.pageSize;
+		int nPage = user.getUpage() + cnt;
 		user.setUpage(nPage);
 		UserDao.Logout(user);
 	}
