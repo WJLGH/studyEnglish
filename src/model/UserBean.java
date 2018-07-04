@@ -5,6 +5,8 @@ import java.util.List;
 public class UserBean {
 	private int uid;
 	private String uname;
+
+
 	private String upwd;
 	private int upage;
 	private List<WordBean> collect;
@@ -13,7 +15,11 @@ public class UserBean {
 
 	}
 
-	
+	public UserBean(String uname, String upwd) {
+		super();
+		this.uname = uname;
+		this.upwd = upwd;
+	}
 
 	public List<WordBean> getCollect() {
 		return collect;
