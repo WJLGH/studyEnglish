@@ -30,7 +30,12 @@ public class ReciteWords {
 	 * 通过用户当前记录的page字段获取新的未背单词
 	 */
 	private void getList() {
-		list = WordDao.limitQuery(user.getUpage());
+		try {
+			list = WordDao.limitQuery(user.getUpage());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("从数据库中获取"+list);
 	}
 	/**

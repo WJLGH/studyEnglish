@@ -12,6 +12,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class logonform extends JFrame {
 
@@ -37,6 +39,7 @@ public class logonform extends JFrame {
 	 * Create the frame.
 	 */
 	public logonform() {
+		setResizable(false);
 		setTitle("\u767B\u5F55\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -45,11 +48,23 @@ public class logonform extends JFrame {
 		setContentPane(contentPane);
 		
 		JButton btnNewButton = new JButton("\u7BA1\u7406\u5458\u767B\u9646");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new managerlogin().setVisible(true);
+			}
+		});
 		
 		JLabel lblNewLabel = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
 		lblNewLabel.setFont(new Font("ËÎÌו", Font.BOLD, 22));
 		
 		JButton button = new JButton("\u7528\u6237\u767B\u9646");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new userlogin().setVisible(true);
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

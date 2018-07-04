@@ -46,6 +46,7 @@ public class managerlogin extends JFrame {
 	 * Create the frame.
 	 */
 	public managerlogin() {
+		setResizable(false);
 		setTitle("\u7BA1\u7406\u5458\u767B\u9646");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
