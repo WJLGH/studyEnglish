@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
 
 public class EnZhseek extends JInternalFrame {
 	private JTextField Enword;
-	private JTextField Zhmeaning;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -49,53 +49,57 @@ public class EnZhseek extends JInternalFrame {
 		Enword = new JTextField();
 		Enword.setColumns(10);
 		
-		JLabel label_1 = new JLabel("\u8BE5\u5355\u8BCD\u4E2D\u6587\u610F\u601D\uFF1A");
+		JLabel label_1 = new JLabel("\u91CA\u4E49\uFF1A");
 		label_1.setFont(new Font("ºÚÌå", Font.BOLD, 20));
-		
-		Zhmeaning = new JTextField();
-		Zhmeaning.setColumns(10);
 		
 		JLabel label_2 = new JLabel("\u4F8B\u53E5\uFF1A");
 		label_2.setFont(new Font("ºÚÌå", Font.BOLD, 20));
 		
 		JTextArea sentence = new JTextArea();
+		
+		textField = new JTextField();
+		textField.setColumns(10);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(label, GroupLayout.PREFERRED_SIZE, 489, GroupLayout.PREFERRED_SIZE)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(39)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(Enword, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(Zhmeaning, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(sentence, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))))
+							.addGap(39)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblNewLabel)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(Enword, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+										.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(label_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+										.addComponent(label_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(sentence, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+										.addComponent(textField)))))
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 489, GroupLayout.PREFERRED_SIZE))
+					.addGap(350))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(label)
 					.addGap(42)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Enword, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Enword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Zhmeaning, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(31)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addComponent(sentence, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(113, Short.MAX_VALUE))
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+						.addComponent(sentence, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
 		);
 		getContentPane().setLayout(groupLayout);
 

@@ -1,5 +1,6 @@
 package view;
 
+import model.MeaningBean;
 import model.UserBean;
 import model.WordBean;
 import util.JDBCUtils;
@@ -15,84 +16,99 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class ReciteWordView extends JFrame implements ActionListener{
-	UserBean user;
-	Timer timer;
-	ReciteWords rw;
-	WordBean nowWord;
-	JTextArea area;
-	JButton next = new JButton("œ¬“ª∏ˆ");
-	JButton like = new JButton(" ’≤ÿ");
-	JButton delete = new JButton("’∂");
+	private UserBean user;
+	private Timer timer;
+	private ReciteWords rw;
+	private WordBean nowWord;
+	private JLabel wordLabel ;
+	private JButton like = new JButton("Êî∂Ëóè");
+	private JButton delete = new JButton("Êñ©");
+	private  JLabel meaingLabel = new JLabel("Êñ∞ÔºåÊ†áÁ≠æ");
+	private  JLabel egHeadLabel = new JLabel("eg:");
+	private  JLabel egLabel = new JLabel("This is a new label.");
+	private  JLabel transLabel = new JLabel("ËøôÊòØ‰∏Ä‰∏™Êñ∞Ê†áÁ≠æ");
+	private  JLabel label = new JLabel("ËØëÔºö");
 	public ReciteWordView(UserBean user) {
 		this.user = user;
 		rw = new ReciteWords(user);
 		
 		Container contentPane = getContentPane();
 		contentPane.setLayout(null);
-		
-		area = new JTextArea(5, 3);
-		JScrollPane jScrollPane = new JScrollPane(area);
-		contentPane.add(jScrollPane);
-		contentPane.add(next);
+		like.setIcon(new ImageIcon(ReciteWordView.class.getResource("/image/add.png")));
 		contentPane.add(like);
+		delete.setIcon(new ImageIcon(ReciteWordView.class.getResource("/image/delete.png")));
 		contentPane.add(delete);
-		next.addActionListener(this);
 		like.addActionListener(this);
 		delete.addActionListener(this);
 		
 		timer = new Timer(3000, this);
-		jScrollPane.setBounds(20, 20, 800, 200);
-		next.setBounds(400, 400, 100, 50);
-		like.setBounds(400, 450, 100, 50);
-		delete.setBounds(400, 490, 100, 50);
-		setSize(800, 800);
+		like.setBounds(516, 76, 85, 34);
+		delete.setBounds(288, 397, 100, 50);
+		
+		wordLabel = new JLabel("New label");
+		wordLabel.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 30));
+		wordLabel.setBounds(127, 48, 172, 79);
+		getContentPane().add(wordLabel);
+		meaingLabel.setFont(new Font("Èªë‰Ωì", Font.PLAIN, 17));
+		meaingLabel.setBounds(127, 171, 382, 34);
+		
+		getContentPane().add(meaingLabel);
+		egHeadLabel.setBackground(new Color(240, 240, 240));
+		egHeadLabel.setFont(new Font("Dialog", Font.BOLD, 17));
+		egHeadLabel.setBounds(126, 218, 38, 34);
+		
+		getContentPane().add(egHeadLabel);
+		egLabel.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.PLAIN, 17));
+		egLabel.setBounds(178, 227, 423, 25);
+		
+		getContentPane().add(egLabel);
+		transLabel.setFont(new Font("ÂÆã‰Ωì", Font.PLAIN, 17));
+		transLabel.setBounds(178, 265, 413, 32);
+		
+		getContentPane().add(transLabel);
+		label.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 17));
+		label.setBackground(SystemColor.menu);
+		label.setBounds(127, 265, 38, 34);
+		
+		getContentPane().add(label);
+		setSize(721, 598);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setAreaText();
+		recite();
 	}
-	public void setAreaText() {
+	
+	public void recite() {
 		if(rw.isFinish()) {
 			try {
 				timer.stop();
-				System.out.println("±£¥Ê");
 				rw.saveUserPage();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			JOptionPane.showMessageDialog(this, "±≥ÕÍ¡ÀΩÒÃÏµƒµ•¥ ");
+			JOptionPane.showMessageDialog(this, "ÂëÄÔºå‰ªäÂ§©ÁöÑÂçïËØçËÉåÂÆå‰∫Ü");
 			this.dispose();
 		}
 		
 		nowWord = rw.getNext();
 		if( nowWord != null ) {
-			area.setText(nowWord.toString());
+			showNowWord();
 		}
 		
 		repaint();
 		timer.restart();
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == timer) {
-			setAreaText();
+	private void showNowWord() {
+		this.wordLabel.setText(nowWord.getWord());
+		this.egLabel.setText(nowWord.getEg());
+		StringBuffer sb = new StringBuffer();
+		for(MeaningBean meaning: nowWord.getMeans()) {
+			sb.append(meaning.getChinese()+",");
 		}
+		this.meaingLabel.setText(sb.toString());
+		this.transLabel.setText(nowWord.getTrans());
 		
-		if(e.getSource() == next) {
-			setAreaText();
-		}
-		if(e.getSource() == like) {
-			try {
-				rw.addCollectBean(nowWord.getWid());
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			setAreaText();
-		}
-		if(e.getSource() == delete) {
-			rw.removeFromList();
-			setAreaText();
-		}
 	}
+
 	public static void main(String[] args) {
 		try {
 			new ReciteWordView(UserDao.checkLogin("user1","123456"));
@@ -100,5 +116,22 @@ public class ReciteWordView extends JFrame implements ActionListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object s = e.getSource();
+		if( s == this.like) {
+			try {
+				rw.addCollectBean(nowWord.getWid());
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		if(s == this.delete) {
+			rw.removeFromList();
+		}
+		timer.restart();
+		recite();
 	}
 }
