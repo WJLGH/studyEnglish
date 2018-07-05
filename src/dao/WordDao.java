@@ -19,7 +19,7 @@ public class WordDao {
 	 * 增删改查
 	 */
 	//页大小
-	public static int pageSize = 10;
+	public static int pageSize = 3;
 	
 	/**
 	 * 用户背单词查询
@@ -30,6 +30,7 @@ public class WordDao {
 	 */
 	public static List<WordBean> limitQuery(int page) throws SQLException{
 		Connection conn  = JDBCUtils.getConnection();
+		System.out.println("yeshu"+page);
 		String sql = "select * from word limit ? offset ?";
 		QueryRunner qr = new QueryRunner();
 		List<WordBean> list = qr.query(conn, sql, new BeanListHandler<WordBean>(WordBean.class), pageSize,page);
