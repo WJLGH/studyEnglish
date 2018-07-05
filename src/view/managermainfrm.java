@@ -45,7 +45,7 @@ public class managermainfrm extends JFrame {
 	public managermainfrm() {
 		setTitle("\u7BA1\u7406\u5458\u4E3B\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 807, 483);
+		setBounds(100, 100, 620, 401);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -64,35 +64,33 @@ public class managermainfrm extends JFrame {
 		});
 		mnNewMenu_5.add(menuItem_3);
 		
-		JMenuItem menuItem_4 = new JMenuItem("\u5220\u9664\u8BCD\u6C47");
+		JMenuItem menuItem_4 = new JMenuItem("\u7BA1\u7406\u8BCD\u6C47");
 		menuItem_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				worddelete word = new worddelete();
-				word.setVisible(true);
-				Table.add(word);
-			}
-		});
-		mnNewMenu_5.add(menuItem_4);
-		
-		JMenuItem menuItem_5 = new JMenuItem("\u4FEE\u6539\u8BCD\u6C47");
-		menuItem_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordupdateActionPerformed(e);
 			}
 		});
-		mnNewMenu_5.add(menuItem_5);
+		mnNewMenu_5.add(menuItem_4);
+		
 		
 		JMenu mnNewMenu_6 = new JMenu("\u8BCD\u6C47\u8868\u7EF4\u62A4");
 		mnNewMenu.add(mnNewMenu_6);
 		
 		JMenuItem menuItem_6 = new JMenuItem("\u589E\u52A0");
+		menuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				wordlistActionPerformed(e);
+			}
+		});
 		mnNewMenu_6.add(menuItem_6);
 		
-		JMenuItem menuItem_7 = new JMenuItem("\u5220\u9664");
+		JMenuItem menuItem_7 = new JMenuItem("\u7BA1\u7406");
+		menuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				wordlistupdateActionPerformed(e);
+			}
+		});
 		mnNewMenu_6.add(menuItem_7);
-		
-		JMenuItem menuItem_8 = new JMenuItem("\u4FEE\u6539");
-		mnNewMenu_6.add(menuItem_8);
 		
 		JMenu mnNewMenu_1 = new JMenu("\u6570\u636E\u5E93\u7BA1\u7406          ");
 		menuBar.add(mnNewMenu_1);
@@ -140,26 +138,30 @@ public class managermainfrm extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		Table = new JDesktopPane();
+		 Table= new JDesktopPane();
 		Table.setBackground(Color.GRAY);
 		contentPane.add(Table, BorderLayout.CENTER);
-		GroupLayout gl_Table = new GroupLayout(Table);
-		gl_Table.setHorizontalGroup(
-			gl_Table.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 781, Short.MAX_VALUE)
-		);
-		gl_Table.setVerticalGroup(
-			gl_Table.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 413, Short.MAX_VALUE)
-		);
-		Table.setLayout(gl_Table);
 		this.setExtendedState(MAXIMIZED_BOTH);
 	}
 
-	private void wordupdateActionPerformed(ActionEvent evt) {
-			wordupdate word = new wordupdate();
-			word.setVisible(true);
-			Table.add(word);
+	private void wordupdateActionPerformed(ActionEvent e) {
+		wordupdate word = new wordupdate();
+		word.setVisible(true);
+		Table.add(word);
+		
+	}
+
+	private void wordlistActionPerformed(ActionEvent e) {
+		wordlistadd wordlist = new wordlistadd();
+		wordlist.setVisible(true);
+		Table.add(wordlist);
+	}
+
+	private void wordlistupdateActionPerformed(ActionEvent evt) {
+		wordlistpdate wordlist = new wordlistpdate();
+		wordlist.setVisible(true);
+		Table.add(wordlist);
+		
 	}
 
 	private void wordaddActionPerformed(ActionEvent evt) {
