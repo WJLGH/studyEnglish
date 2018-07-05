@@ -9,6 +9,9 @@ import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.UserBean;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,11 +31,11 @@ public class usermainfem extends JFrame {
 
 	private JPanel contentPane;
 	JDesktopPane Table = null;
-
+	private UserBean user;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,12 +46,13 @@ public class usermainfem extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public usermainfem() {
+	public usermainfem(UserBean user) {
+		this.user = user;
 		setTitle("\u7528\u6237\u4E3B\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 792, 468);
@@ -140,7 +144,9 @@ public class usermainfem extends JFrame {
 		Table.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(gl_contentPane);
 		setExtendedState(MAXIMIZED_BOTH);
+		this.setVisible(true);
 	}
+
 
 	private void zhenseekActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub

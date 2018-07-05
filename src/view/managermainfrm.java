@@ -21,7 +21,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class managermainfrm extends JFrame {
-
 	private JPanel contentPane;
 	private JDesktopPane Table = null;
 	/**

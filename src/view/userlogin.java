@@ -157,11 +157,9 @@ public class userlogin extends JFrame {
 			JOptionPane.showMessageDialog(null, "密码不能为空");
 			return;
 		}
-<<<<<<< HEAD
+
 		UserBean user=null;
-=======
-		UserBean user= null;
->>>>>>> 22949b88997100e8123c7497deba00ed74bcbd02
+
 		try {
 			user = UserDao.checkLogin(username, password);
 		} catch (SQLException e1) {
@@ -173,7 +171,8 @@ public class userlogin extends JFrame {
 		} 
 		else {
 			dispose();
-			new usermainfem();
+		//	JOptionPane.showMessageDialog(null, "登陆成功！");
+			new usermainfem(user);
 		}
 	}
 

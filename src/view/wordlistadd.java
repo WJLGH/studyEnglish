@@ -26,6 +26,7 @@ public class wordlistadd extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public wordlistadd() {
+		setMaximizable(true);
 		setBounds(100, 100, 450, 300);
 
 	}

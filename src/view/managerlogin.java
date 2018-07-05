@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -18,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import dao.ManagerDao;
+import model.ManagerBean;
 import util.stringutil;
 
 public class managerlogin extends JFrame {
@@ -142,9 +145,22 @@ public class managerlogin extends JFrame {
 			JOptionPane.showMessageDialog(null, "密码不能为空！");
 			return;
 		}
+		ManagerBean manager = null;
+		try {
+			manager = ManagerDao.checkLogin(useName, password);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		if(manager == null) {
+			JOptionPane.showMessageDialog(null, "该管理员名或密码错误");
+		}
+		else {
+			new managermainfrm().setVisible(true);;
+		}
 	}
 
-	protected void resetValueActionPerformed(ActionEvent evt) {
+	private void resetValueActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 		this.usernametext.setText("");
 		this.passwordtext.setText("");
