@@ -33,7 +33,12 @@ public class MeaningDao {
 		QueryRunner qr = new QueryRunner();
 		return 0 < qr.update(conn,sql, cid);
 	}
-	
+	public static boolean deleteWordMeaing(int wid) throws SQLException {
+		Connection conn = JDBCUtils.getConnection();
+		String sql = "delete from meaning where wid = ?";
+		QueryRunner qr = new QueryRunner();
+		return 0 < qr.update(conn,sql, wid);
+	}
 	public static boolean addMeaningBean(MeaningBean mb) throws SQLException {
 		Connection conn = JDBCUtils.getConnection();
 		String sql = "insert into meaning (chinese,wid) values (?,?)";

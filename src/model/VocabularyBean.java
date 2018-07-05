@@ -4,16 +4,19 @@ import java.util.List;
 
 public class VocabularyBean {
 	private int vid;
+
 	private String vname;
-	private List<WordBean> list;
-	
+	private String vdesc;
+
 	public VocabularyBean() {
+		
 	}
-    
-	public VocabularyBean(int vid, String vname) {
+
+	public VocabularyBean(int vid, String vname, String vdesc) {
 		super();
 		this.vid = vid;
 		this.vname = vname;
+		this.vdesc = vdesc;
 	}
 
 	public int getVid() {
@@ -32,19 +35,12 @@ public class VocabularyBean {
 		this.vname = vname;
 	}
 
-	public List<WordBean> getList() {
-		return list;
+	public String getVdesc() {
+		return vdesc;
 	}
 
-	public void setList(List<WordBean> list) {
-		this.list = list;
+	public void setVdesc(String vdesc) {
+		this.vdesc = vdesc;
 	}
 
-	@Override
-	public String toString() {
-		return "VocabularyBean [vid=" + vid + ", vname=" + vname + ", list=" + list + "]";
-	}
-	
-	
-	
 }

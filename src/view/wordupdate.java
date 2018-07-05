@@ -17,12 +17,15 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class wordupdate extends JInternalFrame {
 	private JTextField textField;
 	private JTable table;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -47,16 +50,16 @@ public class wordupdate extends JInternalFrame {
 		setClosable(true);
 		setIconifiable(true);
 		setTitle("\u66F4\u65B0\u5355\u8BCD");
-		setBounds(100, 100, 535, 397);
+		setBounds(100, 100, 719, 709);
 		
-		JLabel lblNewLabel = new JLabel("\u5355\u8BCD\uFF1A");
-		lblNewLabel.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 20));
+		JLabel lblNewLabel = new JLabel("ËØçÊ±áË°®Ôºö");
+		lblNewLabel.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 20));
 		
 		textField = new JTextField();
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("\u67E5\u8BE2");
-		btnNewButton.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 20));
+		btnNewButton.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 20));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -70,60 +73,65 @@ public class wordupdate extends JInternalFrame {
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
 					.addComponent(btnNewButton)
-					.addGap(89))
+					.addGap(142))
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addGap(30)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-						.addComponent(scrollPane, Alignment.LEADING))
+						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(24))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(21)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel))
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+					.addGap(25)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel))
+							.addGap(18))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnNewButton)
+							.addPreferredGap(ComponentPlacement.UNRELATED)))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 227, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		
 		JLabel lblNewLabel_1 = new JLabel("\u6240\u5C5E\u8868\u5355");
-		lblNewLabel_1.setBounds(16, 30, 52, 15);
-		lblNewLabel_1.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(345, 93, 52, 15);
+		lblNewLabel_1.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 12));
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(86, 27, 63, 21);
+		comboBox.setBounds(443, 89, 63, 21);
 		
 		JLabel lblNewLabel_2 = new JLabel("\u5355\u8BCD\uFF1A");
-		lblNewLabel_2.setBounds(180, 30, 39, 15);
-		lblNewLabel_2.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 12));
+		lblNewLabel_2.setBounds(16, 91, 39, 15);
+		lblNewLabel_2.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 12));
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(237, 27, 66, 21);
+		textField_1.setBounds(69, 88, 75, 32);
 		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("\u91CA\u4E49\uFF1A");
-		lblNewLabel_3.setBounds(16, 61, 39, 15);
-		lblNewLabel_3.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 12));
+		lblNewLabel_3.setBounds(16, 149, 39, 15);
+		lblNewLabel_3.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 12));
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(83, 58, 107, 21);
+		textField_2.setBounds(69, 145, 392, 23);
 		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("\u4F8B\u53E5:");
-		lblNewLabel_4.setBounds(16, 96, 33, 15);
-		lblNewLabel_4.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 12));
+		lblNewLabel_4.setBounds(16, 205, 33, 15);
+		lblNewLabel_4.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 12));
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(86, 92, 217, 38);
+		textArea.setBounds(69, 200, 437, 20);
 		panel.setLayout(null);
 		panel.add(lblNewLabel_1);
 		panel.add(comboBox);
@@ -135,9 +143,28 @@ public class wordupdate extends JInternalFrame {
 		panel.add(textArea);
 		
 		JButton btnNewButton_1 = new JButton("\u63D0\u4EA4");
-		btnNewButton_1.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 20));
-		btnNewButton_1.setBounds(336, 71, 93, 23);
+		btnNewButton_1.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 20));
+		btnNewButton_1.setBounds(106, 262, 93, 23);
 		panel.add(btnNewButton_1);
+		
+		JLabel label = new JLabel("ÁºñÂè∑Ôºö");
+		label.setBounds(16, 33, 52, 21);
+		panel.add(label);
+		
+		textField_3 = new JTextField();
+		textField_3.setEditable(false);
+		textField_3.setBounds(69, 31, 86, 24);
+		panel.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JButton button_1 = new JButton("Âà†Èô§");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button_1.setFont(new Font("Dialog", Font.BOLD, 20));
+		button_1.setBounds(413, 262, 93, 23);
+		panel.add(button_1);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);

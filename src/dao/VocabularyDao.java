@@ -23,8 +23,8 @@ public class VocabularyDao {
 	public static boolean addVocabularyBean(VocabularyBean v) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
-		String sql = "insert into vocabulary(vname) values(?)";
-		return 0 < runner.update(con, sql, v.getVname());
+		String sql = "insert into vocabulary(vname,vdesc) values(?,?)";
+		return 0 < runner.update(con, sql, v.getVname(),v.getVdesc());
 	}
 
 	public static boolean deleteVocabularyBean(int vid) throws SQLException {
@@ -36,17 +36,17 @@ public class VocabularyDao {
 		// System.out.println(n+"条数据删除成功");
 	}
 
-	public static boolean updataVocabularyBeanName(int vid, String name) throws SQLException {
+	public static boolean updataVocabularyBeanName(VocabularyBean v) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
-		String sql = "update vocabulary set vname=? where vid=?";
-		return 0 < runner.update(con, sql, name, vid);
+		String sql = "update vocabulary set vname=? ,vdesc = ? where vid=?";
+		return 0 < runner.update(con, sql, v.getVname(),v.getVdesc(),v.getVid());
 	}
 
 	public static List<VocabularyBean> query() throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
-        String sql = "select vid,vname from vocabulary";
+        String sql = "select * from vocabulary";
         List<VocabularyBean> vBeans = runner.query(con,sql,new BeanListHandler<VocabularyBean>(VocabularyBean.class));
 		return vBeans;
 	}
