@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
 
 public class ZhEnseek extends JInternalFrame {
 	private JTextField textField;
@@ -41,22 +42,25 @@ public class ZhEnseek extends JInternalFrame {
 		setBounds(100, 100, 694, 414);
 		
 		JLabel lblNewLabel = new JLabel("\u8BF7\u8F93\u5165\u6C49\u8BED\uFF1A");
-		lblNewLabel.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 20));
+		lblNewLabel.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 20));
 		
 		textField = new JTextField();
 		textField.setColumns(10);
 		
 		JLabel label = new JLabel("\u641C\u7D22\u7ED3\u679C\u4E3A\uFF1A");
-		label.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 20));
+		label.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 20));
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		
 		JLabel label_1 = new JLabel("\u4F8B\u53E5\uFF1A");
-		label_1.setFont(new Font("∫⁄ÃÂ", Font.BOLD, 20));
+		label_1.setFont(new Font("ÔøΩÔøΩÔøΩÔøΩ", Font.BOLD, 20));
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
+		
+		JButton btnNewButton = new JButton("ÊêúÁ¥¢");
+		btnNewButton.setFont(new Font("Èªë‰Ωì", Font.BOLD, 24));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -68,21 +72,25 @@ public class ZhEnseek extends JInternalFrame {
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(66)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-								.addComponent(textField, GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(14)
-							.addComponent(textField_2)))
-					.addGap(184))
+							.addComponent(textField_2))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(66)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField, GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 251, GroupLayout.PREFERRED_SIZE))))
+					.addGap(60)
+					.addComponent(btnNewButton)
+					.addGap(31))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(39)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField, Alignment.TRAILING)
+						.addGroup(Alignment.TRAILING, groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnNewButton))
 						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
 					.addGap(39)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
