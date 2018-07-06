@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import util.BackUpUtils;
+import util.JDBCUtils;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -23,6 +27,24 @@ import java.awt.event.ActionEvent;
 public class managermainfrm extends JFrame {
 	private JPanel contentPane;
 	private JDesktopPane Table = null;
+	JMenuBar menuBar;
+	JMenu basicMenu;
+	JMenu wordManage;
+	JMenuItem addWord;
+	JMenuItem manageWord;
+	JMenu vocabularyManageItem;
+	JMenu DBManage;
+	JMenu dbBackUpAndRecovery;
+	JMenuItem dbBackUp;
+	JMenuItem addVocabulary;
+	JMenuItem dbRecovery;
+	JMenu systemSecurity;
+	JMenuItem aboutUsItem;
+	JMenu aboutUs;
+	JMenuItem vocabularyManage;
+	JMenuItem modifyPwd;
+	JMenuItem manageExit;
+
 	/**
 	 * Launch the application.
 	 */
@@ -46,109 +68,129 @@ public class managermainfrm extends JFrame {
 		setTitle("\u7BA1\u7406\u5458\u4E3B\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 620, 401);
-		
-		JMenuBar menuBar = new JMenuBar();
+
+		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
-		JMenu mnNewMenu = new JMenu("\u57FA\u672C\u6570\u636E\u7EF4\u62A4       ");
-		menuBar.add(mnNewMenu);
-		
-		JMenu mnNewMenu_5 = new JMenu("\u8BCD\u6C47\u7EF4\u62A4");
-		mnNewMenu.add(mnNewMenu_5);
-		
-		JMenuItem menuItem_3 = new JMenuItem("\u589E\u52A0\u8BCD\u6C47");
-		menuItem_3.addActionListener(new ActionListener() {
+
+		basicMenu = new JMenu("\u57FA\u672C\u6570\u636E\u7EF4\u62A4       ");
+		menuBar.add(basicMenu);
+
+		wordManage = new JMenu("\u8BCD\u6C47\u7EF4\u62A4");
+		basicMenu.add(wordManage);
+
+		addWord = new JMenuItem("\u589E\u52A0\u8BCD\u6C47");
+		addWord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordaddActionPerformed(e);
 			}
 		});
-		mnNewMenu_5.add(menuItem_3);
-		
-		JMenuItem menuItem_4 = new JMenuItem("\u7BA1\u7406\u8BCD\u6C47");
-		menuItem_4.addActionListener(new ActionListener() {
+		wordManage.add(addWord);
+
+		manageWord = new JMenuItem("\u7BA1\u7406\u8BCD\u6C47");
+		manageWord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordupdateActionPerformed(e);
 			}
 		});
-		mnNewMenu_5.add(menuItem_4);
-		
-		
-		JMenu mnNewMenu_6 = new JMenu("\u8BCD\u6C47\u8868\u7EF4\u62A4");
-		mnNewMenu.add(mnNewMenu_6);
-		
-		JMenuItem menuItem_6 = new JMenuItem("\u589E\u52A0");
-		menuItem_6.addActionListener(new ActionListener() {
+		wordManage.add(manageWord);
+
+		vocabularyManageItem = new JMenu("\u8BCD\u6C47\u8868\u7EF4\u62A4");
+		basicMenu.add(vocabularyManageItem);
+
+		addVocabulary = new JMenuItem("\u589E\u52A0");
+		addVocabulary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordlistActionPerformed(e);
 			}
 		});
-		mnNewMenu_6.add(menuItem_6);
-		
-		JMenuItem menuItem_7 = new JMenuItem("\u7BA1\u7406");
-		menuItem_7.addActionListener(new ActionListener() {
+		vocabularyManageItem.add(addVocabulary);
+
+		vocabularyManage = new JMenuItem("\u7BA1\u7406");
+		vocabularyManage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordlistupdateActionPerformed(e);
 			}
 		});
-		mnNewMenu_6.add(menuItem_7);
-		
-		JMenu mnNewMenu_1 = new JMenu("\u6570\u636E\u5E93\u7BA1\u7406          ");
-		menuBar.add(mnNewMenu_1);
-		
-		JMenu mnNewMenu_4 = new JMenu("\u6570\u636E\u5E93\u5907\u4EFD\u4E0E\u8FD8\u539F");
-		mnNewMenu_1.add(mnNewMenu_4);
-		
-		JMenuItem menuItem_2 = new JMenuItem("\u6570\u636E\u5E93\u5907\u4EFD");
-		mnNewMenu_4.add(menuItem_2);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("\u6570\u636E\u5E93\u8FD8\u539F");
-		mnNewMenu_4.add(mntmNewMenuItem_1);
-		
-		JMenu mnNewMenu_2 = new JMenu("\u7CFB\u7EDF\u5B89\u5168      ");
-		menuBar.add(mnNewMenu_2);
-		
-		JMenuItem menuItem = new JMenuItem("\u4FEE\u6539\u5BC6\u7801");
-		menuItem.addActionListener(new ActionListener() {
+		vocabularyManageItem.add(vocabularyManage);
+
+		DBManage = new JMenu("\u6570\u636E\u5E93\u7BA1\u7406          ");
+		menuBar.add(DBManage);
+
+		dbBackUpAndRecovery = new JMenu("\u6570\u636E\u5E93\u5907\u4EFD\u4E0E\u8FD8\u539F");
+		DBManage.add(dbBackUpAndRecovery);
+
+		dbBackUp = new JMenuItem("\u6570\u636E\u5E93\u5907\u4EFD");
+		dbBackUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				backupActionPerformed(e);
+			}
+		});
+		dbBackUpAndRecovery.add(dbBackUp);
+
+		dbRecovery = new JMenuItem("\u6570\u636E\u5E93\u8FD8\u539F");
+		dbRecovery.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dbrecoveryActionPerformed(e);
+			}
+		});
+		dbBackUpAndRecovery.add(dbRecovery);
+
+		systemSecurity = new JMenu("\u7CFB\u7EDF\u5B89\u5168      ");
+		menuBar.add(systemSecurity);
+
+		modifyPwd = new JMenuItem("\u4FEE\u6539\u5BC6\u7801");
+		modifyPwd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updateActionPerformed(e);
 			}
 		});
-		mnNewMenu_2.add(menuItem);
-		
-		JMenuItem menuItem_1 = new JMenuItem("\u9000\u51FA");
-		menuItem_1.addActionListener(new ActionListener() {
-			/**
-			 *  «∑Ò»∑»œÕÀ≥ˆ
-			 */
+		systemSecurity.add(modifyPwd);
+
+		manageExit = new JMenuItem("\u9000\u51FA");
+		manageExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(null," «∑Ò»∑»œÕÀ≥ˆ£°");
-				if(result ==0)
+				int result = JOptionPane.showConfirmDialog(null, "ÊòØÂê¶Ë¶ÅÈÄÄÂá∫Á≥ªÁªü");
+				if (result == 0)
+					manageExitActionPerformed(e);
 					dispose();
 			}
 		});
-		mnNewMenu_2.add(menuItem_1);
-		
-		JMenu mnNewMenu_3 = new JMenu("\u5173\u4E8E\u6211\u4EEC");
-		menuBar.add(mnNewMenu_3);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("\u5173\u4E8E");
-		mnNewMenu_3.add(mntmNewMenuItem);
+		systemSecurity.add(manageExit);
+
+		aboutUs = new JMenu("\u5173\u4E8E\u6211\u4EEC");
+		menuBar.add(aboutUs);
+
+		aboutUsItem = new JMenuItem("\u5173\u4E8E");
+		aboutUs.add(aboutUsItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		 Table= new JDesktopPane();
+
+		Table = new JDesktopPane();
 		Table.setBackground(Color.GRAY);
 		contentPane.add(Table, BorderLayout.CENTER);
 		this.setExtendedState(MAXIMIZED_BOTH);
+		this.setVisible(true);
+	}
+
+	private void dbrecoveryActionPerformed(ActionEvent e) {
+		BackUpUtils.Recovery(null);
+	}
+
+	private void manageExitActionPerformed(ActionEvent e) {
+		JDBCUtils.closeResource();
+	}
+
+	private void backupActionPerformed(ActionEvent e) {
+		BackUpUtils.BackUp(null);
 	}
 
 	private void wordupdateActionPerformed(ActionEvent e) {
 		wordupdate word = new wordupdate();
 		word.setVisible(true);
 		Table.add(word);
-		
+
 	}
 
 	private void wordlistActionPerformed(ActionEvent e) {
@@ -161,17 +203,16 @@ public class managermainfrm extends JFrame {
 		wordlistpdate wordlist = new wordlistpdate();
 		wordlist.setVisible(true);
 		Table.add(wordlist);
-		
+
 	}
 
 	private void wordaddActionPerformed(ActionEvent evt) {
 		wordadd word = new wordadd();
 		word.setVisible(true);
-		Table.add(word);		
+		Table.add(word);
 	}
 
 	private void updateActionPerformed(ActionEvent evt) {
-		// TODO Auto-generated method stub
-		new mupdatepwdfem().setVisible(true);
+		new mupdatepwdfem();
 	}
 }

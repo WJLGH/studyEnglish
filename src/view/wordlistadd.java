@@ -6,15 +6,23 @@ import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import model.VocabularyBean;
+import util.CharacterUtil;
+
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class wordlistadd extends JInternalFrame {
-	private JTextField textField;
-
+	private JTextField nameTxt;
+	JTextArea descArea;
+	JButton addButton;
 	/**
 	 * Launch the application.
 	 */
@@ -40,33 +48,38 @@ public class wordlistadd extends JInternalFrame {
 		setTitle("\u6DFB\u52A0\u8BCD\u6C47\u8868");
 		setBounds(100, 100, 470, 321);
 		
-		JLabel lblNewLabel = new JLabel("\u8BCD\u6C47\u8868\u540D\u79F0\uFF1A");
+		JLabel nameLabel = new JLabel("\u8BCD\u6C47\u8868\u540D\u79F0\uFF1A");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		nameTxt = new JTextField();
+		nameTxt.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("\u8BCD\u6C47\u8868\u63CF\u8FF0\uFF1A");
+		JLabel descLabel = new JLabel("\u8BCD\u6C47\u8868\u63CF\u8FF0\uFF1A");
 		
-		JTextArea textArea = new JTextArea();
+		descArea = new JTextArea();
 		
-		JButton btnNewButton = new JButton("\u63D0\u4EA4");
-		btnNewButton.setFont(new Font("����", Font.BOLD, 20));
+		addButton = new JButton("\u63D0\u4EA4");
+		addButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addWordListActionPerformed(e);
+			}
+		});
+		addButton.setFont(new Font("����", Font.BOLD, 20));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(23)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(lblNewLabel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(lblNewLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(descLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(nameLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(30)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
+						.addComponent(descArea, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
+						.addComponent(nameTxt, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(65, Short.MAX_VALUE))
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addContainerGap(210, Short.MAX_VALUE)
-					.addComponent(btnNewButton)
+					.addComponent(addButton)
 					.addGap(190))
 		);
 		groupLayout.setVerticalGroup(
@@ -74,18 +87,32 @@ public class wordlistadd extends JInternalFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(21)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(nameLabel)
+						.addComponent(nameTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(43)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_1)
-						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
+						.addComponent(descLabel)
+						.addComponent(descArea, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-					.addComponent(btnNewButton)
+					.addComponent(addButton)
 					.addGap(41))
 		);
 		getContentPane().setLayout(groupLayout);
+		
+	}
 
+	private void addWordListActionPerformed(ActionEvent e) {
+		String name = this.nameTxt.getText();
+		String desc = this.descArea.getText();
+		if(CharacterUtil.isEmpty(name) ) {
+			JOptionPane.showMessageDialog(null, "词汇表名不能为空");
+			return ;
+		}
+		if(CharacterUtil.isEmpty(desc)) {
+			JOptionPane.showMessageDialog(null, "描述不能为空");
+		}
+		VocabularyBean vb = new VocabularyBean();
+		vb.set
 	}
 
 }

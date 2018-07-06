@@ -51,18 +51,18 @@ public class logonform extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new managerlogin().setVisible(true);
+				new managerlogin();
 			}
 		});
 		
 		JLabel lblNewLabel = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
-		lblNewLabel.setFont(new Font("ËÎÌå", Font.BOLD, 22));
+		lblNewLabel.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 22));
 		
 		JButton button = new JButton("\u7528\u6237\u767B\u9646");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new userlogin().setVisible(true);
+				new userlogin();
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
