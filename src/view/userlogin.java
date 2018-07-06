@@ -174,7 +174,7 @@ public class userlogin extends JFrame {
 		else {
 			dispose();
 		//	JOptionPane.showMessageDialog(null, "��½�ɹ���");
-			new usermainfem();
+			new usermainfrm(user);
 		}
 	}
 

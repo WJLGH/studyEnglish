@@ -213,6 +213,8 @@ public class managermainfrm extends JFrame {
 	}
 
 	private void updateActionPerformed(ActionEvent evt) {
-		new mupdatepwdfem();
+		mupdatepwdfrm updatepwd = new mupdatepwdfrm();
+		updatepwd.setVisible(true);
+		Table.add(updatepwd);
 	}
 }

@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class ReciteWordView extends JFrame implements ActionListener{
+public class ReciteWordView extends JInternalFrame implements ActionListener{
 	private UserBean user;
 	private Timer timer;
 	private ReciteWords rw;
@@ -29,6 +29,8 @@ public class ReciteWordView extends JFrame implements ActionListener{
 	private  JLabel transLabel = new JLabel("这是一个新标签");
 	private  JLabel label = new JLabel("译：");
 	public ReciteWordView(UserBean user) {
+		setIconifiable(true);
+		setClosable(true);
 		this.user = user;
 		rw = new ReciteWords(user);
 		
@@ -41,8 +43,7 @@ public class ReciteWordView extends JFrame implements ActionListener{
 		like.addActionListener(this);
 		delete.addActionListener(this);
 		
-		timer = new Timer(3000, this);
-		like.setBounds(516, 76, 85, 34);
+		like.setBounds(465, 75, 85, 34);
 		delete.setBounds(288, 397, 100, 50);
 		
 		wordLabel = new JLabel("New label");
@@ -63,7 +64,7 @@ public class ReciteWordView extends JFrame implements ActionListener{
 		
 		getContentPane().add(egLabel);
 		transLabel.setFont(new Font("宋体", Font.PLAIN, 17));
-		transLabel.setBounds(178, 265, 413, 32);
+		transLabel.setBounds(178, 265, 372, 32);
 		
 		getContentPane().add(transLabel);
 		label.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 17));
@@ -71,21 +72,25 @@ public class ReciteWordView extends JFrame implements ActionListener{
 		label.setBounds(127, 265, 38, 34);
 		
 		getContentPane().add(label);
-		setSize(721, 598);
+		setSize(648, 517);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		timer = new Timer(3000, this);
+		timer.start();
 		recite();
 	}
 	
 	public void recite() {
 		if(rw.isFinish()) {
-			try {
+			if(timer != null) {
 				timer.stop();
+				System.out.println("timer"+timer.isRunning());
+			}
+			try {
 				rw.saveUserPage();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			JOptionPane.showMessageDialog(this, "呀，今天的单词背完了");
+			JOptionPane.showMessageDialog(null, "呀，今天的单词背完了");
 			this.dispose();
 		}
 		
@@ -93,9 +98,7 @@ public class ReciteWordView extends JFrame implements ActionListener{
 		if( nowWord != null ) {
 			showNowWord();
 		}
-		
 		repaint();
-		timer.restart();
 	}
 	private void showNowWord() {
 		this.wordLabel.setText(nowWord.getWord());
@@ -109,18 +112,10 @@ public class ReciteWordView extends JFrame implements ActionListener{
 		
 	}
 
-	public static void main(String[] args) {
-		try {
-			new ReciteWordView(UserDao.checkLogin("user1","123456"));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object s = e.getSource();
+		System.out.println(s);
 		if( s == this.like) {
 			try {
 				rw.addCollectBean(nowWord.getWid());
@@ -131,7 +126,6 @@ public class ReciteWordView extends JFrame implements ActionListener{
 		if(s == this.delete) {
 			rw.removeFromList();
 		}
-		timer.restart();
 		recite();
 	}
 }

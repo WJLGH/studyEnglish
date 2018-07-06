@@ -46,7 +46,6 @@ public class UserDao {
 		Connection con = JDBCUtils.getConnection();
 		String sql = "update user set upage=? where uname=?";
 		int i =  runner.update(con,sql,user.getUpage(),user.getUname());
-		JDBCUtils.closeConnection(con);
 		return 0 < i;
 	}
 	

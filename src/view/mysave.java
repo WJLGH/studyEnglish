@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class mysave extends JInternalFrame {
-	private JTable table;
+	private JTable mysavetable;
 
 	/**
 	 * Launch the application.
@@ -42,31 +42,25 @@ public class mysave extends JInternalFrame {
 		setTitle("我的收藏");
 		setBounds(100, 100, 526, 374);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		
-		JButton btnNewButton = new JButton("查看");
-		btnNewButton.setFont(new Font("黑体", Font.BOLD, 24));
+		JScrollPane Table = new JScrollPane();
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(205)
-					.addComponent(btnNewButton))
-				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(32)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE))
+					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(33, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(10)
-					.addComponent(btnNewButton)
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE))
+					.addGap(22)
+					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 295, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(27, Short.MAX_VALUE))
 		);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		mysavetable = new JTable();
+		mysavetable.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
@@ -80,7 +74,7 @@ public class mysave extends JInternalFrame {
 				return columnEditables[column];
 			}
 		});
-		scrollPane.setViewportView(table);
+		Table.setViewportView(mysavetable);
 		getContentPane().setLayout(groupLayout);
 
 	}
