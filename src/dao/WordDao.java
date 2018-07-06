@@ -13,6 +13,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import model.MeaningBean;
 import model.WordBean;
+import util.CharacterUtil;
 import util.JDBCUtils;
 
 public class WordDao {
@@ -136,14 +137,10 @@ public class WordDao {
 	 */
 	public static boolean updateWordBean(WordBean word) throws SQLException {
 		Connection conn = JDBCUtils.getConnection();
-		String sql = "UPDATE word SET word = ? ,eg = ?, trans =  ? WHERE wid = ?";
+		String sql = "UPDATE word SET word = ? ,eg = ?, trans =  ?,vid = ? WHERE wid = ?";
 		MeaningDao.deleteWordMeaing(word.getVid());
 		QueryRunner qr = new QueryRunner();
-		int i = qr.update(conn, sql, word.getWord(), word.getEg(), word.getEg(), word.getWid());
-		for (MeaningBean meaning : word.getMeans()) {
-			MeaningDao.addMeaningBean(meaning);
-		}
-		return i > 0;
+		return 0 < qr.update(conn, sql, word.getWord(), word.getEg(), word.getEg(),word.getVid(), word.getWid());
 	}
 
 	/**
@@ -158,6 +155,20 @@ public class WordDao {
 		String sql = "select * from word where vid = ?";
 		QueryRunner qr = new QueryRunner();
 		List<WordBean> list = qr.query(conn, sql, new BeanListHandler<WordBean>(WordBean.class), vid);
+		for (WordBean wordBean : list) {
+			wordBean.setMeans(MeaningDao.queryMeaning(wordBean));
+		}
+		return list;
+	}
+
+	public static List<WordBean> querySearch(String word, int vid)throws SQLException {
+		Connection conn = JDBCUtils.getConnection();
+		StringBuffer sql = new StringBuffer("SELECT * FROM word WHERE word LIKE \"%"+word+"%\" ");
+		if(vid != -1) {
+			sql.append("and vid = "+vid );
+		}
+		QueryRunner qr = new QueryRunner();
+		List<WordBean> list  = qr.query(conn, sql.toString(), new BeanListHandler<WordBean>(WordBean.class));
 		for (WordBean wordBean : list) {
 			wordBean.setMeans(MeaningDao.queryMeaning(wordBean));
 		}

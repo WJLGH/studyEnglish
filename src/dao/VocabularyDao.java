@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
@@ -77,5 +78,18 @@ public class VocabularyDao {
 				return rs.getInt("vid");
 			}
 		},name);
+	}
+
+	public static VocabularyBean queryByVid(int vid) {
+		QueryRunner qr = new QueryRunner();
+		Connection conn = JDBCUtils.getConnection();
+		String sql = "select * from vocabulary where vid = ?";
+		VocabularyBean vb = null;
+		try {
+			vb = qr.query(conn, sql, new BeanHandler<VocabularyBean>(VocabularyBean.class), vid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vb;
 	}
 }

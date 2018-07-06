@@ -32,6 +32,14 @@ public class WordBean {
 		this.vid = vid;
 	}
 
+	public WordBean(int wid, String word, String eg, String trans, int vid) {
+		this.wid = wid;
+		this.word = word;
+		this.eg = eg;
+		this.trans = trans;
+		this.vid = vid;
+	}
+
 	public int getWid() {
 		return wid;
 	}

@@ -141,6 +141,7 @@ public class userlogin extends JFrame {
 					.addGap(26))
 		);
 		panel.setLayout(gl_panel);
+		this.setVisible(true);
 	}
 	/**
 	 * ��¼���洦��

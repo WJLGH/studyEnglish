@@ -12,6 +12,28 @@ public class VocabularyBean {
 		
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + vid;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		VocabularyBean other = (VocabularyBean) obj;
+		if (vid != other.vid)
+			return false;
+		return true;
+	}
+
 	public VocabularyBean(int vid, String vname, String vdesc) {
 		super();
 		this.vid = vid;

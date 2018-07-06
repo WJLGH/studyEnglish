@@ -224,7 +224,7 @@ public class wordadd extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "单词不能为空");
 			return ;
 		}
-		if(CharacterUtil.isWord(word) ) {
+		if(!CharacterUtil.isWord(word) ) {
 			JOptionPane.showMessageDialog(null, "请输入正确的单词");
 			return ;
 		}
@@ -240,7 +240,6 @@ public class wordadd extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "意思不能为空");
 			return ;
 		}
-		Connection conn = JDBCUtils.getConnection();
 		WordBean wordBean = new WordBean(word, eg, trans, vid);
 		boolean isSuccess = false;
 		try {
@@ -256,7 +255,10 @@ public class wordadd extends JInternalFrame {
 			String[] ma = CharacterUtil.meaningStrToArray(meangingList);
 			for(String chinese: ma) {
 				MeaningBean mb = new MeaningBean(chinese,wid);
-				MeaningDao.addMeaningBean(mb);
+				isSuccess = MeaningDao.addMeaningBean(mb);
+				if(!isSuccess) {
+					throw new SQLException();
+				}
 			}
 			JOptionPane.showMessageDialog(null, "添加成功");
 		} catch (SQLException e1) {
