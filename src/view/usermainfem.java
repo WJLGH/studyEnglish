@@ -35,7 +35,7 @@ public class usermainfem extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,13 +46,12 @@ public class usermainfem extends JFrame {
 				}
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Create the frame.
 	 */
-	public usermainfem(UserBean user) {
-		this.user = user;
+	public usermainfem() {
 		setTitle("\u7528\u6237\u4E3B\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 792, 468);
@@ -88,6 +87,11 @@ public class usermainfem extends JFrame {
 		mnNewMenu.add(menu_1);
 		
 		JMenuItem menuItem_3 = new JMenuItem("\u5355\u8BCD\u8868");
+		menuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mysaveActionPerformed(e);
+			}
+		});
 		menu_1.add(menuItem_3);
 		
 		JMenu menu_2 = new JMenu("\u6211\u7684\u6210\u5C31");
@@ -138,13 +142,29 @@ public class usermainfem extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 659, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 579, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(80, Short.MAX_VALUE))
 		);
-		Table.setLayout(new BorderLayout(0, 0));
+		GroupLayout gl_Table = new GroupLayout(Table);
+		gl_Table.setHorizontalGroup(
+			gl_Table.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 1347, Short.MAX_VALUE)
+		);
+		gl_Table.setVerticalGroup(
+			gl_Table.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 659, Short.MAX_VALUE)
+		);
+		Table.setLayout(gl_Table);
 		contentPane.setLayout(gl_contentPane);
 		setExtendedState(MAXIMIZED_BOTH);
 		this.setVisible(true);
+	}
+
+
+	private void mysaveActionPerformed(ActionEvent evt) {
+		mysave save =new mysave();
+		save.setVisible(true);
+		Table.add(save);
 	}
 
 
@@ -152,7 +172,6 @@ public class usermainfem extends JFrame {
 		// TODO Auto-generated method stub
 		ZhEnseek zhenseek = new ZhEnseek();
 		zhenseek.setVisible(true);
-		zhenseek.setBounds(100, 100, 400, 400);
 		Table.add(zhenseek);
 		
 	}

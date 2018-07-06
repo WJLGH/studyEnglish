@@ -74,13 +74,10 @@ public class JDBCUtils {
 		}
 	}
 
-	public static void closeResource( Statement sta, ResultSet rs) {
+	public static void closeResource( ) {
 		try {
-			if (rs != null) {
-				rs.close();
-			}
-			if (sta != null) {
-				sta.close();
+			if(conn != null) {
+				conn.close();
 			}
 			
 		} catch (Exception e) {

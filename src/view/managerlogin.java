@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 
 import dao.ManagerDao;
 import model.ManagerBean;
+import util.CharacterUtil;
 import util.stringutil;
 
 public class managerlogin extends JFrame {
@@ -59,15 +60,15 @@ public class managerlogin extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
 		lblNewLabel.setIcon(new ImageIcon(managerlogin.class.getResource("/image/logo.png")));
-		lblNewLabel.setFont(new Font("ËÎÌå", Font.BOLD, 24));
+		lblNewLabel.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 24));
 		
 		JLabel lblNewLabel_1 = new JLabel("\u7528\u6237\u540D");
 		lblNewLabel_1.setIcon(new ImageIcon(managerlogin.class.getResource("/image/modify.png")));
-		lblNewLabel_1.setFont(new Font("ËÎÌå", Font.BOLD, 14));
+		lblNewLabel_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		
 		JLabel label = new JLabel("\u5BC6  \u7801");
 		label.setIcon(new ImageIcon(managerlogin.class.getResource("/image/password.png")));
-		label.setFont(new Font("ËÎÌå", Font.BOLD, 14));
+		label.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		
 		usernametext = new JTextField();
 		usernametext.setColumns(10);
@@ -131,32 +132,34 @@ public class managerlogin extends JFrame {
 					.addGap(26))
 		);
 		contentPane.setLayout(gl_contentPane);
+		this.setVisible(true);
 	}
 
 	private void loginActionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		String useName = this.usernametext.getText();
+		String userName = this.usernametext.getText();
 		String password = new String(this.passwordtext.getPassword());
-		if(stringutil.isEmpty(useName)) {
-			JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡");
+		if(CharacterUtil.isEmpty(userName)) {
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·åä¸èƒ½ä¸ºç©º");
 			return;
 		}
-		if(stringutil.isEmpty(password)) {
-			JOptionPane.showMessageDialog(null, "ÃÜÂë²»ÄÜÎª¿Õ£¡");
+		if(CharacterUtil.isEmpty(password)) {
+			JOptionPane.showMessageDialog(null, "å¯†ç ä¸èƒ½ä¸ºç©º");
 			return;
 		}
+		
 		ManagerBean manager = null;
 		try {
-			manager = ManagerDao.checkLogin(useName, password);
+			manager = ManagerDao.checkLogin(userName, password);
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		if(manager == null) {
-			JOptionPane.showMessageDialog(null, "¸Ã¹ÜÀíÔ±Ãû»òÃÜÂë´íÎó");
+			JOptionPane.showMessageDialog(null, "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
 		}
 		else {
-			new managermainfrm().setVisible(true);;
+			this.dispose();
+			new managermainfrm();
 		}
 	}
 

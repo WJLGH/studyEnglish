@@ -74,11 +74,11 @@ public class userlogin extends JFrame {
 		
 		JLabel label = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
 		label.setIcon(new ImageIcon(userlogin.class.getResource("/image/logo.png")));
-		label.setFont(new Font("ËÎÌå", Font.BOLD, 24));
+		label.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 24));
 		
 		JLabel label_1 = new JLabel("\u7528\u6237\u540D");
 		label_1.setIcon(new ImageIcon(userlogin.class.getResource("/image/modify.png")));
-		label_1.setFont(new Font("ËÎÌå", Font.BOLD, 14));
+		label_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		
 		usernametext = new JTextField();
 		usernametext.setColumns(10);
@@ -91,7 +91,8 @@ public class userlogin extends JFrame {
 		});
 		
 		JLabel label_2 = new JLabel("\u5BC6  \u7801");
-		label_2.setFont(new Font("ËÎÌå", Font.BOLD, 14));
+		label_2.setIcon(new ImageIcon(userlogin.class.getResource("/image/password.png")));
+		label_2.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 14));
 		
 		passwordtext = new JPasswordField();
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -142,7 +143,7 @@ public class userlogin extends JFrame {
 		panel.setLayout(gl_panel);
 	}
 	/**
-	 * µÇÂ¼½çÃæ´¦Àí
+	 * ï¿½ï¿½Â¼ï¿½ï¿½ï¿½æ´¦ï¿½ï¿½
 	 * @param e
 	 */
 	private void userlogonActionPerformed(ActionEvent e) {
@@ -150,11 +151,11 @@ public class userlogin extends JFrame {
 		String username = this.usernametext.getText();
 		String password = new String(this.passwordtext.getPassword());
 		if(CharacterUtil.isEmpty(username)) {
-			JOptionPane.showMessageDialog(null, "ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡");
+			JOptionPane.showMessageDialog(null, "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½");
 			return;
 		}
 		if(CharacterUtil.isEmpty(password)) {
-			JOptionPane.showMessageDialog(null, "ÃÜÂë²»ÄÜÎª¿Õ");
+			JOptionPane.showMessageDialog(null, "ï¿½ï¿½ï¿½ë²»ï¿½ï¿½Îªï¿½ï¿½");
 			return;
 		}
 
@@ -167,12 +168,12 @@ public class userlogin extends JFrame {
 			e1.printStackTrace();
 		}
 		if(user == null) {
-			JOptionPane.showMessageDialog(null,"¸ÃÓÃ»§²»´æÔÚ");	
+			JOptionPane.showMessageDialog(null,"ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");	
 		} 
 		else {
 			dispose();
-		//	JOptionPane.showMessageDialog(null, "µÇÂ½³É¹¦£¡");
-			new usermainfem(user);
+		//	JOptionPane.showMessageDialog(null, "ï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ï¿½");
+			new usermainfem();
 		}
 	}
 
