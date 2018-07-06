@@ -12,11 +12,13 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import dao.VocabularyDao;
 import model.VocabularyBean;
 import util.CharacterUtil;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class wordlistadd extends JInternalFrame {
@@ -110,9 +112,23 @@ public class wordlistadd extends JInternalFrame {
 		}
 		if(CharacterUtil.isEmpty(desc)) {
 			JOptionPane.showMessageDialog(null, "描述不能为空");
+			return ;
 		}
 		VocabularyBean vb = new VocabularyBean();
-		vb.set
+		vb.setVname(name);
+		vb.setVdesc(desc);
+		boolean isSuccess = false;
+		try {
+			isSuccess = VocabularyDao.addVocabularyBean(vb);
+			if(isSuccess == true) {
+				JOptionPane.showMessageDialog(null, "添加成功");
+			} else {
+				JOptionPane.showMessageDialog(null, "添加失败");
+			}
+		} catch (SQLException e1) {
+			JOptionPane.showMessageDialog(null, "添加失败");
+			e1.printStackTrace();
+		}
 	}
 
 }

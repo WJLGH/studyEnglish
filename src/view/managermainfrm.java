@@ -200,7 +200,7 @@ public class managermainfrm extends JFrame {
 	}
 
 	private void wordlistupdateActionPerformed(ActionEvent evt) {
-		wordlistpdate wordlist = new wordlistpdate();
+		wordlistupdate wordlist = new wordlistupdate();
 		wordlist.setVisible(true);
 		Table.add(wordlist);
 

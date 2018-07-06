@@ -34,12 +34,22 @@ public class CharacterUtil {
 		}
 		return true;
 	}
-
+	/**
+	 * 最后一个意思后不能有分号
+	 * @param ml
+	 * @return
+	 */
+	public static String[] meaningStrToArray(String ml) {
+		return ml.split("[；;]");
+	}
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		while (in.hasNext()) {
 			String s = in.nextLine();
-			System.out.println(isWord(s));
+			String [] ar = meaningStrToArray(s);
+			for (String string : ar) {
+				System.out.println(string);
+			}
 		}
 	}
 }

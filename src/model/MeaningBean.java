@@ -9,6 +9,12 @@ public class MeaningBean {
 		
 	}
 
+	public MeaningBean(String chinese, int wid) {
+		super();
+		this.chinese = chinese;
+		this.wid = wid;
+	}
+
 	public MeaningBean(int cid, String chinese, int wid) {
 		super();
 		this.cid = cid;

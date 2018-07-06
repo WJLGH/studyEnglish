@@ -1,10 +1,12 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -54,7 +56,30 @@ public class WordDao {
 		WordBean w = runner.query(con, sql, new BeanHandler<WordBean>(WordBean.class), chinese);
 		return w;
 	}
+	/**
+	 * 添加的时候查询到新单词的wid
+	 * 再添加释义
+	 * @param wb
+	 * @return
+	 * @throws SQLException 
+	 */
+	public static Integer queryWordBean(WordBean wb) throws SQLException {
+		Connection conn = JDBCUtils.getConnection();
+		String sql = "SELECT wid FROM word WHERE word = ? AND vid = ?";
+		QueryRunner qr = new QueryRunner();
+		return qr.query(conn, sql, new ResultSetHandler<Integer>() {
 
+			@Override
+			public Integer handle(ResultSet rs) throws SQLException {
+				if(rs != null) {
+					rs.next();
+					return rs.getInt("wid");
+				}
+				return null;
+			}
+			
+		},wb.getWord(),wb.getVid());
+	}
 	/**
 	 * 根据一个单词查找这个单词的WordBean对象
 	 * 
@@ -84,10 +109,7 @@ public class WordDao {
 		Connection conn = JDBCUtils.getConnection();
 		String sql = "INSERT INTO word (word,eg,trans,vid) VALUES(?,?,?,?)";
 		QueryRunner qr = new QueryRunner();
-		int i = qr.update(conn, sql, word.getWord(), word.getEg(), word.getEg(), word.getVid());
-		for (MeaningBean meaning : word.getMeans()) {
-			MeaningDao.addMeaningBean(meaning);
-		}
+		int i = qr.update(conn, sql, word.getWord(), word.getEg(), word.getTrans(), word.getVid());
 		return i > 0;
 	}
 

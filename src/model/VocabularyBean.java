@@ -42,5 +42,9 @@ public class VocabularyBean {
 	public void setVdesc(String vdesc) {
 		this.vdesc = vdesc;
 	}
+	@Override
+	public String toString() {
+		return this.vname;
+	}
 
 }

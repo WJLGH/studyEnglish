@@ -13,7 +13,7 @@ public class WordBean {
 	public WordBean() {
 
 	}
-
+	
 	public WordBean(int wid, String word, String eg, String trans, int vid, List<MeaningBean> means) {
 		super();
 		this.wid = wid;
@@ -22,6 +22,14 @@ public class WordBean {
 		this.trans = trans;
 		this.vid = vid;
 		this.means = means;
+	}
+
+	public WordBean(String word, String eg, String trans, int vid) {
+		super();
+		this.word = word;
+		this.eg = eg;
+		this.trans = trans;
+		this.vid = vid;
 	}
 
 	public int getWid() {
