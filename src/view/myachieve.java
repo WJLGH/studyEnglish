@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class myachieve extends JInternalFrame {
-	private JTextField textField;
+	private JTextField numberTxt;
 
 	/**
 	 * Launch the application.
@@ -36,41 +36,31 @@ public class myachieve extends JInternalFrame {
 		setTitle("\u6211\u7684\u6210\u5C31");
 		setIconifiable(true);
 		setClosable(true);
-		setBounds(100, 100, 525, 384);
+		setBounds(100, 100, 511, 164);
 		
-		JLabel lblNewLabel = new JLabel("\u80CC\u8BF5\u5355\u8BCD\u4E2A\u6570\uFF1A");
-		lblNewLabel.setFont(new Font("ºÚÌå", Font.BOLD, 24));
+		JLabel numberLabel = new JLabel("\u80CC\u8BF5\u5355\u8BCD\u4E2A\u6570\uFF1A");
+		numberLabel.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 24));
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		
-		JButton btnNewButton = new JButton("\u67E5\u8BE2");
-		btnNewButton.setFont(new Font("ºÚÌå", Font.BOLD, 23));
+		numberTxt = new JTextField();
+		numberTxt.setColumns(10);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(39)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
-							.addGap(73)
-							.addComponent(btnNewButton))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(27)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(112, Short.MAX_VALUE))
+					.addGap(39)
+					.addComponent(numberLabel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+					.addGap(36)
+					.addComponent(numberTxt, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(34, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(49)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton))
-					.addGap(48)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(168, Short.MAX_VALUE))
+						.addComponent(numberLabel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+						.addComponent(numberTxt, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(276, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 

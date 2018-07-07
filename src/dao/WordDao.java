@@ -50,12 +50,16 @@ public class WordDao {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static WordBean zhQueryEn(String chinese) throws SQLException {
-		QueryRunner runner = new QueryRunner();
+	public static List<WordBean> zhQueryEn(String chinese) throws SQLException {
 		Connection con = JDBCUtils.getConnection();
-		String sql = "select w.wid,w.word,w.eg,w.trans,w.vid from word w,meaning m where m.chinese=? and m.wid=w.wid";
-		WordBean w = runner.query(con, sql, new BeanHandler<WordBean>(WordBean.class), chinese);
-		return w;
+		String sql = "select w.wid,w.word,w.eg,w.trans,w.vid from word w,meaning m where m.chinese = ? and m.wid = w.wid";
+		QueryRunner qr = new QueryRunner();
+		List<WordBean> list = qr.query(con, sql, new BeanListHandler<WordBean>(WordBean.class),chinese);
+		for (WordBean wordBean : list) {
+			System.out.println(wordBean);
+			wordBean.setMeans(MeaningDao.queryMeaning(wordBean));
+		}
+		return list;
 	}
 	/**
 	 * 添加的时候查询到新单词的wid
@@ -169,6 +173,20 @@ public class WordDao {
 		}
 		QueryRunner qr = new QueryRunner();
 		List<WordBean> list  = qr.query(conn, sql.toString(), new BeanListHandler<WordBean>(WordBean.class));
+		for (WordBean wordBean : list) {
+			wordBean.setMeans(MeaningDao.queryMeaning(wordBean));
+		}
+		return list;
+	}
+
+	public static List<WordBean> fuzzySearchWordBean(String input) throws SQLException {
+		if("".equals(input)) {
+			return null;
+		}
+		Connection conn = JDBCUtils.getConnection();
+		String sql = "SELECT * FROM word WHERE word LIKE \"%"+input+"%\"  ";
+		QueryRunner qr = new QueryRunner();
+		List<WordBean> list = qr.query(conn, sql, new BeanListHandler<WordBean>(WordBean.class));
 		for (WordBean wordBean : list) {
 			wordBean.setMeans(MeaningDao.queryMeaning(wordBean));
 		}

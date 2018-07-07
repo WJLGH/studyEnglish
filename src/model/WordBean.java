@@ -90,8 +90,7 @@ public class WordBean {
 
 	@Override
 	public String toString() {
-		return "WordBean [wid=" + wid + ", word=" + word + ", eg=" + eg + ", trans=" + trans + ", vid=" + vid
-				+ ", means=" + means + "]";
+		return this.word;
 	}
 
 }

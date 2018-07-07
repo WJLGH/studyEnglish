@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -14,33 +15,21 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import dao.ManagerDao;
+import model.ManagerBean;
 import util.CharacterUtil;
 
 public class mupdatepwdfrm extends JInternalFrame {
 	private JPasswordField pwdoldTxt;
 	private JPasswordField pwdnewTxt;
 	private JPasswordField pwdnewisTxt;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					mupdatepwdfrm frame = new mupdatepwdfrm();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	private ManagerBean manager;
 	/**
 	 * Create the frame.
+	 * @param manager 
 	 */
-	public mupdatepwdfrm() {
+	public mupdatepwdfrm(ManagerBean manager) {
+		this.manager = manager;
 		setTitle("管理员密码修改");
 		setIconifiable(true);
 		setClosable(true);
@@ -118,6 +107,35 @@ public class mupdatepwdfrm extends JInternalFrame {
 	}
 
 	private void updatepwdActionPerformed(ActionEvent e) {
-		System.out.println("mima"+new String(pwdoldTxt.getPassword()));
+		String old  = new String(this.pwdoldTxt.getPassword());
+		if( !old.equals(manager.getMpwd())) {
+			JOptionPane.showMessageDialog(null, "原密码错误");
+			return ;
+		}
+		String newpwd = new String(this.pwdnewTxt.getPassword());
+		if(CharacterUtil.isEmpty(newpwd)) {
+			JOptionPane.showMessageDialog(null, "新密码不能为空");
+			return ;
+		}
+		String repeat = new String(this.pwdnewisTxt.getPassword());
+		if(!newpwd.equals(repeat)) {
+			JOptionPane.showMessageDialog(null, "两次输入不一致");
+			return ;
+		}
+		boolean isSuccess = false;
+		try {
+			isSuccess = ManagerDao.setPwd(manager.getMid(), newpwd);
+			if(isSuccess) {
+				JOptionPane.showMessageDialog(null, "修改成功");
+				return ;
+			} else {
+				JOptionPane.showMessageDialog(null, "修改失败");
+				return ;
+			}
+		} catch (SQLException e1) {
+			JOptionPane.showMessageDialog(null, "修改失败");
+			e1.printStackTrace();
+		}
+		this.dispose();
 	}
 }

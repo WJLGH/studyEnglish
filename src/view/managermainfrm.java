@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.ManagerBean;
 import util.BackUpUtils;
 import util.JDBCUtils;
 
@@ -44,27 +45,13 @@ public class managermainfrm extends JFrame {
 	JMenuItem vocabularyManage;
 	JMenuItem modifyPwd;
 	JMenuItem manageExit;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					managermainfrm frame = new managermainfrm();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private ManagerBean manager;
 
 	/**
 	 * Create the frame.
 	 */
-	public managermainfrm() {
+	public managermainfrm(ManagerBean manager) {
+		this.manager = manager;
 		setTitle("\u7BA1\u7406\u5458\u4E3B\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 620, 401);
@@ -141,7 +128,7 @@ public class managermainfrm extends JFrame {
 		modifyPwd = new JMenuItem("\u4FEE\u6539\u5BC6\u7801");
 		modifyPwd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				updateActionPerformed(e);
+				updatePwdActionPerformed(e);
 			}
 		});
 		systemSecurity.add(modifyPwd);
@@ -212,8 +199,8 @@ public class managermainfrm extends JFrame {
 		Table.add(word);
 	}
 
-	private void updateActionPerformed(ActionEvent evt) {
-		mupdatepwdfrm updatepwd = new mupdatepwdfrm();
+	private void updatePwdActionPerformed(ActionEvent evt) {
+		mupdatepwdfrm updatepwd = new mupdatepwdfrm(manager);
 		updatepwd.setVisible(true);
 		Table.add(updatepwd);
 	}

@@ -62,7 +62,7 @@ public class managerlogin extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(managerlogin.class.getResource("/image/logo.png")));
 		lblNewLabel.setFont(new Font("����", Font.BOLD, 24));
 		
-		JLabel lblNewLabel_1 = new JLabel("\u7528\u6237\u540D");
+		JLabel lblNewLabel_1 = new JLabel("管理员名");
 		lblNewLabel_1.setIcon(new ImageIcon(managerlogin.class.getResource("/image/modify.png")));
 		lblNewLabel_1.setFont(new Font("����", Font.BOLD, 14));
 		
@@ -140,7 +140,7 @@ public class managerlogin extends JFrame {
 		String userName = this.usernametext.getText();
 		String password = new String(this.passwordtext.getPassword());
 		if(CharacterUtil.isEmpty(userName)) {
-			JOptionPane.showMessageDialog(null, "用户名不能为空");
+			JOptionPane.showMessageDialog(null, "管理员名不能为空");
 			return;
 		}
 		if(CharacterUtil.isEmpty(password)) {
@@ -155,11 +155,11 @@ public class managerlogin extends JFrame {
 			e1.printStackTrace();
 		}
 		if(manager == null) {
-			JOptionPane.showMessageDialog(null, "用户名或密码错误");
+			JOptionPane.showMessageDialog(null, "管理员名或密码错误");
 		}
 		else {
 			this.dispose();
-			new managermainfrm();
+			new managermainfrm(manager);
 		}
 	}
 
