@@ -33,6 +33,7 @@ public class JDBCUtils {
 
 			driverclass = pro.getProperty("driver");
 			Class.forName(driverclass);
+			conn = getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(" ˝æ›ø‚≈‰÷√ ß∞‹");

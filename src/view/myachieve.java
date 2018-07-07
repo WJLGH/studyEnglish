@@ -57,7 +57,7 @@ public class myachieve extends JInternalFrame {
 	}
 	private void initReflectMap() {
 		for(int i = 0;i<picCnt;i++) {
-			reflect.put(i, new ImageIcon(myachieve.class.getResource("/image/achieve"+i+".png")));
+			reflect.put(i, new ImageIcon(myachieve.class.getResource("/image"+i+".png")));
 		}
 	}
 }

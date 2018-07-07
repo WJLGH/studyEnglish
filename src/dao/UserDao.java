@@ -59,7 +59,23 @@ public class UserDao {
 	public static boolean addUser(UserBean user) throws SQLException {
 		QueryRunner qr = new QueryRunner();
 		Connection conn = JDBCUtils.getConnection();
-		String sql = "INSERT INTO USER (uname,upwd) VALUES(?,?)";
+		String sql = "INSERT INTO user (uname,upwd) VALUES(?,?)";
 		return 0< qr.update(conn, sql, user.getUname(),user.getUpwd());
+	}
+
+
+	public static boolean userNameAvailable(String uname) throws SQLException {
+		QueryRunner qr = new QueryRunner();
+		Connection conn = JDBCUtils.getConnection();
+		String sql = "SELECT * FROM user WHERE uname = ?";
+		return qr.query(conn, sql, new BeanHandler<UserBean>(UserBean.class),uname) == null;
+	}
+	public static void main(String[] args) {
+		try {
+			System.out.println(userNameAvailable("1111"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -3,7 +3,10 @@ package util;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -22,12 +25,13 @@ public class BackUpUtils {
 		int option = jf.showSaveDialog(f);
 		if (option == JFileChooser.APPROVE_OPTION) {
 			String path = jf.getSelectedFile().getAbsolutePath();
+			System.out.println(path);
 			Runtime runtime = Runtime.getRuntime();
 			try {
 				/**
 				 * 数据库备份命令 从已知的数据库得到备份的sql文件
 				 */
-				runtime.exec("cmd /c mysqldump -h 123.207.14.231 -u root -ppp123456 studyEnglish  > " + path);
+				runtime.exec("cmd /c mysqldump -h 123.207.14.231 -P 3306 -u root -ppp123456 studyEnglish  -r " + path);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -55,5 +59,8 @@ public class BackUpUtils {
 				e1.printStackTrace();
 			}
 		}
+	}
+	public static void main(String[] args) {
+		BackUp(null);
 	}
 }

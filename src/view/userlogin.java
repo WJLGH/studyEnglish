@@ -152,11 +152,11 @@ public class userlogin extends JFrame {
 		String username = this.usernametext.getText();
 		String password = new String(this.passwordtext.getPassword());
 		if(CharacterUtil.isEmpty(username)) {
-			JOptionPane.showMessageDialog(null, "�û�������Ϊ�գ�");
+			JOptionPane.showMessageDialog(null, "用户名不能为空");
 			return;
 		}
 		if(CharacterUtil.isEmpty(password)) {
-			JOptionPane.showMessageDialog(null, "���벻��Ϊ��");
+			JOptionPane.showMessageDialog(null, "密码不能为空");
 			return;
 		}
 
@@ -169,7 +169,7 @@ public class userlogin extends JFrame {
 			e1.printStackTrace();
 		}
 		if(user == null) {
-			JOptionPane.showMessageDialog(null,"���û�������");	
+			JOptionPane.showMessageDialog(null,"用户名或密码错误");	
 		} 
 		else {
 			dispose();
