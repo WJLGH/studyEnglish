@@ -75,6 +75,7 @@ public class usermainfrm extends JFrame {
 		mydictionarymenu.add(mycollectButton);
 		
 		JMenuItem searchButton = new JMenuItem("查找");
+		searchButton.setIcon(new ImageIcon(usermainfrm.class.getResource("/image/search.png")));
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchActionPerformed(e);
@@ -146,14 +147,14 @@ public class usermainfrm extends JFrame {
 
 
 	private void achieveActionPerformed(ActionEvent e) {
-		myachieve achieve = new myachieve();
+		myachieve achieve = new myachieve(user.getUpage());
 		achieve.setVisible(true);
 		Table.add(achieve);
 	}
 	
 	
 	private void updatepwdActionperformed(ActionEvent e) {
-		uupdatepwdfrm updatepwd= new uupdatepwdfrm();
+		uupdatepwdfrm updatepwd= new uupdatepwdfrm(user);
 		updatepwd.setVisible(true);
 		Table.add(updatepwd);
 	}
@@ -166,7 +167,7 @@ public class usermainfrm extends JFrame {
 
 
 	private void mycollectActionPerformed(ActionEvent e) {
-		mysave save = new mysave();
+		mysave save = new mysave(user);
 		save.setVisible(true);
 		Table.add(save);
 	}

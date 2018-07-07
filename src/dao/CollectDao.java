@@ -26,8 +26,11 @@ public class CollectDao {
 	public static List<WordBean> queryUserCollect(int uid) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
-		String sql = "SELECT w.`wid`, w.`word`,w.`eg`,w.`trans`,w.`vid` FROM collect c,word w WHERE c.uid = ? AND c.wid = w.wid";
+		String sql = "SELECT w.`wid`, w.`word`,w.`eg`,w.`trans`,w.`vid` FROM collect c,word w WHERE c.uid = ? AND c.wid = w.wid GROUP BY w.`wid`";
 		List<WordBean> list = runner.query(con, sql, new BeanListHandler<WordBean>(WordBean.class), uid);
+		for (WordBean wordBean : list) {
+			wordBean.setMeans(MeaningDao.queryMeaning(wordBean));
+		}
 		return list;
 	}
 	/**
@@ -54,5 +57,11 @@ public class CollectDao {
 		Connection con = JDBCUtils.getConnection();
 		String sql = "delete from collect where sid = ?";
 		return 0 < runner.update(con,sql,sid);
+	}
+	public static boolean deleteCollectBean(int uid, int wid) throws SQLException {
+		QueryRunner runner = new QueryRunner();
+		Connection con = JDBCUtils.getConnection();
+		String sql = "delete from collect where uid = ? and wid = ?";
+		return 0 < runner.update(con,sql,uid,wid);
 	}
 }

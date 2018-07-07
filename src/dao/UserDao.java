@@ -49,4 +49,17 @@ public class UserDao {
 		return 0 < i;
 	}
 	
+	public static boolean setPwd(int uid,String pwd) throws SQLException {
+		QueryRunner runner = new QueryRunner();
+		Connection con = JDBCUtils.getConnection();
+		String sql = "update user set upwd=? where uid=?";
+		return 0 < runner.update(con,sql,pwd,uid);
+	}
+	
+	public static boolean addUser(UserBean user) throws SQLException {
+		QueryRunner qr = new QueryRunner();
+		Connection conn = JDBCUtils.getConnection();
+		String sql = "INSERT INTO USER (uname,upwd) VALUES(?,?)";
+		return 0< qr.update(conn, sql, user.getUname(),user.getUpwd());
+	}
 }

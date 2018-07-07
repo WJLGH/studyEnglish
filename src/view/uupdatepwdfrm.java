@@ -6,36 +6,33 @@ import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import dao.ManagerDao;
+import dao.UserDao;
+import model.UserBean;
+import util.CharacterUtil;
+
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
 
 public class uupdatepwdfrm extends JInternalFrame {
 	private JPasswordField pwdoldTxt;
 	private JPasswordField pwdnewTxt;
 	private JPasswordField pwdnewisTxt;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					uupdatepwdfrm frame = new uupdatepwdfrm();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private  UserBean user;
 
 	/**
 	 * Create the frame.
 	 */
-	public uupdatepwdfrm() {
+	public uupdatepwdfrm(UserBean user) {
+		this.user = user;
 		setTitle("用户密码修改");
 		setIconifiable(true);
 		setClosable(true);
@@ -57,6 +54,11 @@ public class uupdatepwdfrm extends JInternalFrame {
 		pwdnewisTxt = new JPasswordField();
 		
 		JButton updateButton = new JButton("确认");
+		updateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updatepwdActionPerformed(e);
+			}
+		});
 		updateButton.setFont(new Font("黑体", Font.BOLD, 24));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -105,5 +107,38 @@ public class uupdatepwdfrm extends JInternalFrame {
 		);
 		getContentPane().setLayout(groupLayout);
 
+	}
+
+	private void updatepwdActionPerformed(ActionEvent evt) {
+		String old  = new String(this.pwdoldTxt.getPassword());
+		if( !old.equals(user.getUpwd())) {
+			JOptionPane.showMessageDialog(null, "原密码错误");
+			return ;
+		}
+		String newpwd = new String(this.pwdnewTxt.getPassword());
+		if(CharacterUtil.isEmpty(newpwd)) {
+			JOptionPane.showMessageDialog(null, "新密码不能为空");
+			return ;
+		}
+		String repeat = new String(this.pwdnewisTxt.getPassword());
+		if(!newpwd.equals(repeat)) {
+			JOptionPane.showMessageDialog(null, "两次输入不一致");
+			return ;
+		}
+		boolean isSuccess = false;
+		try {
+			isSuccess = UserDao.setPwd(user.getUid(), newpwd);
+			if(isSuccess) {
+				JOptionPane.showMessageDialog(null, "修改成功");
+				return ;
+			} else {
+				JOptionPane.showMessageDialog(null, "修改失败");
+				return ;
+			}
+		} catch (SQLException e1) {
+			JOptionPane.showMessageDialog(null, "修改失败");
+			e1.printStackTrace();
+		}
+		this.dispose();
 	}
 }
