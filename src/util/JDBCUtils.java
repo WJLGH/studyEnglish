@@ -21,25 +21,38 @@ public class JDBCUtils {
 	 * 初始化数据库连接配置
 	 */
 	static {
-		InputStream in = null;
 		try {
-			in = JDBCUtils.class.getResourceAsStream("./jdbc.properties");
-			Properties pro = new Properties();
-			pro.load(in);
-			url = pro.getProperty("url");
-
-			user = pro.getProperty("user");
-			pwd = pro.getProperty("password");
-
-			driverclass = pro.getProperty("driver");
-			Class.forName(driverclass);
-			conn = getConnection();
+			initSet();
 		} catch (Exception e) {
-			e.printStackTrace();
 			System.out.println("数据库配置失败");
+			e.printStackTrace();
 		}
+//		InputStream in = null;
+//		try {
+//			in = JDBCUtils.class.getResourceAsStream("./jdbc.properties");
+//			Properties pro = new Properties();
+//			pro.load(in);
+//			url = pro.getProperty("url");
+//
+//			user = pro.getProperty("user");
+//			pwd = pro.getProperty("password");
+//
+//			driverclass = pro.getProperty("driver");
+//			System.out.println("数据库信息为："+url+","+user+","+pwd+","+driverclass);
+//			Class.forName(driverclass);
+//			conn = getConnection();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			System.out.println("数据库配置失败");
+//		}
 	}
-
+	public static void initSet() throws Exception {
+		user = "root";
+		pwd = "pp123456";
+		url="jdbc:mysql://123.207.14.231:3306/studyEnglish?useSSL=true";
+		driverclass="com.mysql.jdbc.Driver";
+		Class.forName(driverclass);
+	}
 	/**
 	 * 获取数据库连接
 	 * 

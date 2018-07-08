@@ -47,6 +47,7 @@ public class Logonform extends JFrame {
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
+		System.out.println("数据库连接"+JDBCUtils.getConnection());
 		setResizable(false);
 		setTitle("\u767B\u5F55\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
