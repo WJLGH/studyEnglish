@@ -61,6 +61,6 @@ public class BackUpUtils {
 		}
 	}
 	public static void main(String[] args) {
-		BackUp(null);
+		Recovery(null);
 	}
 }

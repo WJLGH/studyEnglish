@@ -297,6 +297,7 @@ public class Wordupdate extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "意思不能为空");
 			return ;
 		}
+		System.out.println("修改按钮时：trans "+trans);
 		WordBean wordBean = new WordBean(wid,word, eg, trans, vid);
 		boolean isSuccess = false;
 		try {
@@ -330,6 +331,7 @@ public class Wordupdate extends JInternalFrame {
 		this.meaningListTxt.setText(table.getValueAt(selectedRow, 3)+"");
 		this.egTxt.setText(table.getValueAt(selectedRow, 4)+"");
 		this.transTxt.setText(table.getValueAt(selectedRow, 5)+"");
+		System.out.println("选中一行后trans："+transTxt.getText());
 	}
 	
 	private void resetFormValue() {
@@ -385,6 +387,7 @@ public class Wordupdate extends JInternalFrame {
 				}
 				row.add(mean.toString());
 				row.add(wordBean.getEg());
+				System.out.println("table："+wordBean.getTrans());
 				row.add(wordBean.getTrans());
 				model.addRow(row);
 			}

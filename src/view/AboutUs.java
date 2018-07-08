@@ -5,8 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JTextField;
 
 public class AboutUs extends JInternalFrame {
+	private JTextField qqMailTxt;
+	private JTextField gitLinkTxt;
 
 	/**
 	 * Launch the application.
@@ -32,7 +35,7 @@ public class AboutUs extends JInternalFrame {
 		setTitle("关于我们");
 		setIconifiable(true);
 		setClosable(true);
-		setBounds(100, 100, 663, 509);
+		setBounds(100, 100, 728, 560);
 		getContentPane().setLayout(null);
 		
 		JLabel CopyrightLabel = new JLabel("Copyright  ©  2018   WJLGH corporation .All rights reserved. ");
@@ -93,18 +96,24 @@ public class AboutUs extends JInternalFrame {
 		contactHead.setBounds(204, 386, 81, 18);
 		getContentPane().add(contactHead);
 		
-		JLabel qqMailLabel = new JLabel("1179315470@qq.com");
-		qqMailLabel.setBounds(309, 386, 153, 18);
-		getContentPane().add(qqMailLabel);
-		
 		JLabel gitHeadLabel = new JLabel("项目Git地址：");
 		gitHeadLabel.setFont(new Font("黑体", Font.BOLD, 22));
 		gitHeadLabel.setBounds(70, 39, 153, 38);
 		getContentPane().add(gitHeadLabel);
 		
-		JLabel gitLinkLabel = new JLabel("https://github.com/WJLGH/studyEnglish");
-		gitLinkLabel.setBounds(231, 52, 314, 25);
-		getContentPane().add(gitLinkLabel);
+		qqMailTxt = new JTextField();
+		qqMailTxt.setEditable(false);
+		qqMailTxt.setText("1179315470@qq.com");
+		qqMailTxt.setBounds(286, 383, 163, 21);
+		getContentPane().add(qqMailTxt);
+		qqMailTxt.setColumns(10);
+		
+		gitLinkTxt = new JTextField();
+		gitLinkTxt.setEditable(false);
+		gitLinkTxt.setText("https://github.com/WJLGH/studyEnglish");
+		gitLinkTxt.setBounds(222, 49, 305, 24);
+		getContentPane().add(gitLinkTxt);
+		gitLinkTxt.setColumns(10);
 		setVisible(true);
 	}
 }

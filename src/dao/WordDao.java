@@ -144,7 +144,7 @@ public class WordDao {
 		String sql = "UPDATE word SET word = ? ,eg = ?, trans =  ?,vid = ? WHERE wid = ?";
 		MeaningDao.deleteWordMeaing(word.getVid());
 		QueryRunner qr = new QueryRunner();
-		return 0 < qr.update(conn, sql, word.getWord(), word.getEg(), word.getEg(),word.getVid(), word.getWid());
+		return 0 < qr.update(conn, sql, word.getWord(), word.getEg(), word.getTrans(),word.getVid(), word.getWid());
 	}
 
 	/**
