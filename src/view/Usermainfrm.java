@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import model.UserBean;
+import util.JDBCUtils;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -98,7 +99,10 @@ public class Usermainfrm extends JFrame {
 		JMenuItem exitButton = new JMenuItem("\u9000\u51FA");
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				int result = JOptionPane.showConfirmDialog(null, "是否要退出系统");
+				if (result == 0)
+					userExitActionPerformed(e);
+					dispose();
 			}
 		});
 		securitymenu.add(exitButton);
@@ -136,6 +140,10 @@ public class Usermainfrm extends JFrame {
 		this.setVisible(true);
 	}
 	
+	private void userExitActionPerformed(ActionEvent e) {
+		JDBCUtils.closeResource();
+	}
+
 	private void aboutUsActionPerformed(ActionEvent e) {
 		AboutUs au = new AboutUs();
 		Table.add(au);
@@ -169,7 +177,8 @@ public class Usermainfrm extends JFrame {
 
 
 	private void reciteActionPerforemd(ActionEvent e) {
-		ReciteWordView rwv = new ReciteWordView(user);
+		int n = Integer.parseInt(JOptionPane.showInputDialog("请输入单词显示间隔"));
+		ReciteWordView rwv = new ReciteWordView(user,n);
 		Table.add(rwv);
 	}
 }
