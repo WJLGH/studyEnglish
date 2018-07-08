@@ -38,7 +38,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class wordadd extends JInternalFrame {
+public class Wordadd extends JInternalFrame {
 	private JTextField wordTxt;
 	private JTextField meaningListTxt;
 	private JTextField egTxt;
@@ -52,7 +52,7 @@ public class wordadd extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					wordadd frame = new wordadd();
+					Wordadd frame = new Wordadd();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +64,7 @@ public class wordadd extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public wordadd() {
+	public Wordadd() {
 		setResizable(true);
 		setIconifiable(true);
 		setClosable(true);

@@ -34,7 +34,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class wordlistupdate extends JInternalFrame {
+public class Wordlistupdate extends JInternalFrame {
 	private JTable vocabularyListTable;
 	private JTextField vnameTxt;
 	private JTextField vidTxt;
@@ -46,7 +46,7 @@ public class wordlistupdate extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					wordlistupdate frame = new wordlistupdate();
+					Wordlistupdate frame = new Wordlistupdate();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class wordlistupdate extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public wordlistupdate() {
+	public Wordlistupdate() {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("\u8BCD\u6C47\u8868\u7EF4\u62A4");

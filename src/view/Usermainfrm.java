@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 
-public class usermainfrm extends JFrame {
+public class Usermainfrm extends JFrame {
 
 	private JPanel contentPane;
 	JDesktopPane Table = null;
@@ -36,18 +36,18 @@ public class usermainfrm extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public usermainfrm(UserBean user) {
+	public Usermainfrm(UserBean user) {
 		this.user = user;
 		setTitle("\u7528\u6237\u4E3B\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 792, 468);
+		setBounds(100, 100, 1082, 765);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(Color.LIGHT_GRAY);
 		setJMenuBar(menuBar);
 		
 		JMenu mydictionarymenu = new JMenu("\u6211\u7684\u8BCD\u5178       ");
-		mydictionarymenu.setIcon(new ImageIcon(usermainfrm.class.getResource("/image/bookManager.png")));
+		mydictionarymenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/bookManager.png")));
 		menuBar.add(mydictionarymenu);
 		
 		JMenuItem myachievemenu = new JMenuItem("我的成就");
@@ -75,7 +75,7 @@ public class usermainfrm extends JFrame {
 		mydictionarymenu.add(mycollectButton);
 		
 		JMenuItem searchButton = new JMenuItem("查找");
-		searchButton.setIcon(new ImageIcon(usermainfrm.class.getResource("/image/search.png")));
+		searchButton.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/search.png")));
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchActionPerformed(e);
@@ -84,7 +84,7 @@ public class usermainfrm extends JFrame {
 		mydictionarymenu.add(searchButton);
 		
 		JMenu securitymenu = new JMenu("\u5B89\u5168        ");
-		securitymenu.setIcon(new ImageIcon(usermainfrm.class.getResource("/image/base.png")));
+		securitymenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/base.png")));
 		menuBar.add(securitymenu);
 		
 		JMenuItem updatepwdButton = new JMenuItem("\u4FEE\u6539\u5BC6\u7801");
@@ -104,32 +104,24 @@ public class usermainfrm extends JFrame {
 		securitymenu.add(exitButton);
 		
 		JMenu aboutusmenu = new JMenu("\u5173\u4E8E\u6211\u4EEC    ");
-		aboutusmenu.setIcon(new ImageIcon(usermainfrm.class.getResource("/image/about.png")));
+		aboutusmenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/about.png")));
 		menuBar.add(aboutusmenu);
 		
 		JMenuItem contactusmenu = new JMenuItem("\u8054\u7CFB\u6211\u4EEC");
+		contactusmenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				aboutUsActionPerformed(e);
+			}
+		});
 		aboutusmenu.add(contactusmenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		Table = new JDesktopPane();
+		Table.setBounds(14, 13, 1036, 665);
 		Table.setBackground(Color.GRAY);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 1347, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 579, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(80, Short.MAX_VALUE))
-		);
 		GroupLayout gl_Table = new GroupLayout(Table);
 		gl_Table.setHorizontalGroup(
 			gl_Table.createParallelGroup(Alignment.LEADING)
@@ -137,24 +129,27 @@ public class usermainfrm extends JFrame {
 		);
 		gl_Table.setVerticalGroup(
 			gl_Table.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 659, Short.MAX_VALUE)
+				.addGap(0, 579, Short.MAX_VALUE)
 		);
 		Table.setLayout(gl_Table);
-		contentPane.setLayout(gl_contentPane);
-		setExtendedState(MAXIMIZED_BOTH);
+		contentPane.add(Table);
 		this.setVisible(true);
 	}
-
+	
+	private void aboutUsActionPerformed(ActionEvent e) {
+		AboutUs au = new AboutUs();
+		Table.add(au);
+	}
 
 	private void achieveActionPerformed(ActionEvent e) {
-		myachieve achieve = new myachieve(user.getUpage());
+		Myachieve achieve = new Myachieve(user.getUpage());
 		achieve.setVisible(true);
 		Table.add(achieve);
 	}
 	
 	
 	private void updatepwdActionperformed(ActionEvent e) {
-		uupdatepwdfrm updatepwd= new uupdatepwdfrm(user);
+		Uupdatepwdfrm updatepwd= new Uupdatepwdfrm(user);
 		updatepwd.setVisible(true);
 		Table.add(updatepwd);
 	}
@@ -167,7 +162,7 @@ public class usermainfrm extends JFrame {
 
 
 	private void mycollectActionPerformed(ActionEvent e) {
-		mysave save = new mysave(user);
+		Mysave save = new Mysave(user);
 		save.setVisible(true);
 		Table.add(save);
 	}

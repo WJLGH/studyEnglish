@@ -25,7 +25,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class managermainfrm extends JFrame {
+public class Managermainfrm extends JFrame {
 	private JPanel contentPane;
 	private JDesktopPane Table = null;
 	JMenuBar menuBar;
@@ -50,7 +50,7 @@ public class managermainfrm extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public managermainfrm(ManagerBean manager) {
+	public Managermainfrm(ManagerBean manager) {
 		this.manager = manager;
 		setTitle("\u7BA1\u7406\u5458\u4E3B\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -148,6 +148,11 @@ public class managermainfrm extends JFrame {
 		menuBar.add(aboutUs);
 
 		aboutUsItem = new JMenuItem("\u5173\u4E8E");
+		aboutUsItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				aboutUsActionPerformed(e);
+			}
+		});
 		aboutUs.add(aboutUsItem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -159,6 +164,11 @@ public class managermainfrm extends JFrame {
 		contentPane.add(Table, BorderLayout.CENTER);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setVisible(true);
+	}
+
+	private void aboutUsActionPerformed(ActionEvent e) {
+		AboutUs au = new AboutUs();
+		Table.add(au);
 	}
 
 	private void dbrecoveryActionPerformed(ActionEvent e) {
@@ -174,33 +184,33 @@ public class managermainfrm extends JFrame {
 	}
 
 	private void wordupdateActionPerformed(ActionEvent e) {
-		wordupdate word = new wordupdate();
+		Wordupdate word = new Wordupdate();
 		word.setVisible(true);
 		Table.add(word);
 
 	}
 
 	private void wordlistActionPerformed(ActionEvent e) {
-		wordlistadd wordlist = new wordlistadd();
+		Wordlistadd wordlist = new Wordlistadd();
 		wordlist.setVisible(true);
 		Table.add(wordlist);
 	}
 
 	private void wordlistupdateActionPerformed(ActionEvent evt) {
-		wordlistupdate wordlist = new wordlistupdate();
+		Wordlistupdate wordlist = new Wordlistupdate();
 		wordlist.setVisible(true);
 		Table.add(wordlist);
 
 	}
 
 	private void wordaddActionPerformed(ActionEvent evt) {
-		wordadd word = new wordadd();
+		Wordadd word = new Wordadd();
 		word.setVisible(true);
 		Table.add(word);
 	}
 
 	private void updatePwdActionPerformed(ActionEvent evt) {
-		mupdatepwdfrm updatepwd = new mupdatepwdfrm(manager);
+		Mupdatepwdfrm updatepwd = new Mupdatepwdfrm(manager);
 		updatepwd.setVisible(true);
 		Table.add(updatepwd);
 	}

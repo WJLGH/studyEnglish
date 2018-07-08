@@ -39,7 +39,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class wordupdate extends JInternalFrame {
+public class Wordupdate extends JInternalFrame {
 	private JTable table;
 	private JTextField wordTxt;
 	private JTextField meaningListTxt;
@@ -56,7 +56,7 @@ public class wordupdate extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					wordupdate frame = new wordupdate();
+					Wordupdate frame = new Wordupdate();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -68,7 +68,7 @@ public class wordupdate extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public wordupdate() {
+	public Wordupdate() {
 		setClosable(true);
 		setIconifiable(true);
 		setTitle("\u66F4\u65B0\u5355\u8BCD");

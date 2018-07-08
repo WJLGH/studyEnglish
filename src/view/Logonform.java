@@ -18,9 +18,9 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class logonform extends JFrame {
+public class Logonform extends JFrame {
 
-	private JPanel userregisterBUtton;
+	private JPanel userregisterPanel;
 
 	/**
 	 * Launch the application.
@@ -29,7 +29,7 @@ public class logonform extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					logonform frame = new logonform();
+					Logonform frame = new Logonform();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class logonform extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public logonform() {
+	public Logonform() {
 		try {
 			Class.forName("util.JDBCUtils");
 		} catch (ClassNotFoundException e1) {
@@ -50,16 +50,16 @@ public class logonform extends JFrame {
 		setResizable(false);
 		setTitle("\u767B\u5F55\u754C\u9762");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 488, 336);
-		userregisterBUtton = new JPanel();
-		userregisterBUtton.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(userregisterBUtton);
+		setBounds(600, 320, 488, 336);
+		userregisterPanel = new JPanel();
+		userregisterPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(userregisterPanel);
 		
 		JButton btnNewButton = new JButton("\u7BA1\u7406\u5458\u767B\u9646");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new managerlogin();
+				new Managerlogin();
 			}
 		});
 		
@@ -70,7 +70,7 @@ public class logonform extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new userlogin();
+				new Userlogin();
 			}
 		});
 		
@@ -80,25 +80,25 @@ public class logonform extends JFrame {
 				uregisterActionPerformed(e);
 			}
 		});
-		GroupLayout gl_userregisterBUtton = new GroupLayout(userregisterBUtton);
-		gl_userregisterBUtton.setHorizontalGroup(
-			gl_userregisterBUtton.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_userregisterBUtton.createSequentialGroup()
-					.addGroup(gl_userregisterBUtton.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_userregisterBUtton.createSequentialGroup()
+		GroupLayout gl_userregisterPanel = new GroupLayout(userregisterPanel);
+		gl_userregisterPanel.setHorizontalGroup(
+			gl_userregisterPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_userregisterPanel.createSequentialGroup()
+					.addGroup(gl_userregisterPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_userregisterPanel.createSequentialGroup()
 							.addGap(98)
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_userregisterBUtton.createSequentialGroup()
+						.addGroup(gl_userregisterPanel.createSequentialGroup()
 							.addGap(156)
-							.addGroup(gl_userregisterBUtton.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_userregisterPanel.createParallelGroup(Alignment.LEADING)
 								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
 								.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
 								.addComponent(button, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(128, Short.MAX_VALUE))
 		);
-		gl_userregisterBUtton.setVerticalGroup(
-			gl_userregisterBUtton.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_userregisterBUtton.createSequentialGroup()
+		gl_userregisterPanel.setVerticalGroup(
+			gl_userregisterPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_userregisterPanel.createSequentialGroup()
 					.addGap(36)
 					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
@@ -109,12 +109,12 @@ public class logonform extends JFrame {
 					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(37, Short.MAX_VALUE))
 		);
-		userregisterBUtton.setLayout(gl_userregisterBUtton);
+		userregisterPanel.setLayout(gl_userregisterPanel);
 		setVisible(true);
 	}
 
 	private void uregisterActionPerformed(ActionEvent e) {
 		dispose();
-		new u_registerfrm();
+		new Uregisterfrm();
 	}
 }

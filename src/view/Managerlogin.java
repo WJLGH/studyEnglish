@@ -24,7 +24,7 @@ import model.ManagerBean;
 import util.CharacterUtil;
 import util.stringutil;
 
-public class managerlogin extends JFrame {
+public class Managerlogin extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField usernametext;
@@ -37,7 +37,7 @@ public class managerlogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					managerlogin frame = new managerlogin();
+					Managerlogin frame = new Managerlogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,25 +49,25 @@ public class managerlogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public managerlogin() {
+	public Managerlogin() {
 		setResizable(false);
 		setTitle("\u7BA1\u7406\u5458\u767B\u9646");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(600, 320, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabel = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
-		lblNewLabel.setIcon(new ImageIcon(managerlogin.class.getResource("/image/logo.png")));
+		lblNewLabel.setIcon(new ImageIcon(Managerlogin.class.getResource("/image/logo.png")));
 		lblNewLabel.setFont(new Font("����", Font.BOLD, 24));
 		
 		JLabel lblNewLabel_1 = new JLabel("管理员名");
-		lblNewLabel_1.setIcon(new ImageIcon(managerlogin.class.getResource("/image/modify.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(Managerlogin.class.getResource("/image/modify.png")));
 		lblNewLabel_1.setFont(new Font("����", Font.BOLD, 14));
 		
 		JLabel label = new JLabel("\u5BC6  \u7801");
-		label.setIcon(new ImageIcon(managerlogin.class.getResource("/image/password.png")));
+		label.setIcon(new ImageIcon(Managerlogin.class.getResource("/image/password.png")));
 		label.setFont(new Font("����", Font.BOLD, 14));
 		
 		usernametext = new JTextField();
@@ -159,7 +159,7 @@ public class managerlogin extends JFrame {
 		}
 		else {
 			this.dispose();
-			new managermainfrm(manager);
+			new Managermainfrm(manager);
 		}
 	}
 

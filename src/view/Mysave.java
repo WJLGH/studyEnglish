@@ -34,7 +34,7 @@ import model.WordBean;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class mysave extends JInternalFrame {
+public class Mysave extends JInternalFrame {
 	private JTable mysavetable;
 	private UserBean user;
 	CollectTableModel ctm = null;
@@ -42,7 +42,7 @@ public class mysave extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public mysave(UserBean user) {
+	public Mysave(UserBean user) {
 		this.user = user;
 		setRootPaneCheckingEnabled(false);
 		setEnabled(false);

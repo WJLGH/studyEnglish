@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
-public class wordlistadd extends JInternalFrame {
+public class Wordlistadd extends JInternalFrame {
 	private JTextField nameTxt;
 	JTextArea descArea;
 	JButton addButton;
@@ -32,7 +32,7 @@ public class wordlistadd extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					wordlistadd frame = new wordlistadd();
+					Wordlistadd frame = new Wordlistadd();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class wordlistadd extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public wordlistadd() {
+	public Wordlistadd() {
 		setClosable(true);
 		setIconifiable(true);
 		setTitle("\u6DFB\u52A0\u8BCD\u6C47\u8868");

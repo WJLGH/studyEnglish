@@ -23,16 +23,16 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.sql.SQLException;
 
-public class u_registerfrm extends JFrame {
+public class Uregisterfrm extends JFrame {
 	private JTextField userNameTxt;
 	private JTextField userPwdTxt;
 
 	/**
 	 * Create the frame.
 	 */
-	public u_registerfrm() {
+	public Uregisterfrm() {
 		setTitle("用户注册");
-		setBounds(100, 100, 525, 428);
+		setBounds(600,320, 525, 428);
 		
 		JLabel lblNewLabel = new JLabel("欢迎注册本系统");
 		lblNewLabel.setFont(new Font("黑体", Font.BOLD, 30));
@@ -111,7 +111,7 @@ public class u_registerfrm extends JFrame {
 			if(isSuccess) {
 				JOptionPane.showMessageDialog(null, "注册成功");
 				this.dispose();
-				new logonform();
+				new Logonform();
 				return ;
 			} else {
 				JOptionPane.showMessageDialog(null, "注册失败");

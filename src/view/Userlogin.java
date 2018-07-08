@@ -27,7 +27,7 @@ import model.UserBean;
 import util.CharacterUtil;
 import util.JDBCUtils;
 
-public class userlogin extends JFrame {
+public class Userlogin extends JFrame {
 
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
@@ -41,7 +41,7 @@ public class userlogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					userlogin frame = new userlogin();
+					Userlogin frame = new Userlogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,11 +53,11 @@ public class userlogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public userlogin() {
+	public Userlogin() {
 		setResizable(false);
 		setTitle("\u7528\u6237\u767B\u5F55");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(600, 320, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -73,11 +73,11 @@ public class userlogin extends JFrame {
 		});
 		
 		JLabel label = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
-		label.setIcon(new ImageIcon(userlogin.class.getResource("/image/logo.png")));
+		label.setIcon(new ImageIcon(Userlogin.class.getResource("/image/logo.png")));
 		label.setFont(new Font("����", Font.BOLD, 24));
 		
 		JLabel label_1 = new JLabel("\u7528\u6237\u540D");
-		label_1.setIcon(new ImageIcon(userlogin.class.getResource("/image/modify.png")));
+		label_1.setIcon(new ImageIcon(Userlogin.class.getResource("/image/modify.png")));
 		label_1.setFont(new Font("����", Font.BOLD, 14));
 		
 		usernametext = new JTextField();
@@ -91,7 +91,7 @@ public class userlogin extends JFrame {
 		});
 		
 		JLabel label_2 = new JLabel("\u5BC6  \u7801");
-		label_2.setIcon(new ImageIcon(userlogin.class.getResource("/image/password.png")));
+		label_2.setIcon(new ImageIcon(Userlogin.class.getResource("/image/password.png")));
 		label_2.setFont(new Font("����", Font.BOLD, 14));
 		
 		passwordtext = new JPasswordField();
@@ -174,7 +174,7 @@ public class userlogin extends JFrame {
 		else {
 			dispose();
 		//	JOptionPane.showMessageDialog(null, "��½�ɹ���");
-			new usermainfrm(user);
+			new Usermainfrm(user);
 		}
 	}
 

@@ -1,56 +1,59 @@
 package view;
 
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
+import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import dao.ManagerDao;
-import model.ManagerBean;
+import dao.UserDao;
+import model.UserBean;
 import util.CharacterUtil;
 
-public class mupdatepwdfrm extends JInternalFrame {
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+
+public class Uupdatepwdfrm extends JInternalFrame {
 	private JPasswordField pwdoldTxt;
 	private JPasswordField pwdnewTxt;
 	private JPasswordField pwdnewisTxt;
-	private ManagerBean manager;
+	private  UserBean user;
+
 	/**
 	 * Create the frame.
-	 * @param manager 
 	 */
-	public mupdatepwdfrm(ManagerBean manager) {
-		this.manager = manager;
-		setTitle("管理员密码修改");
+	public Uupdatepwdfrm(UserBean user) {
+		this.user = user;
+		setTitle("用户密码修改");
 		setIconifiable(true);
 		setClosable(true);
-		setBounds(100, 100, 647, 447);
+		setBounds(100, 100, 593, 434);
 		
 		JLabel pwdoldlabel = new JLabel("原密码：");
-		pwdoldlabel.setFont(new Font("黑体", Font.BOLD, 20));
+		pwdoldlabel.setFont(new Font("黑体", Font.BOLD, 18));
 		
 		pwdoldTxt = new JPasswordField();
 		
 		JLabel pwdnewlabel = new JLabel("新密码：");
-		pwdnewlabel.setFont(new Font("黑体", Font.BOLD, 20));
+		pwdnewlabel.setFont(new Font("黑体", Font.BOLD, 18));
 		
 		pwdnewTxt = new JPasswordField();
 		
-		JLabel pwdnewislabel = new JLabel("请确认新密码：");
-		pwdnewislabel.setFont(new Font("黑体", Font.BOLD, 20));
+		JLabel pwdnewislabel = new JLabel("  请确认新密码：");
+		pwdnewislabel.setFont(new Font("黑体", Font.BOLD, 18));
 		
 		pwdnewisTxt = new JPasswordField();
 		
-		JButton updateButton = new JButton("确定");
+		JButton updateButton = new JButton("确认");
 		updateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updatepwdActionPerformed(e);
@@ -63,52 +66,52 @@ public class mupdatepwdfrm extends JInternalFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(103)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+							.addGap(127)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(pwdoldlabel)
+									.addComponent(pwdnewlabel, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
-									.addComponent(pwdoldTxt, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-									.addComponent(pwdnewlabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(pwdnewTxt, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(pwdoldlabel, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
-									.addComponent(pwdnewTxt, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(pwdoldTxt, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(35)
+							.addGap(50)
 							.addComponent(pwdnewislabel)
 							.addGap(18)
-							.addComponent(pwdnewisTxt, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+							.addComponent(pwdnewisTxt, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(238)
+							.addGap(240)
 							.addComponent(updateButton)))
-					.addContainerGap(215, Short.MAX_VALUE))
+					.addContainerGap(126, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(73)
+					.addGap(55)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(pwdoldlabel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pwdoldlabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(pwdoldTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(38)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(pwdnewTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(pwdnewlabel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-					.addGap(28)
+					.addGap(39)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(pwdnewislabel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pwdnewlabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pwdnewTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(38)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(pwdnewislabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(pwdnewisTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+					.addGap(71)
 					.addComponent(updateButton)
-					.addGap(63))
+					.addContainerGap(74, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 
 	}
 
-	private void updatepwdActionPerformed(ActionEvent e) {
+	private void updatepwdActionPerformed(ActionEvent evt) {
 		String old  = new String(this.pwdoldTxt.getPassword());
-		if( !old.equals(manager.getMpwd())) {
+		if( !old.equals(user.getUpwd())) {
 			JOptionPane.showMessageDialog(null, "原密码错误");
 			return ;
 		}
@@ -124,7 +127,7 @@ public class mupdatepwdfrm extends JInternalFrame {
 		}
 		boolean isSuccess = false;
 		try {
-			isSuccess = ManagerDao.setPwd(manager.getMid(), newpwd);
+			isSuccess = UserDao.setPwd(user.getUid(), newpwd);
 			if(isSuccess) {
 				JOptionPane.showMessageDialog(null, "修改成功");
 				return ;
