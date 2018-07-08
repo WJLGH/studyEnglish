@@ -177,7 +177,7 @@ public class Usermainfrm extends JFrame {
 
 
 	private void reciteActionPerforemd(ActionEvent e) {
-		int n = Integer.parseInt(JOptionPane.showInputDialog("请输入单词显示间隔"));
+		int n = Integer.parseInt(JOptionPane.showInputDialog("请输入单词显示间隔(单位s)").trim());
 		ReciteWordView rwv = new ReciteWordView(user,n);
 		Table.add(rwv);
 	}

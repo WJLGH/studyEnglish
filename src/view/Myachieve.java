@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class Myachieve extends JInternalFrame {
 	Map<Integer, ImageIcon> reflect = new HashMap<Integer, ImageIcon>();
 	public static int picCnt = 5;
+
 	/**
 	 * Create the frame.
 	 */
@@ -27,24 +28,24 @@ public class Myachieve extends JInternalFrame {
 		setIconifiable(true);
 		setClosable(true);
 		setBounds(100, 100, 528, 420);
-		
+
 		JLabel numberLabel = new JLabel("您已经背诵了");
 		numberLabel.setBounds(39, 49, 150, 29);
 		numberLabel.setFont(new Font("����", Font.BOLD, 24));
-		
+
 		JLabel upageLabel = new JLabel("");
 		upageLabel.setBounds(195, 49, 36, 29);
 		upageLabel.setFont(new Font("Dialog", Font.BOLD, 24));
-		
+
 		JLabel label_1 = new JLabel("个单词");
 		label_1.setBounds(227, 49, 87, 29);
 		label_1.setFont(new Font("Dialog", Font.BOLD, 24));
-		
+
 		JLabel label = new JLabel("获得成就：");
 		label.setBounds(39, 96, 133, 29);
 		label.setFont(new Font("Dialog", Font.BOLD, 24));
 		getContentPane().setLayout(null);
-		
+
 		JLabel iconPicPos = new JLabel("");
 		iconPicPos.setBounds(200, 159, 133, 112);
 		getContentPane().add(iconPicPos);
@@ -52,18 +53,21 @@ public class Myachieve extends JInternalFrame {
 		getContentPane().add(numberLabel);
 		getContentPane().add(upageLabel);
 		getContentPane().add(label_1);
-		
+
 		setAchieve(upage, upageLabel, iconPicPos);
-		
+
 		setVisible(true);
 	}
+
 	private void setAchieve(int upage, JLabel upageLabel, JLabel iconPicPos) {
-		upageLabel.setText(""+upage);
-		iconPicPos.setIcon(reflect.get(upage/10));
+		upageLabel.setText("" + upage);
+		upage = upage >= 50 ? 40 : upage;
+		iconPicPos.setIcon(reflect.get(upage / 10));
 	}
+
 	private void initReflectMap() {
-		for(int i = 0;i<picCnt;i++) {
-			reflect.put(i, new ImageIcon(Myachieve.class.getResource("/image/"+i+".jpg")));
+		for (int i = 0; i < picCnt; i++) {
+			reflect.put(i, new ImageIcon(Myachieve.class.getResource("/image/" + i + ".jpg")));
 		}
 	}
 }
