@@ -39,7 +39,7 @@ public class Usermainfrm extends JFrame {
 	 */
 	public Usermainfrm(UserBean user) {
 		this.user = user;
-		setTitle("\u7528\u6237\u4E3B\u754C\u9762");
+		setTitle("用户主界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1082, 765);
 		
@@ -47,7 +47,7 @@ public class Usermainfrm extends JFrame {
 		menuBar.setBackground(Color.LIGHT_GRAY);
 		setJMenuBar(menuBar);
 		
-		JMenu mydictionarymenu = new JMenu("\u6211\u7684\u8BCD\u5178       ");
+		JMenu mydictionarymenu = new JMenu("我的词典       ");
 		mydictionarymenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 22));
 		mydictionarymenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/bookManager.png")));
 		menuBar.add(mydictionarymenu);
@@ -99,12 +99,12 @@ public class Usermainfrm extends JFrame {
 		});
 		mydictionarymenu.add(reviewButton);
 		
-		JMenu securitymenu = new JMenu("\u5B89\u5168        ");
+		JMenu securitymenu = new JMenu("系统安全        ");
 		securitymenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 22));
 		securitymenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/base.png")));
 		menuBar.add(securitymenu);
 		
-		JMenuItem updatepwdButton = new JMenuItem("\u4FEE\u6539\u5BC6\u7801");
+		JMenuItem updatepwdButton = new JMenuItem("修改密码");
 		updatepwdButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		updatepwdButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -113,7 +113,7 @@ public class Usermainfrm extends JFrame {
 		});
 		securitymenu.add(updatepwdButton);
 		
-		JMenuItem exitButton = new JMenuItem("\u9000\u51FA");
+		JMenuItem exitButton = new JMenuItem("安全退出");
 		exitButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -125,12 +125,12 @@ public class Usermainfrm extends JFrame {
 		});
 		securitymenu.add(exitButton);
 		
-		JMenu aboutusmenu = new JMenu("\u5173\u4E8E\u6211\u4EEC    ");
+		JMenu aboutusmenu = new JMenu("关于我们    ");
 		aboutusmenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 22));
 		aboutusmenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/about.png")));
 		menuBar.add(aboutusmenu);
 		
-		JMenuItem contactusmenu = new JMenuItem("\u8054\u7CFB\u6211\u4EEC");
+		JMenuItem contactusmenu = new JMenuItem("联系我们");
 		contactusmenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		contactusmenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -145,16 +145,16 @@ public class Usermainfrm extends JFrame {
 		
 		Table = new JDesktopPane();
 		Table.setBackground(Color.GRAY);
-		GroupLayout gl_Table = new GroupLayout(Table);
-		gl_Table.setHorizontalGroup(
-			gl_Table.createParallelGroup(Alignment.LEADING)
+		GroupLayout grouplayout = new GroupLayout(Table);
+		grouplayout.setHorizontalGroup(
+			grouplayout.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 1347, Short.MAX_VALUE)
 		);
-		gl_Table.setVerticalGroup(
-			gl_Table.createParallelGroup(Alignment.LEADING)
+		grouplayout.setVerticalGroup(
+			grouplayout.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 579, Short.MAX_VALUE)
 		);
-		Table.setLayout(gl_Table);
+		Table.setLayout(grouplayout);
 		contentPane.add(Table);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setVisible(true);

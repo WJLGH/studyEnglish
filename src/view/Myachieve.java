@@ -24,7 +24,7 @@ public class Myachieve extends JInternalFrame {
 	 */
 	public Myachieve(int upage) {
 		initReflectMap();
-		setTitle("\u6211\u7684\u6210\u5C31");
+		setTitle("我的成就");
 		setIconifiable(true);
 		setClosable(true);
 		setBounds(100, 100, 528, 420);
@@ -37,22 +37,22 @@ public class Myachieve extends JInternalFrame {
 		upageLabel.setBounds(195, 49, 36, 29);
 		upageLabel.setFont(new Font("Dialog", Font.BOLD, 24));
 
-		JLabel label_1 = new JLabel("个单词");
-		label_1.setBounds(227, 49, 87, 29);
-		label_1.setFont(new Font("Dialog", Font.BOLD, 24));
+		JLabel unitLabel = new JLabel("个单词");
+		unitLabel.setBounds(227, 49, 87, 29);
+		unitLabel.setFont(new Font("Dialog", Font.BOLD, 24));
 
-		JLabel label = new JLabel("获得成就：");
-		label.setBounds(39, 96, 133, 29);
-		label.setFont(new Font("Dialog", Font.BOLD, 24));
+		JLabel achievelabel = new JLabel("获得成就：");
+		achievelabel.setBounds(39, 96, 133, 29);
+		achievelabel.setFont(new Font("Dialog", Font.BOLD, 24));
 		getContentPane().setLayout(null);
 
 		JLabel iconPicPos = new JLabel("");
 		iconPicPos.setBounds(200, 159, 133, 112);
 		getContentPane().add(iconPicPos);
-		getContentPane().add(label);
+		getContentPane().add(achievelabel);
 		getContentPane().add(numberLabel);
 		getContentPane().add(upageLabel);
-		getContentPane().add(label_1);
+		getContentPane().add(unitLabel);
 
 		setAchieve(upage, upageLabel, iconPicPos);
 

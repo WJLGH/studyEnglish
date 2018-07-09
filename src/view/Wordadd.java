@@ -68,11 +68,11 @@ public class Wordadd extends JInternalFrame {
 		setResizable(true);
 		setIconifiable(true);
 		setClosable(true);
-		setTitle("\u5F55\u5165\u5355\u8BCD");
+		setTitle("录入单词");
 		setBounds(100, 100, 754, 474);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "\u5355\u8BCD\u4FE1\u606F", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "单词信息", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -89,45 +89,45 @@ public class Wordadd extends JInternalFrame {
 					.addContainerGap(42, Short.MAX_VALUE))
 		);
 		
-		JLabel wordLabel = new JLabel("\u5355\u8BCD\uFF1A");
-		wordLabel.setFont(new Font("����", Font.BOLD, 16));
+		JLabel wordLabel = new JLabel("单词:");
+		wordLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		
 		wordTxt = new JTextField();
 		wordTxt.setColumns(10);
 		
-		JLabel meaningListLabel = new JLabel("\u6C49\u8BED\u610F\u601D\uFF1A");
-		meaningListLabel.setFont(new Font("����", Font.BOLD, 16));
+		JLabel meaningListLabel = new JLabel("汉语意思:");
+		meaningListLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		
 		meaningListTxt = new JTextField();
 		meaningListTxt.setColumns(10);
 		
-		JLabel tip = new JLabel("\u5982\u679C\u6709\u591A\u4E2A\uFF0C\u7528\u5206\u53F7\u9694\u5F00");
-		tip.setFont(new Font("���� Light", Font.PLAIN, 11));
+		JLabel tip = new JLabel("如果有多个，用分号隔开");
+		tip.setFont(new Font("Dialog", Font.PLAIN, 11));
 		
-		JLabel egLabel = new JLabel("\u4F8B\u53E5\uFF1A");
-		egLabel.setFont(new Font("����", Font.BOLD, 16));
+		JLabel egLabel = new JLabel("释义:");
+		egLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		
 		egTxt = new JTextField();
 		egTxt.setColumns(10);
 		
-		JLabel transLabel = new JLabel("\u4F8B\u53E5\u7FFB\u8BD1\uFF1A");
-		transLabel.setFont(new Font("����", Font.BOLD, 16));
+		JLabel transLabel = new JLabel("例句翻译:");
+		transLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		
 		transTxt = new JTextField();
 		transTxt.setColumns(10);
 		
 		JLabel vidLabel = new JLabel("词汇表：");
-		vidLabel.setFont(new Font("����", Font.BOLD, 16));
+		vidLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		
 		vocabularyListCb = new JComboBox();
 		
-		JButton addButton = new JButton("\u6DFB\u52A0");
+		JButton addButton = new JButton("添加");
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addWordActionPerformed(e);
 			}
 		});
-		addButton.setFont(new Font("����", Font.BOLD, 23));
+		addButton.setFont(new Font("Dialog", Font.BOLD, 23));
 		
 		JButton resetButton = new JButton("重置");
 		resetButton.addActionListener(new ActionListener() {
@@ -136,32 +136,32 @@ public class Wordadd extends JInternalFrame {
 			}
 		});
 		resetButton.setFont(new Font("Dialog", Font.BOLD, 23));
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
+		GroupLayout grouplayout = new GroupLayout(panel);
+		grouplayout.setHorizontalGroup(
+			grouplayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(grouplayout.createSequentialGroup()
 					.addGap(29)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(grouplayout.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(grouplayout.createSequentialGroup()
 							.addComponent(wordLabel, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(wordTxt, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(grouplayout.createSequentialGroup()
+							.addGroup(grouplayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(meaningListLabel, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
 								.addComponent(egLabel)
 								.addComponent(transLabel)
 								.addComponent(vidLabel, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
+							.addGroup(grouplayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(grouplayout.createSequentialGroup()
 									.addComponent(vocabularyListCb, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
 									.addGap(96)
 									.addComponent(resetButton)
 									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(addButton))
-								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-									.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+								.addGroup(grouplayout.createParallelGroup(Alignment.TRAILING)
+									.addGroup(Alignment.LEADING, grouplayout.createSequentialGroup()
 										.addComponent(meaningListTxt, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE)
 										.addGap(18)
 										.addComponent(tip, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
@@ -169,44 +169,44 @@ public class Wordadd extends JInternalFrame {
 									.addComponent(transTxt, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)))))
 					.addGap(41))
 		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
+		grouplayout.setVerticalGroup(
+			grouplayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(grouplayout.createSequentialGroup()
 					.addGap(25)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+					.addGroup(grouplayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(grouplayout.createSequentialGroup()
+							.addGroup(grouplayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(wordLabel, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 								.addComponent(wordTxt, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addGroup(grouplayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(meaningListLabel, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 								.addComponent(meaningListTxt, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)))
 						.addComponent(tip, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addGroup(grouplayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(egLabel, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 						.addComponent(egTxt, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addGroup(grouplayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(transTxt, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 						.addComponent(transLabel, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(grouplayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(grouplayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addGroup(grouplayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(vidLabel, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 								.addComponent(vocabularyListCb, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
 							.addGap(30))
-						.addGroup(gl_panel.createSequentialGroup()
+						.addGroup(grouplayout.createSequentialGroup()
 							.addGap(29)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+							.addGroup(grouplayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(resetButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 								.addComponent(addButton, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE))
 							.addGap(32))))
 		);
-		panel.setLayout(gl_panel);
+		panel.setLayout(grouplayout);
 		getContentPane().setLayout(groupLayout);
 		fillvocabularyListCb();
 	}

@@ -61,7 +61,7 @@ public class Wordlistupdate extends JInternalFrame {
 	public Wordlistupdate() {
 		setIconifiable(true);
 		setClosable(true);
-		setTitle("\u8BCD\u6C47\u8868\u7EF4\u62A4");
+		setTitle("词汇表维护");
 		setBounds(100, 100, 592, 429);
 		
 		JScrollPane vocabularyListJp = new JScrollPane();
@@ -87,46 +87,46 @@ public class Wordlistupdate extends JInternalFrame {
 					.addContainerGap(30, Short.MAX_VALUE))
 		);
 		
-		JLabel vidLabel = new JLabel("\u7F16\u53F7\uFF1A");
-		vidLabel.setFont(new Font("����", Font.BOLD, 15));
+		JLabel vidLabel = new JLabel("编号:");
+		vidLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		
-		JLabel vnameLabel = new JLabel("\u8BCD\u6C47\u8868\u540D\u79F0\uFF1A");
-		vnameLabel.setFont(new Font("����", Font.BOLD, 15));
+		JLabel vnameLabel = new JLabel("词汇表名称:");
+		vnameLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		
 		vnameTxt = new JTextField();
 		vnameTxt.setColumns(10);
 		
-		JLabel vdescLabel = new JLabel("\u63CF\u8FF0\uFF1A");
-		vdescLabel.setFont(new Font("����", Font.BOLD, 15));
+		JLabel vdescLabel = new JLabel("描述:");
+		vdescLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		
 		vdescArea = new JTextArea();
 		
-		JButton updateButton = new JButton("\u4FEE\u6539");
+		JButton updateButton = new JButton("修改");
 		updateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updateVocabularyActionPerformed(e);
 			}
 		});
-		updateButton.setFont(new Font("����", Font.BOLD, 15));
+		updateButton.setFont(new Font("Dialog", Font.BOLD, 15));
 		
-		JButton deletButton = new JButton("\u5220\u9664");
+		JButton deletButton = new JButton("删除");
 		deletButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deleteVocabularyActionPerformed(e);
 			}
 		});
-		deletButton.setFont(new Font("����", Font.BOLD, 15));
+		deletButton.setFont(new Font("Dialog", Font.BOLD, 15));
 		
 		vidTxt = new JTextField();
 		vidTxt.setEditable(false);
 		vidTxt.setColumns(10);
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel.createSequentialGroup()
+		GroupLayout undergrouplayout = new GroupLayout(panel);
+		undergrouplayout.setHorizontalGroup(
+			undergrouplayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(undergrouplayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(undergrouplayout.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(undergrouplayout.createSequentialGroup()
 							.addComponent(vidLabel)
 							.addGap(18)
 							.addComponent(vidTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -134,38 +134,38 @@ public class Wordlistupdate extends JInternalFrame {
 							.addComponent(vnameLabel)
 							.addGap(18)
 							.addComponent(vnameTxt, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
+						.addGroup(undergrouplayout.createSequentialGroup()
 							.addComponent(vdescLabel)
 							.addGap(18)
 							.addComponent(vdescArea)))
 					.addContainerGap(17, Short.MAX_VALUE))
-				.addGroup(gl_panel.createSequentialGroup()
+				.addGroup(undergrouplayout.createSequentialGroup()
 					.addGap(103)
 					.addComponent(updateButton)
 					.addPreferredGap(ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
 					.addComponent(deletButton)
 					.addGap(119))
 		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
+		undergrouplayout.setVerticalGroup(
+			undergrouplayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(undergrouplayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+					.addGroup(undergrouplayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(vidLabel)
 						.addComponent(vnameLabel)
 						.addComponent(vnameTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(vidTxt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+					.addGroup(undergrouplayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(vdescLabel)
 						.addComponent(vdescArea, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+					.addGroup(undergrouplayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(deletButton)
 						.addComponent(updateButton))
 					.addContainerGap(37, Short.MAX_VALUE))
 		);
-		panel.setLayout(gl_panel);
+		panel.setLayout(undergrouplayout);
 		
 		vocabularyListTable = new JTable();
 		vocabularyListTable.addMouseListener(new MouseAdapter() {
@@ -179,7 +179,7 @@ public class Wordlistupdate extends JInternalFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"\u7F16\u53F7", "\u8BCD\u6C47\u8868\u540D\u79F0", "\u8BCD\u6C47\u8868\u63CF\u8FF0"
+				"编号", "词汇表名称", "词汇表描述"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {

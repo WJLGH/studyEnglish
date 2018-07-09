@@ -47,25 +47,25 @@ public class Wordlistadd extends JInternalFrame {
 	public Wordlistadd() {
 		setClosable(true);
 		setIconifiable(true);
-		setTitle("\u6DFB\u52A0\u8BCD\u6C47\u8868");
+		setTitle("添加词汇表");
 		setBounds(100, 100, 470, 321);
 		
-		JLabel nameLabel = new JLabel("\u8BCD\u6C47\u8868\u540D\u79F0\uFF1A");
+		JLabel nameLabel = new JLabel("词汇表名称:");
 		
 		nameTxt = new JTextField();
 		nameTxt.setColumns(10);
 		
-		JLabel descLabel = new JLabel("\u8BCD\u6C47\u8868\u63CF\u8FF0\uFF1A");
+		JLabel descLabel = new JLabel("词汇表描述:");
 		
 		descArea = new JTextArea();
 		
-		addButton = new JButton("\u63D0\u4EA4");
+		addButton = new JButton("提交");
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addWordListActionPerformed(e);
 			}
 		});
-		addButton.setFont(new Font("����", Font.BOLD, 20));
+		addButton.setFont(new Font("Dialog", Font.BOLD, 20));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

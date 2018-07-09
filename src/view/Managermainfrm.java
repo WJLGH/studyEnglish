@@ -52,22 +52,23 @@ public class Managermainfrm extends JFrame {
 	 */
 	public Managermainfrm(ManagerBean manager) {
 		this.manager = manager;
-		setTitle("\u7BA1\u7406\u5458\u4E3B\u754C\u9762");
+		setTitle("管理员主界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 620, 401);
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		basicMenu = new JMenu("\u57FA\u672C\u6570\u636E\u7EF4\u62A4       ");
+		basicMenu = new JMenu("基本数据维护       ");
 		basicMenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 25));
 		menuBar.add(basicMenu);
 
-		wordManage = new JMenu("\u8BCD\u6C47\u7EF4\u62A4");
+		wordManage = new JMenu("词汇维护");
 		wordManage.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		basicMenu.add(wordManage);
 
-		addWord = new JMenuItem("\u589E\u52A0\u8BCD\u6C47");
+		addWord = new JMenuItem("增加词汇");
+		addWord.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		addWord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordaddActionPerformed(e);
@@ -75,7 +76,8 @@ public class Managermainfrm extends JFrame {
 		});
 		wordManage.add(addWord);
 
-		manageWord = new JMenuItem("\u7BA1\u7406\u8BCD\u6C47");
+		manageWord = new JMenuItem("管理词汇");
+		manageWord.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		manageWord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordupdateActionPerformed(e);
@@ -83,11 +85,11 @@ public class Managermainfrm extends JFrame {
 		});
 		wordManage.add(manageWord);
 
-		vocabularyManageItem = new JMenu("\u8BCD\u6C47\u8868\u7EF4\u62A4");
+		vocabularyManageItem = new JMenu("词汇表管理");
 		vocabularyManageItem.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		basicMenu.add(vocabularyManageItem);
 
-		addVocabulary = new JMenuItem("\u589E\u52A0");
+		addVocabulary = new JMenuItem("增加");
 		addVocabulary.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		addVocabulary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -96,7 +98,7 @@ public class Managermainfrm extends JFrame {
 		});
 		vocabularyManageItem.add(addVocabulary);
 
-		vocabularyManage = new JMenuItem("\u7BA1\u7406");
+		vocabularyManage = new JMenuItem("管理");
 		vocabularyManage.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		vocabularyManage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -105,15 +107,15 @@ public class Managermainfrm extends JFrame {
 		});
 		vocabularyManageItem.add(vocabularyManage);
 
-		DBManage = new JMenu("\u6570\u636E\u5E93\u7BA1\u7406          ");
+		DBManage = new JMenu("数据库管理       ");
 		DBManage.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 25));
 		menuBar.add(DBManage);
 
-		dbBackUpAndRecovery = new JMenu("\u6570\u636E\u5E93\u5907\u4EFD\u4E0E\u8FD8\u539F");
+		dbBackUpAndRecovery = new JMenu("数据库备份与还原");
 		dbBackUpAndRecovery.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		DBManage.add(dbBackUpAndRecovery);
 
-		dbBackUp = new JMenuItem("\u6570\u636E\u5E93\u5907\u4EFD");
+		dbBackUp = new JMenuItem("数据库备份");
 		dbBackUp.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		dbBackUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,7 +124,7 @@ public class Managermainfrm extends JFrame {
 		});
 		dbBackUpAndRecovery.add(dbBackUp);
 
-		dbRecovery = new JMenuItem("\u6570\u636E\u5E93\u8FD8\u539F");
+		dbRecovery = new JMenuItem("数据库还原");
 		dbRecovery.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		dbRecovery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,11 +133,11 @@ public class Managermainfrm extends JFrame {
 		});
 		dbBackUpAndRecovery.add(dbRecovery);
 
-		systemSecurity = new JMenu("\u7CFB\u7EDF\u5B89\u5168      ");
+		systemSecurity = new JMenu("系统安全      ");
 		systemSecurity.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 25));
 		menuBar.add(systemSecurity);
 
-		modifyPwd = new JMenuItem("\u4FEE\u6539\u5BC6\u7801");
+		modifyPwd = new JMenuItem("修改密码");
 		modifyPwd.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		modifyPwd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -144,7 +146,7 @@ public class Managermainfrm extends JFrame {
 		});
 		systemSecurity.add(modifyPwd);
 
-		manageExit = new JMenuItem("\u9000\u51FA");
+		manageExit = new JMenuItem("安全退出");
 		manageExit.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		manageExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -156,7 +158,7 @@ public class Managermainfrm extends JFrame {
 		});
 		systemSecurity.add(manageExit);
 
-		aboutUs = new JMenu("\u5173\u4E8E\u6211\u4EEC");
+		aboutUs = new JMenu("关于我们");
 		aboutUs.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 25));
 		menuBar.add(aboutUs);
 

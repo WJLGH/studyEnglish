@@ -58,7 +58,7 @@ public class EnZhseek extends JInternalFrame {
 	private UserBean user;
 	private JLabel headNetMeanigLabel;
 	private JLabel netMeaingLabel;
-	private JPanel panel_1;
+	private JPanel table;
 	private JLabel headNetWordLabel;
 	private JLabel netWordLabel;
 	public EnZhseek(UserBean user) {
@@ -160,21 +160,21 @@ public class EnZhseek extends JInternalFrame {
 		collectButton.setBounds(338, 37, 85, 34);
 		wordShowPanel.add(collectButton);
 		
-		panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "\u7F51\u7EDC", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(49, 392, 488, 78);
-		getContentPane().add(panel_1);
-		panel_1.setLayout(null);
+		table = new JPanel();
+		table.setBorder(new TitledBorder(null, "\u7F51\u7EDC", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		table.setBounds(49, 392, 488, 78);
+		getContentPane().add(table);
+		table.setLayout(null);
 		
 		headNetMeanigLabel = new JLabel("释义：");
 		headNetMeanigLabel.setBounds(246, 31, 45, 20);
-		panel_1.add(headNetMeanigLabel);
+		table.add(headNetMeanigLabel);
 		headNetMeanigLabel.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 15));
 		headNetMeanigLabel.setBackground(SystemColor.menu);
 		
 		netMeaingLabel = new JLabel("无");
 		netMeaingLabel.setBounds(375, 29, 103, 25);
-		panel_1.add(netMeaingLabel);
+		table.add(netMeaingLabel);
 		netMeaingLabel.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 15));
 		netMeaingLabel.setBackground(SystemColor.menu);
 		
@@ -182,13 +182,13 @@ public class EnZhseek extends JInternalFrame {
 		headNetWordLabel.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 15));
 		headNetWordLabel.setBackground(SystemColor.menu);
 		headNetWordLabel.setBounds(27, 31, 45, 20);
-		panel_1.add(headNetWordLabel);
+		table.add(headNetWordLabel);
 		
 		netWordLabel = new JLabel("无");
 		netWordLabel.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 15));
 		netWordLabel.setBackground(SystemColor.menu);
 		netWordLabel.setBounds(85, 29, 87, 25);
-		panel_1.add(netWordLabel);
+		table.add(netWordLabel);
 		setBounds(100,100,608,510);
 		setVisible(true);
 		this.wordShowPanel.setVisible(false);

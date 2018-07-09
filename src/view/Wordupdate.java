@@ -71,24 +71,24 @@ public class Wordupdate extends JInternalFrame {
 	public Wordupdate() {
 		setClosable(true);
 		setIconifiable(true);
-		setTitle("\u66F4\u65B0\u5355\u8BCD");
+		setTitle("更新单词");
 		setBounds(100, 100, 662, 667);
 		
 		JLabel vocabularyListLabel = new JLabel("词汇表：");
-		vocabularyListLabel.setFont(new Font("����", Font.BOLD, 20));
+		vocabularyListLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 		
-		JButton searchButton = new JButton("\u67E5\u8BE2");
+		JButton searchButton = new JButton("搜索");
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchActionPerformed(e);
 			}
 		});
-		searchButton.setFont(new Font("����", Font.BOLD, 20));
+		searchButton.setFont(new Font("Dialog", Font.BOLD, 20));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "\u8BCD\u6C47\u64CD\u4F5C", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBorder(new TitledBorder(null, "词汇操作", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		
 		JLabel wordLabel = new JLabel("单词：");
 		wordLabel.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -139,14 +139,14 @@ public class Wordupdate extends JInternalFrame {
 					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		
-		JLabel uwordvaLabel = new JLabel("\u6240\u5C5E\u8868\u5355");
+		JLabel uwordvaLabel = new JLabel("所属表单");
 		uwordvaLabel.setBounds(352, 89, 52, 21);
 		uwordvaLabel.setFont(new Font("黑体", Font.PLAIN, 12));
 		
 		vocabularyCb = new JComboBox();
 		vocabularyCb.setBounds(414, 89, 125, 21);
 		
-		JLabel uwordLabel = new JLabel("\u5355\u8BCD\uFF1A");
+		JLabel uwordLabel = new JLabel("编号:");
 		uwordLabel.setBounds(16, 91, 39, 17);
 		uwordLabel.setFont(new Font("黑体", Font.PLAIN, 12));
 		
@@ -155,7 +155,7 @@ public class Wordupdate extends JInternalFrame {
 		wordTxt.setBounds(65, 88, 75, 23);
 		wordTxt.setColumns(10);
 		
-		JLabel meaningLabel = new JLabel("\u91CA\u4E49\uFF1A");
+		JLabel meaningLabel = new JLabel("释义:");
 		meaningLabel.setBounds(16, 149, 39, 15);
 		meaningLabel.setFont(new Font("黑体", Font.PLAIN, 12));
 		
@@ -181,7 +181,7 @@ public class Wordupdate extends JInternalFrame {
 				updateActionPerformed(e);
 			}
 		});
-		updateButton.setFont(new Font("����", Font.BOLD, 20));
+		updateButton.setFont(new Font("黑体", Font.BOLD, 20));
 		updateButton.setBounds(116, 284, 93, 32);
 		panel.add(updateButton);
 		
@@ -231,8 +231,7 @@ public class Wordupdate extends JInternalFrame {
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
-			new String[] {
-				"\u7F16\u53F7", "\u5355\u8BCD", "\u6240\u5C5E\u8868\u5355", "\u91CA\u4E49", "\u4F8B\u53E5", "\u8BD1"
+			new String[] {	"编号", "单词", "所属表单", "释义", "例句", "译"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
