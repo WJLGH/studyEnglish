@@ -19,7 +19,12 @@ import model.UserBean;
 import model.VocabularyBean;
 import model.WordBean;
 import util.JDBCUtils;
-public class test {
+/**
+ * 测试各种功能的测试类
+ * @author ASUS
+ *
+ */
+public class Test {
 	public static void main(String[] args) throws SQLException  {
 //		Connection conn = JDBCUtils.getConnection();
 //		ManagerBean mb = null;

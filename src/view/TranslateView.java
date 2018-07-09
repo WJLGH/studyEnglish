@@ -41,8 +41,10 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
+import java.awt.Color;
 
-public class EnZhseek extends JInternalFrame {
+public class TranslateView extends JInternalFrame {
 	JList wordList;
 	private JTextField searchWord;
 	JScrollPane scrollPane;
@@ -61,7 +63,7 @@ public class EnZhseek extends JInternalFrame {
 	private JPanel table;
 	private JLabel headNetWordLabel;
 	private JLabel netWordLabel;
-	public EnZhseek(UserBean user) {
+	public TranslateView(UserBean user) {
 		setIconifiable(true);
 		setClosable(true);
 		this.user = user;
@@ -110,7 +112,7 @@ public class EnZhseek extends JInternalFrame {
 				resetSearchTxtActionPerformed(e);
 			}
 		});
-		resetSearchWord.setIcon(new ImageIcon(EnZhseek.class.getResource("/image/delete.png")));
+		resetSearchWord.setIcon(new ImageIcon(TranslateView.class.getResource("/image/delete.png")));
 		resetSearchWord.setBounds(514, 54, 24, 24);
 		getContentPane().add(resetSearchWord);
 		
@@ -161,7 +163,7 @@ public class EnZhseek extends JInternalFrame {
 		wordShowPanel.add(collectButton);
 		
 		table = new JPanel();
-		table.setBorder(new TitledBorder(null, "\u7F51\u7EDC", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		table.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "网络", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		table.setBounds(49, 392, 488, 78);
 		getContentPane().add(table);
 		table.setLayout(null);
@@ -194,7 +196,7 @@ public class EnZhseek extends JInternalFrame {
 		this.wordShowPanel.setVisible(false);
 		this.scrollPane.setVisible(false);
 	}
-	
+	//收藏事件
 	private void collectActionPerformed(ActionEvent e) {
 		boolean isSuccess = false;
 		try {
@@ -209,15 +211,16 @@ public class EnZhseek extends JInternalFrame {
 			e1.printStackTrace();
 		}
 	}
-
+	//清空输入框
 	private void resetSearchTxtActionPerformed(ActionEvent e) {
 		this.searchWord.setText("");
 	}
-
+	//重置表单
 	private void resetWordShowPanelItems() {
 		this.wordShowPanel.setVisible(false);
 		
 	}
+	//设置选中的单词在表单中显示
 	private void showSeletItem() {
 		System.out.println("选中");
 		nowWord =  (WordBean) wordList.getSelectedValue();
@@ -236,6 +239,7 @@ public class EnZhseek extends JInternalFrame {
 		this.wordShowPanel.setVisible(true);
 		repaint();
 	}
+	//输入框的改变更新数据库查询结果
 	protected  void inputChangedActionPerformed( ) {
 		
 		this.scrollPane.setVisible(true);
@@ -272,6 +276,6 @@ public class EnZhseek extends JInternalFrame {
 		this.netWordLabel.setText(BaiDuTranslationUtils.tranlate(searchWord.getText(), "en"));
 	}
 	public static void main(String[] args) {
-		new EnZhseek(new UserBean(1, "123", "123", 0));
+		new TranslateView(new UserBean(1, "123", "123", 0));
 	}
 }

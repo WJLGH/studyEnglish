@@ -42,12 +42,15 @@ public class Logonform extends JFrame {
 	 * Create the frame.
 	 */
 	public Logonform() {
+		// 测试并获得数据库连接，作为程序启动的必要条件，添加到登录窗口的构造函数中
 		try {
 			Class.forName("util.JDBCUtils");
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
 		System.out.println("数据库连接"+JDBCUtils.getConnection());
+		
+		
 		setResizable(false);
 		setTitle("登录界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,7 +116,10 @@ public class Logonform extends JFrame {
 		userregisterPanel.setLayout(groupLayout);
 		setVisible(true);
 	}
-
+	/**
+	 * 用户注册
+	 * @param e
+	 */
 	private void uregisterActionPerformed(ActionEvent e) {
 		dispose();
 		new Uregisterfrm();

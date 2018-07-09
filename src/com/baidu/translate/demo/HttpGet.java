@@ -27,7 +27,7 @@ class HttpGet {
 
     public static String get(String host, Map<String, String> params) {
         try {
-            // 设置SSLContext
+            // 设置SSLContext 安全套接层
             SSLContext sslcontext = SSLContext.getInstance("TLS");
             sslcontext.init(null, new TrustManager[] { myX509TrustManager }, null);
 
@@ -36,11 +36,13 @@ class HttpGet {
             // System.out.println("URL:" + sendUrl);
 
             URL uri = new URL(sendUrl); // 创建URL对象
+            
+            // Http连接是URL所创建的TCP连接的一个子类
             HttpURLConnection conn = (HttpURLConnection) uri.openConnection();
             if (conn instanceof HttpsURLConnection) {
                 ((HttpsURLConnection) conn).setSSLSocketFactory(sslcontext.getSocketFactory());
             }
-
+            
             conn.setConnectTimeout(SOCKET_TIMEOUT); // 设置相应超时
             conn.setRequestMethod(GET);
             int statusCode = conn.getResponseCode();
@@ -76,7 +78,12 @@ class HttpGet {
 
         return null;
     }
-
+    /**
+     * 通过给定的参数params 拼接出一个 url字符串
+     * @param url
+     * @param params
+     * @return
+     */
     public static String getUrlWithQueryString(String url, Map<String, String> params) {
         if (params == null) {
             return url;
@@ -139,7 +146,9 @@ class HttpGet {
 
         return input;
     }
-
+    /**
+     * 这是一个安全连接管理的实现类
+     */
     private static TrustManager myX509TrustManager = new X509TrustManager() {
 
         @Override

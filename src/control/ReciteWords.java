@@ -15,10 +15,10 @@ import model.UserBean;
 import model.WordBean;
 
 public class ReciteWords {
-	private UserBean user;
-	private List<WordBean> list;
-	private Iterator<WordBean> ite;
-	private int cnt;
+	private UserBean user;// 当前登录用户
+	private List<WordBean> list; // 当前所背诵的单词列表
+	private Iterator<WordBean> ite; // 单词列表的迭代器
+	private int cnt; //这是从数据库中所得到单词列表中单词的个数
 	/**
 	 * 构造函数传入一个用户作为参数
 	 * @param user
@@ -31,13 +31,13 @@ public class ReciteWords {
 		}
 	}
 	/**
-	 * 通过用户当前记录的page字段获取新的未背单词
+	 * 查询数据库通过用户当前记录的page字段
+	 * 获取新的未背单词
 	 */
 	private void getList() {
 		try {
 			list = WordDao.limitQuery(user.getUpage());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -56,10 +56,7 @@ public class ReciteWords {
 	public boolean isFinish() {
 		return null == list || list.size() == 0;
 	}
-
-	private int getSize() {
-		return list.size();
-	}
+	
 	/**
 	 * 把当前的单词添加到用户的收藏中
 	 * 传入的是当前单词的wid
@@ -84,9 +81,11 @@ public class ReciteWords {
 	 * @return
 	 */
 	public WordBean getNext() {
+		//如果背完了
 		if (isFinish()) {
 			return null;
 		}
+		//如果到列表最后则从头循环
 		if (null == ite || !ite.hasNext()) {
 			ite = list.iterator();
 		}
@@ -102,8 +101,10 @@ public class ReciteWords {
 		user.setUpage(nPage);
 		UserDao.Logout(user);
 	}
-
 	public static void main(String[] args) {
+		/**
+		 * 测试功能
+		 */
 		Scanner in = new Scanner(System.in);
 		ReciteWords rw = new ReciteWords(new UserBean());
 		List<WordBean> list = new ArrayList<WordBean>() {

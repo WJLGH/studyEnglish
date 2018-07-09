@@ -25,7 +25,10 @@ public class BaiDuTranslationUtils {
 		if (jsonString.startsWith("{\"error")) {
 			return CharacterUtil.ERROR;
 		}
-
+		/**
+		 * 百度翻译会把返回结果装在Json中返回
+		 * 这里必须要做Json数据的解析不然会返回乱码
+		 */
 		JSONObject message = JSONObject.fromObject(jsonString);
 
 		String resultString = message.get("trans_result").toString();

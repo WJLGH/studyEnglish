@@ -195,7 +195,7 @@ public class Wordlistupdate extends JInternalFrame {
 		resetFormValue();
 		fillTableValue();
 	}
-	
+	//删除所选单词表
 	private void deleteVocabularyActionPerformed(ActionEvent e) {
 		if(CharacterUtil.isEmpty(vidTxt.getText()) ) {
 			JOptionPane.showMessageDialog(null, "请选择要删除的词汇表");
@@ -218,7 +218,7 @@ public class Wordlistupdate extends JInternalFrame {
 		resetFormValue();
 		fillTableValue();
 	}
-
+	//修改所选单词表
 	private void updateVocabularyActionPerformed(ActionEvent e) {
 		if(CharacterUtil.isEmpty(vidTxt.getText())) {
 			JOptionPane.showMessageDialog(null, "请选择要修改的词汇表");
@@ -253,22 +253,20 @@ public class Wordlistupdate extends JInternalFrame {
 		resetFormValue();
 		fillTableValue();
 	}
-
+	//把选中的单词表设置到表单中
 	private void rowSelectMouserPressed(MouseEvent e) {
 		int selectedRow = vocabularyListTable.getSelectedRow();
 		this.vidTxt.setText(vocabularyListTable.getValueAt(selectedRow, 0)+"");
 		this.vnameTxt.setText(vocabularyListTable.getValueAt(selectedRow, 1)+"");
 		this.vdescArea.setText(vocabularyListTable.getValueAt(selectedRow, 2)+"");
 	}
-
+	//表单框中的 数据清空
 	private void resetFormValue() {
-		/**
-		 * 表单框中的 数据清空
-		 */
 		this.vidTxt.setText("");
 		this.vnameTxt.setText("");
 		this.vdescArea.setText("");
 	}
+	//把所有的单词表显示到表格中
 	private void fillTableValue() {
 		
 		DefaultTableModel model = (DefaultTableModel) vocabularyListTable.getModel();

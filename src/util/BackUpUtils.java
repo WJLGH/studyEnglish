@@ -17,7 +17,7 @@ public class BackUpUtils {
 	/**
 	 * 数据库备份 通过Runtime执行一条windows下的cmd命令
 	 * 必须是Windows下同时mysql的客户端（client）并且在环境变量中有mysql这个命令
-	 * 
+	 * 注意：因为网络延时问题可能会出现生成文件为空文件的现象只需稍加等待文件就会更新
 	 * @param f
 	 */
 	public static void BackUp(JFrame f) {

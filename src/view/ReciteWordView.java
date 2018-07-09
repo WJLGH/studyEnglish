@@ -78,8 +78,11 @@ public class ReciteWordView extends JInternalFrame implements ActionListener{
 		timer.start();
 		recite();
 	}
-	
+	/**
+	 * 背诵下一个单词
+	 */
 	public void recite() {
+		//单词背完后的处理
 		if(rw.isFinish()) {
 			if(timer != null) {
 				timer.stop();
@@ -94,12 +97,17 @@ public class ReciteWordView extends JInternalFrame implements ActionListener{
 			this.dispose();
 		}
 		
+		//得到下一个单词
 		nowWord = rw.getNext();
 		if( nowWord != null ) {
+			//显示单词
 			showNowWord();
 		}
 		repaint();
 	}
+	/**
+	 * 设置显示的单词
+	 */
 	private void showNowWord() {
 		this.wordLabel.setText(nowWord.getWord());
 		this.egLabel.setText(nowWord.getEg());
@@ -111,7 +119,9 @@ public class ReciteWordView extends JInternalFrame implements ActionListener{
 		this.transLabel.setText(nowWord.getTrans());
 		
 	}
-
+	/**
+	 * 各个事件的处理
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object s = e.getSource();

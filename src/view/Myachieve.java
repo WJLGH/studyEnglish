@@ -58,13 +58,20 @@ public class Myachieve extends JInternalFrame {
 
 		setVisible(true);
 	}
-
+	/**
+	 * 设置显示的成就图片
+	 * @param upage
+	 * @param upageLabel
+	 * @param iconPicPos
+	 */
 	private void setAchieve(int upage, JLabel upageLabel, JLabel iconPicPos) {
 		upageLabel.setText("" + upage);
 		upage = upage >= 50 ? 40 : upage;
 		iconPicPos.setIcon(reflect.get(upage / 10));
 	}
-
+	/**
+	 * 设置单词数和成就图片映射
+	 */
 	private void initReflectMap() {
 		for (int i = 0; i < picCnt; i++) {
 			reflect.put(i, new ImageIcon(Myachieve.class.getResource("/image/" + i + ".jpg")));

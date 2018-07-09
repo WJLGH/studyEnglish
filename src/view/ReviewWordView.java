@@ -44,7 +44,7 @@ public class ReviewWordView extends JInternalFrame {
 		setIconifiable(true);
 		setClosable(true);
 		this.user = user;
-		boolean canR = getList();
+		getList();
 		if (list != null) {
 			cnt = list.size();
 			pCnt = 0;
@@ -76,17 +76,24 @@ public class ReviewWordView extends JInternalFrame {
 
 		setVisible(true);
 		setNextShowWord(null);
-		if(!canR) {
-			this.dispose();
-		}
 	}
-
+	/**
+	 * 得到复习的单词表
+	 * @return
+	 */
 	private boolean getList() {
 		int n = user.getUpage();
+		/**
+		 * 没有足够的单词复习
+		 */
 		if(n<WordDao.pageSize) {
 			JOptionPane.showMessageDialog(null, "请先背诵单词");
+			this.dispose();
 			return false;
 		}
+		/**
+		 * 获得背诵过的单词
+		 */
 		try {
 			list = WordDao.limitQuery(user.getUpage()-WordDao.pageSize);
 			System.out.println("数据库数据为：");
@@ -98,7 +105,11 @@ public class ReviewWordView extends JInternalFrame {
 		}
 		return true;
 	}
-
+	/**
+	 * 判断是否选对选项
+	 * @param e
+	 * @return
+	 */
 	public boolean judge(ActionEvent e) {
 		if (e == null) {
 			return false;
@@ -111,11 +122,17 @@ public class ReviewWordView extends JInternalFrame {
 	public void setList(List<WordBean> list) {
 		this.list = list;
 	}
-
+	/**
+	 * 复习结束条件判断
+	 * @return
+	 */
 	public boolean isFinish() {
 		return cnt == pCnt;
 	}
-
+	/**
+	 * 得到下一个为复习过的或者复习过但错了的单词
+	 * @return
+	 */
 	public WordBean getNext() {
 		if (isFinish() || list == null) {
 			System.out.println("isFinish");
@@ -129,7 +146,12 @@ public class ReviewWordView extends JInternalFrame {
 		WordBean wordBean = list.get(nIndex);
 		return wordBean;
 	}
-
+	/**
+	 * 获得一个从0 - cnt 的所有整数中的出nIndex 的三个数
+	 * @param cnt
+	 * @param nIndex
+	 * @return
+	 */
 	public int[] getThreeRandomIndex(int cnt, int nIndex) {
 		int[] result = new int[3];
 		int n = 0;
@@ -148,7 +170,11 @@ public class ReviewWordView extends JInternalFrame {
 		}
 		return result;
 	}
-
+	/**
+	 * 单词的释义变成字符串
+	 * @param wb
+	 * @return
+	 */
 	public String meaingListToString(WordBean wb) {
 		StringBuffer sb = new StringBuffer();
 		for (MeaningBean mb : wb.getMeans()) {
@@ -156,7 +182,10 @@ public class ReviewWordView extends JInternalFrame {
 		}
 		return sb.toString();
 	}
-
+	/**
+	 * 设置下一个显示的单词
+	 * @param e
+	 */
 	public void setNextShowWord(ActionEvent e) {
 		/**
 		 * 判断选择并设置状态
@@ -193,7 +222,10 @@ public class ReviewWordView extends JInternalFrame {
 		}
 		System.out.println("----------一次事件--------------------");
 	}
-
+	/**
+	 * 判断并设置状态
+	 * @param e
+	 */
 	private void judgeAndSet(ActionEvent e) {
 		System.out.println("正在判断的:" + nIndex);
 		if (judge(e)) {
@@ -212,13 +244,18 @@ public class ReviewWordView extends JInternalFrame {
 	public static void main(String[] args) {
 		new ReviewWordView(new UserBean("123", "123"));
 	}
-
+	/**
+	 * 把按钮上的选项清空
+	 */
 	private void resetOptions() {
 		for (JButton jButton : options) {
 			jButton.setText("");
 		}
 	}
-
+	/**
+	 * 得到一个随机的空按钮
+	 * @return
+	 */
 	private JButton getRandomEmptyButton() {
 		while (true) {
 			int index = random.nextInt(size);

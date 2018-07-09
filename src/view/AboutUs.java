@@ -19,6 +19,9 @@ public class AboutUs extends JInternalFrame {
 	private JTextField qqMailTxt;
 	private JTextField gitLinkTxt;
 	private JButton copyButton;
+	/**
+	 * 获得系统的剪切板对象
+	 */
 	private static Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
 
 	/**
@@ -143,7 +146,10 @@ public class AboutUs extends JInternalFrame {
 			JOptionPane.showMessageDialog(null, "复制成功");
 		}
 	}
-
+	/**
+	 * 设置剪切板中的文字
+	 * @param writeMe
+	 */
 	public void setSysClipboardText(String writeMe) {
 		Transferable tText = new StringSelection(writeMe);
 		clip.setContents(tText, null);

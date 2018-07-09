@@ -27,6 +27,7 @@ public class JDBCUtils {
 			System.out.println("数据库配置失败");
 			e.printStackTrace();
 		}
+		//弃用 ，无法读取 .proerties文件
 //		InputStream in = null;
 //		try {
 //			in = JDBCUtils.class.getResourceAsStream("./jdbc.properties");

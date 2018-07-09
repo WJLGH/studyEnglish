@@ -245,6 +245,7 @@ public class Wordadd extends JInternalFrame {
 			if(!isSuccess) {
 				throw new SQLException();
 			}
+			//获得新添加的单词的id
 			Integer wid = WordDao.queryWordBean(wordBean);
 			if(wid == null) {
 				throw new SQLException();
@@ -265,14 +266,14 @@ public class Wordadd extends JInternalFrame {
 		}
 		
 	}
-
+	//清空表单中的数据
 	private void resetFormActionPerformed(ActionEvent e) {
 		wordTxt.setText("");
 		meaningListTxt.setText("");
 		egTxt.setText("");
 		transTxt.setText("");
 	}
-
+	//填充单词表下拉框中的单词表
 	private void fillvocabularyListCb() {
 		List<VocabularyBean> query = null;
 		try {

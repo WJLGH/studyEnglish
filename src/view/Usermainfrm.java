@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dao.WordDao;
 import model.UserBean;
 import util.JDBCUtils;
 
@@ -161,6 +162,10 @@ public class Usermainfrm extends JFrame {
 	}
 	
 	private void reviewActionPerformed(ActionEvent e) {
+		if(user.getUpage()<WordDao.pageSize) {
+			JOptionPane.showMessageDialog(null, "请先背诵单词");
+			return ;
+		} 
 		ReviewWordView rww = new ReviewWordView(user);
 		rww.setVisible(true);
 		Table.add(rww);
@@ -190,7 +195,7 @@ public class Usermainfrm extends JFrame {
 
 
 	private void searchActionPerformed(ActionEvent e) {
-		EnZhseek search = new EnZhseek(user);
+		TranslateView search = new TranslateView(user);
 		Table.add(search);
 	}
 

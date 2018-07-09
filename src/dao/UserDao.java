@@ -13,9 +13,7 @@ import model.WordBean;
 import util.JDBCUtils;
 
 public class UserDao {
-	/**
-	 * 登录验证
-	 */
+	
 	/**
 	 * 登陆验证
 	 * null为没有
@@ -48,14 +46,25 @@ public class UserDao {
 		int i =  runner.update(con,sql,user.getUpage(),user.getUname());
 		return 0 < i;
 	}
-	
+	/**
+	 * 某个用户修改密码
+	 * @param uid
+	 * @param pwd
+	 * @return
+	 * @throws SQLException
+	 */
 	public static boolean setPwd(int uid,String pwd) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
 		String sql = "update user set upwd=? where uid=?";
 		return 0 < runner.update(con,sql,pwd,uid);
 	}
-	
+	/**
+	 * 添加用户
+	 * @param user
+	 * @return
+	 * @throws SQLException
+	 */
 	public static boolean addUser(UserBean user) throws SQLException {
 		QueryRunner qr = new QueryRunner();
 		Connection conn = JDBCUtils.getConnection();
@@ -63,13 +72,19 @@ public class UserDao {
 		return 0< qr.update(conn, sql, user.getUname(),user.getUpwd());
 	}
 
-
+	/**
+	 * 验证用户名是否可用
+	 * @param uname
+	 * @return
+	 * @throws SQLException
+	 */
 	public static boolean userNameAvailable(String uname) throws SQLException {
 		QueryRunner qr = new QueryRunner();
 		Connection conn = JDBCUtils.getConnection();
 		String sql = "SELECT * FROM user WHERE uname = ?";
 		return qr.query(conn, sql, new BeanHandler<UserBean>(UserBean.class),uname) == null;
 	}
+	
 	public static void main(String[] args) {
 		try {
 			System.out.println(userNameAvailable("1111"));

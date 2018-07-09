@@ -20,7 +20,7 @@ public class WordDao {
 	/**
 	 * 增删改查
 	 */
-	// 页大小
+	// 页大小---->用户每天所背诵的单词数
 	public static int pageSize = 6;
 
 	/**
@@ -63,8 +63,7 @@ public class WordDao {
 		return list;
 	}
 	/**
-	 * 添加的时候查询到新单词的wid
-	 * 再添加释义
+	 *	通过一个单词的英文和所属词汇表确定单词的id
 	 * @param wb
 	 * @return
 	 * @throws SQLException 
@@ -87,7 +86,7 @@ public class WordDao {
 		},wb.getWord(),wb.getVid());
 	}
 	/**
-	 * 根据一个单词查找这个单词的WordBean对象
+	 * 根据一个单词的英文查找这个单词的WordBean对象
 	 * 
 	 * @param word
 	 * @return
@@ -107,7 +106,6 @@ public class WordDao {
 
 	/**
 	 * 增加单词
-	 * 
 	 * @param word
 	 * @throws SQLException
 	 */
@@ -120,7 +118,7 @@ public class WordDao {
 	}
 
 	/**
-	 * 删除单词
+	 * 根据单词的id删除单词
 	 * 
 	 * @param word
 	 * @return
@@ -134,7 +132,7 @@ public class WordDao {
 	}
 
 	/**
-	 * 修改单词
+	 * 根据单词的id修改单词
 	 * 
 	 * @param word
 	 * @return
@@ -149,7 +147,7 @@ public class WordDao {
 	}
 
 	/**
-	 * 查询某个词汇表里的单词
+	 * 通过词汇表的id查询某个词汇表里的所有单词
 	 * 
 	 * @param vid
 	 * @return
@@ -165,7 +163,13 @@ public class WordDao {
 		}
 		return list;
 	}
-
+	/**
+	 * 管理员通过单词的英文和它所属的词汇表id来结合确定一些单词（英文部分为模糊查询)
+	 * @param word
+	 * @param vid
+	 * @return
+	 * @throws SQLException
+	 */
 	public static List<WordBean> querySearch(String word, int vid)throws SQLException {
 		Connection conn = JDBCUtils.getConnection();
 		StringBuffer sql = new StringBuffer("SELECT * FROM word WHERE word LIKE \"%"+word+"%\" ");

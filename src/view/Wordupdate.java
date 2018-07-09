@@ -247,6 +247,7 @@ public class Wordupdate extends JInternalFrame {
 		getContentPane().setLayout(groupLayout);
 		fillSearchJc();
 	}
+	//删除所选单词
 	private void deleteActionPerformed(ActionEvent e) {
 		if(CharacterUtil.isEmpty(this.wordwidTxt.getText())) {
 			JOptionPane.showMessageDialog(null, "请选择要删除的单词");
@@ -267,7 +268,7 @@ public class Wordupdate extends JInternalFrame {
 		}
 		resetFormValue();
 	}
-
+	//修改所选单词
 	private void updateActionPerformed(ActionEvent e) {
 		if(CharacterUtil.isEmpty(this.wordwidTxt.getText())) {
 			JOptionPane.showMessageDialog(null, "请选择要修改的单词");
@@ -321,7 +322,7 @@ public class Wordupdate extends JInternalFrame {
 		}
 		resetFormValue();
 	}
-
+	//把选中的一行设置到表单中
 	private void selectRowMousePressed(MouseEvent e) {
 		int selectedRow = this.table.getSelectedRow();
 		this.wordwidTxt.setText(table.getValueAt(selectedRow,0)+"");
@@ -332,7 +333,7 @@ public class Wordupdate extends JInternalFrame {
 		this.transTxt.setText(table.getValueAt(selectedRow, 5)+"");
 		System.out.println("选中一行后trans："+transTxt.getText());
 	}
-	
+	//表单置空
 	private void resetFormValue() {
 		this.wordwidTxt.setText("");
 		this.wordTxt.setText("");
@@ -341,7 +342,7 @@ public class Wordupdate extends JInternalFrame {
 		this.meaningListTxt.setText("");
 	}
 	
-	
+	//填充搜索条件中的单词表下拉框
 	private void fillSearchJc() {
 		List<VocabularyBean> query = null;
 		this.vocabularysearchListCb.addItem(new VocabularyBean(-1, "请选择", ""));
@@ -355,6 +356,7 @@ public class Wordupdate extends JInternalFrame {
 			e.printStackTrace();
 		}
 	}
+	//搜索指定条件的单词并设置到表格中
 	private void searchActionPerformed(ActionEvent e) {
 		String word = this.wordsearchTxt.getText();
 		VocabularyBean vb = (VocabularyBean) this.vocabularysearchListCb.getSelectedItem();

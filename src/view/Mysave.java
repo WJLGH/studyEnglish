@@ -99,17 +99,23 @@ public class Mysave extends JInternalFrame {
 		getContentPane().setLayout(groupLayout);
 		fillTableValue();
 	}
-
+	/**
+	 * 取消选中
+	 * @param e
+	 */
 	private void quitSelectActionPerformed(ActionEvent e) {
 		int rowCnt = ctm.getRowCount();
 		for(int i = 0;i<rowCnt;i++) {
 			ctm.setValueAt(false, i, 5);;
 		}
 	}
-
+	/**
+	 * 删除所选
+	 * @param e
+	 */
 	private void deletecollectActionPerformed(ActionEvent e) {
 		int rowCnt = ctm.getRowCount();
-		boolean noSelect = true;
+		boolean noSelect = true;//没有选中的标记变量
 		for(int i = 0;i<rowCnt;i++) {
 			Boolean b = (Boolean) ctm.getValueAt(i, 5);
 			int wid = (Integer) ctm.getValueAt(i, 0);
@@ -136,13 +142,19 @@ public class Mysave extends JInternalFrame {
 		}
 		fillTableValue();
 	}
-
+	
+	/**
+	 * 填充显示的用户所收藏的单词的表格
+	 */
 	private void fillTableValue() {
 		List<WordBean> query;
 		try {
+			//查询当前用户的所收藏单词表
 			query = CollectDao.queryUserCollect(user.getUid());
 			if (query != null) {
+				//新建一个model对象来装入所查询到的单词
 				ctm = new CollectTableModel(query.size());
+				//单词表装入model中
 				for (WordBean collect : query) {
 					Object[] row = new Object[6];
 					row[0] = collect.getWid();

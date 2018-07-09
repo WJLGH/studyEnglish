@@ -6,7 +6,11 @@ import javax.swing.ImageIcon;
 
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
-
+/**
+ * 弃用验证码辨识度太差
+ * @author ASUS
+ *
+ */
 public class CaptchaUtils {
 	private static LineCaptcha lineCaptcha = null;
 

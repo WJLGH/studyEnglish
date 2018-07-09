@@ -22,7 +22,6 @@ import javax.swing.border.EmptyBorder;
 import dao.ManagerDao;
 import model.ManagerBean;
 import util.CharacterUtil;
-import util.stringutil;
 
 public class Managerlogin extends JFrame {
 

@@ -3,7 +3,10 @@ package view;
 import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
-
+/**
+ * 自己实现的一个JTabel中的model的类
+ *
+ */
 public class CollectTableModel extends AbstractTableModel {
 	 String[] columnNames = {"编号","单词","意思","例句","翻译","选择"};
 	 Object[][] data ;

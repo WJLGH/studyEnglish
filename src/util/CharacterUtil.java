@@ -13,7 +13,7 @@ public class CharacterUtil {
 	 * @return
 	 */
 	public static boolean isEmpty(String s) {
-		return "".equals(s);
+		return s == null||"".equals(s.trim());
 	}
 
 	/**
@@ -23,6 +23,9 @@ public class CharacterUtil {
 	 * @return
 	 */
 	public static boolean isWord(String s) {
+		if(s == null) {
+			return false;
+		}
 		s = s.toLowerCase();
 		/**
 		 * 注意：Character中的isLetter会把中文字符当成字母
@@ -35,6 +38,7 @@ public class CharacterUtil {
 		return true;
 	}
 	/**
+	 * 把多个释义进行分割
 	 * 最后一个意思后不能有分号
 	 * @param ml
 	 * @return

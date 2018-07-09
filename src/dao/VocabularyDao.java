@@ -16,9 +16,9 @@ import util.JDBCUtils;
 
 public class VocabularyDao {
 	/**
-	 * 词汇表增删改查
-	 * @return 
-	 * 
+	 * 添加一个单词表
+	 * @param v
+	 * @return
 	 * @throws SQLException
 	 */
 	public static boolean addVocabularyBean(VocabularyBean v) throws SQLException {
@@ -27,7 +27,12 @@ public class VocabularyDao {
 		String sql = "insert into vocabulary(vname,vdesc) values(?,?)";
 		return 0 < runner.update(con, sql, v.getVname(),v.getVdesc());
 	}
-
+	/**
+	 * 删除一个单词表
+	 * @param vid
+	 * @return
+	 * @throws SQLException
+	 */
 	public static boolean deleteVocabularyBean(int vid) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
@@ -36,14 +41,23 @@ public class VocabularyDao {
 		return 0 < runner.update(con, sql, vid);// n为成功删除记录的条数
 		// System.out.println(n+"条数据删除成功");
 	}
-
+	/**
+	 * 修改一个单词表
+	 * @param v
+	 * @return
+	 * @throws SQLException
+	 */
 	public static boolean updataVocabularyBeanName(VocabularyBean v) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
 		String sql = "update vocabulary set vname=? ,vdesc = ? where vid=?";
 		return 0 < runner.update(con, sql, v.getVname(),v.getVdesc(),v.getVid());
 	}
-
+	/**
+	 * 查询所有的单词表
+	 * @return
+	 * @throws SQLException
+	 */
 	public static List<VocabularyBean> query() throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection con = JDBCUtils.getConnection();
@@ -62,7 +76,12 @@ public class VocabularyDao {
 		String sql = "select count(vid) from vocabulary";
 		return runner.query(con,sql, new ScalarHandler<Long>());
 	}
-
+	/**
+	 * 通过某个单词表的名字获得它的id
+	 * @param name
+	 * @return
+	 * @throws SQLException
+	 */
 	public static Integer queryVid(String name) throws SQLException {
 		QueryRunner runner = new QueryRunner();
 		Connection conn = JDBCUtils.getConnection();
@@ -79,7 +98,11 @@ public class VocabularyDao {
 			}
 		},name);
 	}
-
+	/**
+	 * 通过某个单词表的id获得这个单词表
+	 * @param vid
+	 * @return
+	 */
 	public static VocabularyBean queryByVid(int vid) {
 		QueryRunner qr = new QueryRunner();
 		Connection conn = JDBCUtils.getConnection();
