@@ -47,23 +47,23 @@ public class Wordupdate extends JInternalFrame {
 	private JTextField wordsearchTxt;
 	private JTextField egTxt;
 	private JTextField transTxt;
-	JComboBox vocabularysearchListCb;
-	JComboBox vocabularyCb ;
+	private JComboBox vocabularysearchListCb;
+	private JComboBox vocabularyCb ;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Wordupdate frame = new Wordupdate();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Wordupdate frame = new Wordupdate();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.

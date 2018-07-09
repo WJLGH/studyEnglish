@@ -31,7 +31,7 @@ import javax.swing.JDesktopPane;
 public class Usermainfrm extends JFrame {
 
 	private JPanel contentPane;
-	JDesktopPane Table = null;
+	private JDesktopPane Table = null;
 	private UserBean user;
 
 	/**

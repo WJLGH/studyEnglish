@@ -37,18 +37,18 @@ public class Userlogin extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Userlogin frame = new Userlogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Userlogin frame = new Userlogin();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -76,7 +76,7 @@ public class Userlogin extends JFrame {
 		TitleLabel.setIcon(new ImageIcon(Userlogin.class.getResource("/image/logo.png")));
 		TitleLabel.setFont(new Font("黑体", Font.BOLD, 24));
 		
-		JLabel nameLabel = new JLabel("\u7528\u6237\u540D");
+		JLabel nameLabel = new JLabel("用户名");
 		nameLabel.setIcon(new ImageIcon(Userlogin.class.getResource("/image/modify.png")));
 		nameLabel.setFont(new Font("黑体", Font.BOLD, 14));
 		

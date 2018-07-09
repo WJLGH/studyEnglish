@@ -37,7 +37,7 @@ import java.awt.event.ActionEvent;
 public class Mysave extends JInternalFrame {
 	private JTable mysavetable;
 	private UserBean user;
-	CollectTableModel ctm = null;
+	private CollectTableModel ctm = null;
 
 	/**
 	 * Create the frame.

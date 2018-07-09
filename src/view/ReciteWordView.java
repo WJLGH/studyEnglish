@@ -59,7 +59,7 @@ public class ReciteWordView extends JInternalFrame implements ActionListener{
 		egHeadLabel.setBounds(126, 218, 38, 34);
 		
 		getContentPane().add(egHeadLabel);
-		egLabel.setFont(new Font("����", Font.PLAIN, 17));
+		egLabel.setFont(new Font("Dialog", Font.PLAIN, 17));
 		egLabel.setBounds(178, 227, 423, 25);
 		
 		getContentPane().add(egLabel);

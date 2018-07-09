@@ -31,7 +31,7 @@ public class Myachieve extends JInternalFrame {
 
 		JLabel numberLabel = new JLabel("您已经背诵了");
 		numberLabel.setBounds(39, 49, 150, 29);
-		numberLabel.setFont(new Font("����", Font.BOLD, 24));
+		numberLabel.setFont(new Font("Dialog", Font.BOLD, 24));
 
 		JLabel upageLabel = new JLabel("");
 		upageLabel.setBounds(195, 49, 36, 29);

@@ -30,15 +30,15 @@ import javax.swing.JFrame;
 public class ReviewWordView extends JInternalFrame {
 	private static Random random = new Random();
 	public static int size = 4;
-	JButton[] options;
-	UserBean user;
+	private JButton[] options;
+	private UserBean user;
 	private List<WordBean> list;
 	private int cnt;
 	private int nIndex;
 	private boolean[] isPass;
 	private int pCnt = 0;
 	private JButton nowPosition;
-	JLabel englishLabel;
+	private JLabel englishLabel;
 
 	public ReviewWordView(UserBean user) {
 		setIconifiable(true);

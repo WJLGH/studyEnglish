@@ -23,23 +23,23 @@ import java.awt.event.ActionEvent;
 
 public class Wordlistadd extends JInternalFrame {
 	private JTextField nameTxt;
-	JTextArea descArea;
-	JButton addButton;
+	private JTextArea descArea;
+	private JButton addButton;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Wordlistadd frame = new Wordlistadd();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Wordlistadd frame = new Wordlistadd();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.

@@ -38,22 +38,22 @@ public class Wordlistupdate extends JInternalFrame {
 	private JTable vocabularyListTable;
 	private JTextField vnameTxt;
 	private JTextField vidTxt;
-	JTextArea vdescArea;
+	private JTextArea vdescArea;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Wordlistupdate frame = new Wordlistupdate();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Wordlistupdate frame = new Wordlistupdate();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
