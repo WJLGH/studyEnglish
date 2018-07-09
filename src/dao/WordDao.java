@@ -143,7 +143,7 @@ public class WordDao {
 	public static boolean updateWordBean(WordBean word) throws SQLException {
 		Connection conn = JDBCUtils.getConnection();
 		String sql = "UPDATE word SET word = ? ,eg = ?, trans =  ?,vid = ? WHERE wid = ?";
-		MeaningDao.deleteWordMeaing(word.getVid());
+		MeaningDao.deleteWordMeaing(word.getWid());
 		QueryRunner qr = new QueryRunner();
 		return 0 < qr.update(conn, sql, word.getWord(), word.getEg(), word.getTrans(),word.getVid(), word.getWid());
 	}
