@@ -49,44 +49,62 @@ public class Mysave extends JInternalFrame {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("我的收藏");
-		setBounds(100, 100, 526, 374);
+		setBounds(100, 100, 924, 580);
 
 		JScrollPane Table = new JScrollPane();
 		
-		JButton deleteButton = new JButton("删除");
+		JButton deleteButton = new JButton("删除所选");
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				deletecollectActionPerformed(e);
 			}
 		});
-		deleteButton.setFont(new Font("黑体", Font.PLAIN, 16));
+		deleteButton.setFont(new Font("黑体", Font.PLAIN, 20));
+		
+		JButton quitSelectBtn = new JButton("取消选择");
+		quitSelectBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				quitSelectActionPerformed(e);
+			}
+		});
+		quitSelectBtn.setFont(new Font("黑体", Font.PLAIN, 20));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(32)
-							.addComponent(Table, GroupLayout.PREFERRED_SIZE, 443, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(212)
-							.addComponent(deleteButton)))
-					.addContainerGap(35, Short.MAX_VALUE))
+					.addGap(191)
+					.addComponent(deleteButton)
+					.addPreferredGap(ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+					.addComponent(quitSelectBtn)
+					.addGap(231))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(32)
+					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 814, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(62, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addGap(22)
-					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 252, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(deleteButton, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-					.addGap(21))
+					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(deleteButton, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
+						.addComponent(quitSelectBtn, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+					.addGap(53))
 		);
 
 		mysavetable = new JTable();
 		Table.setViewportView(mysavetable);
 		getContentPane().setLayout(groupLayout);
 		fillTableValue();
+	}
+
+	private void quitSelectActionPerformed(ActionEvent e) {
+		int rowCnt = ctm.getRowCount();
+		for(int i = 0;i<rowCnt;i++) {
+			ctm.setValueAt(false, i, 5);;
+		}
 	}
 
 	private void deletecollectActionPerformed(ActionEvent e) {

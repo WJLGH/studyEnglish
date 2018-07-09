@@ -49,68 +49,68 @@ public class Logonform extends JFrame {
 		}
 		System.out.println("数据库连接"+JDBCUtils.getConnection());
 		setResizable(false);
-		setTitle("\u767B\u5F55\u754C\u9762");
+		setTitle("登录界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(600, 320, 488, 336);
 		userregisterPanel = new JPanel();
 		userregisterPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(userregisterPanel);
 		
-		JButton btnNewButton = new JButton("\u7BA1\u7406\u5458\u767B\u9646");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton manageLogBtn = new JButton("管理员登陆");
+		manageLogBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				new Managerlogin();
 			}
 		});
 		
-		JLabel lblNewLabel = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
-		lblNewLabel.setFont(new Font("����", Font.BOLD, 22));
+		JLabel titleLabel = new JLabel("大学英语词汇学习系统");
+		titleLabel.setFont(new Font("宋体", Font.BOLD, 22));
 		
-		JButton button = new JButton("\u7528\u6237\u767B\u9646");
-		button.addActionListener(new ActionListener() {
+		JButton userLogBtn = new JButton("用户登陆");
+		userLogBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				new Userlogin();
 			}
 		});
 		
-		JButton button_1 = new JButton("用户注册");
-		button_1.addActionListener(new ActionListener() {
+		JButton useRegBtn = new JButton("用户注册");
+		useRegBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				uregisterActionPerformed(e);
 			}
 		});
-		GroupLayout gl_userregisterPanel = new GroupLayout(userregisterPanel);
-		gl_userregisterPanel.setHorizontalGroup(
-			gl_userregisterPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_userregisterPanel.createSequentialGroup()
-					.addGroup(gl_userregisterPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_userregisterPanel.createSequentialGroup()
+		GroupLayout groupLayout = new GroupLayout(userregisterPanel);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(98)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_userregisterPanel.createSequentialGroup()
+							.addComponent(titleLabel, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(156)
-							.addGroup(gl_userregisterPanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-								.addComponent(button, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(manageLogBtn, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+								.addComponent(useRegBtn, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+								.addComponent(userLogBtn, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(128, Short.MAX_VALUE))
 		);
-		gl_userregisterPanel.setVerticalGroup(
-			gl_userregisterPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_userregisterPanel.createSequentialGroup()
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(36)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+					.addComponent(titleLabel, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addComponent(manageLogBtn, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(29)
-					.addComponent(button, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addComponent(userLogBtn, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(26)
-					.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addComponent(useRegBtn, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(37, Short.MAX_VALUE))
 		);
-		userregisterPanel.setLayout(gl_userregisterPanel);
+		userregisterPanel.setLayout(groupLayout);
 		setVisible(true);
 	}
 

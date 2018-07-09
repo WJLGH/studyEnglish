@@ -48,10 +48,12 @@ public class Usermainfrm extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mydictionarymenu = new JMenu("\u6211\u7684\u8BCD\u5178       ");
+		mydictionarymenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 22));
 		mydictionarymenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/bookManager.png")));
 		menuBar.add(mydictionarymenu);
 		
 		JMenuItem myachievemenu = new JMenuItem("我的成就");
+		myachievemenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		myachievemenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				achieveActionPerformed(e);
@@ -60,6 +62,7 @@ public class Usermainfrm extends JFrame {
 		mydictionarymenu.add(myachievemenu);
 		
 		JMenuItem recitemenu = new JMenuItem("背诵单词");
+		recitemenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		recitemenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reciteActionPerforemd(e);
@@ -68,6 +71,8 @@ public class Usermainfrm extends JFrame {
 		mydictionarymenu.add(recitemenu);
 		
 		JMenuItem mycollectButton = new JMenuItem("我的收藏");
+		mycollectButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+		mycollectButton.setIcon(null);
 		mycollectButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mycollectActionPerformed(e);
@@ -75,8 +80,9 @@ public class Usermainfrm extends JFrame {
 		});
 		mydictionarymenu.add(mycollectButton);
 		
-		JMenuItem searchButton = new JMenuItem("查找");
-		searchButton.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/search.png")));
+		JMenuItem searchButton = new JMenuItem("查找单词");
+		searchButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+		searchButton.setIcon(null);
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchActionPerformed(e);
@@ -84,11 +90,22 @@ public class Usermainfrm extends JFrame {
 		});
 		mydictionarymenu.add(searchButton);
 		
+		JMenuItem reviewButton = new JMenuItem("复习单词");
+		reviewButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
+		reviewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				reviewActionPerformed(e);
+			}
+		});
+		mydictionarymenu.add(reviewButton);
+		
 		JMenu securitymenu = new JMenu("\u5B89\u5168        ");
+		securitymenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 22));
 		securitymenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/base.png")));
 		menuBar.add(securitymenu);
 		
 		JMenuItem updatepwdButton = new JMenuItem("\u4FEE\u6539\u5BC6\u7801");
+		updatepwdButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		updatepwdButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updatepwdActionperformed(e);
@@ -97,6 +114,7 @@ public class Usermainfrm extends JFrame {
 		securitymenu.add(updatepwdButton);
 		
 		JMenuItem exitButton = new JMenuItem("\u9000\u51FA");
+		exitButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int result = JOptionPane.showConfirmDialog(null, "是否要退出系统");
@@ -108,10 +126,12 @@ public class Usermainfrm extends JFrame {
 		securitymenu.add(exitButton);
 		
 		JMenu aboutusmenu = new JMenu("\u5173\u4E8E\u6211\u4EEC    ");
+		aboutusmenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 22));
 		aboutusmenu.setIcon(new ImageIcon(Usermainfrm.class.getResource("/image/about.png")));
 		menuBar.add(aboutusmenu);
 		
 		JMenuItem contactusmenu = new JMenuItem("\u8054\u7CFB\u6211\u4EEC");
+		contactusmenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		contactusmenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aboutUsActionPerformed(e);
@@ -121,10 +141,9 @@ public class Usermainfrm extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		Table = new JDesktopPane();
-		Table.setBounds(14, 13, 1036, 665);
 		Table.setBackground(Color.GRAY);
 		GroupLayout gl_Table = new GroupLayout(Table);
 		gl_Table.setHorizontalGroup(
@@ -137,9 +156,16 @@ public class Usermainfrm extends JFrame {
 		);
 		Table.setLayout(gl_Table);
 		contentPane.add(Table);
+		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setVisible(true);
 	}
 	
+	private void reviewActionPerformed(ActionEvent e) {
+		ReviewWordView rww = new ReviewWordView(user);
+		rww.setVisible(true);
+		Table.add(rww);
+	}
+
 	private void userExitActionPerformed(ActionEvent e) {
 		JDBCUtils.closeResource();
 	}

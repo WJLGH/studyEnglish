@@ -65,79 +65,88 @@ public class Userlogin extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
-		JButton button = new JButton("\u91CD\u7F6E");
-		button.addActionListener(new ActionListener() {
+		JButton resetBtn = new JButton("\u91CD\u7F6E");
+		resetBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				resetValueActionPerformed(evt);
 			}
 		});
 		
-		JLabel label = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
-		label.setIcon(new ImageIcon(Userlogin.class.getResource("/image/logo.png")));
-		label.setFont(new Font("����", Font.BOLD, 24));
+		JLabel TitleLabel = new JLabel("\u5927\u5B66\u82F1\u8BED\u8BCD\u6C47\u5B66\u4E60\u7CFB\u7EDF");
+		TitleLabel.setIcon(new ImageIcon(Userlogin.class.getResource("/image/logo.png")));
+		TitleLabel.setFont(new Font("����", Font.BOLD, 24));
 		
-		JLabel label_1 = new JLabel("\u7528\u6237\u540D");
-		label_1.setIcon(new ImageIcon(Userlogin.class.getResource("/image/modify.png")));
-		label_1.setFont(new Font("����", Font.BOLD, 14));
+		JLabel nameLabel = new JLabel("\u7528\u6237\u540D");
+		nameLabel.setIcon(new ImageIcon(Userlogin.class.getResource("/image/modify.png")));
+		nameLabel.setFont(new Font("����", Font.BOLD, 14));
 		
 		usernametext = new JTextField();
 		usernametext.setColumns(10);
 		
-		JButton button_1 = new JButton("\u767B\u9646");
-		button_1.addActionListener(new ActionListener() {
+		JButton loginBtn = new JButton("\u767B\u9646");
+		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				userlogonActionPerformed(e);
 			}
 		});
 		
-		JLabel label_2 = new JLabel("\u5BC6  \u7801");
-		label_2.setIcon(new ImageIcon(Userlogin.class.getResource("/image/password.png")));
-		label_2.setFont(new Font("����", Font.BOLD, 14));
+		JLabel pwdLabel = new JLabel("\u5BC6  \u7801");
+		pwdLabel.setIcon(new ImageIcon(Userlogin.class.getResource("/image/password.png")));
+		pwdLabel.setFont(new Font("����", Font.BOLD, 14));
 		
 		passwordtext = new JPasswordField();
+		
+		JButton backBtn = new JButton("返回");
+		backBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				backActionPerformed(e);
+			}
+		});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 434, Short.MAX_VALUE)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(249)
-					.addComponent(button)
-					.addContainerGap(118, Short.MAX_VALUE))
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap(64, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(label)
+						.addComponent(TitleLabel)
 						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+								.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 								.addGap(18)
 								.addComponent(usernametext, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
 							.addGroup(gl_panel.createSequentialGroup()
 								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-									.addComponent(button_1)
-									.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
-								.addGap(18)
-								.addComponent(passwordtext))))
+									.addComponent(loginBtn)
+									.addComponent(pwdLabel, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_panel.createSequentialGroup()
+										.addGap(18)
+										.addComponent(passwordtext))
+									.addGroup(gl_panel.createSequentialGroup()
+										.addGap(41)
+										.addComponent(resetBtn)
+										.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+										.addComponent(backBtn, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))))))
 					.addGap(42))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 261, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(19)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+					.addComponent(TitleLabel, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
 					.addGap(45)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 						.addComponent(usernametext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(26)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pwdLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 						.addComponent(passwordtext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(button)
-						.addComponent(button_1))
+						.addComponent(loginBtn)
+						.addComponent(resetBtn)
+						.addComponent(backBtn))
 					.addGap(26))
 		);
 		panel.setLayout(gl_panel);
@@ -177,7 +186,10 @@ public class Userlogin extends JFrame {
 			new Usermainfrm(user);
 		}
 	}
-
+	private void backActionPerformed(ActionEvent e) {
+		dispose();
+		new Logonform();
+	}
 	private void resetValueActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 		this.usernametext.setText("");

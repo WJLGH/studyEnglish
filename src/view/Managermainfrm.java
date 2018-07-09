@@ -60,9 +60,11 @@ public class Managermainfrm extends JFrame {
 		setJMenuBar(menuBar);
 
 		basicMenu = new JMenu("\u57FA\u672C\u6570\u636E\u7EF4\u62A4       ");
+		basicMenu.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 25));
 		menuBar.add(basicMenu);
 
 		wordManage = new JMenu("\u8BCD\u6C47\u7EF4\u62A4");
+		wordManage.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		basicMenu.add(wordManage);
 
 		addWord = new JMenuItem("\u589E\u52A0\u8BCD\u6C47");
@@ -82,9 +84,11 @@ public class Managermainfrm extends JFrame {
 		wordManage.add(manageWord);
 
 		vocabularyManageItem = new JMenu("\u8BCD\u6C47\u8868\u7EF4\u62A4");
+		vocabularyManageItem.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		basicMenu.add(vocabularyManageItem);
 
 		addVocabulary = new JMenuItem("\u589E\u52A0");
+		addVocabulary.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		addVocabulary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordlistActionPerformed(e);
@@ -93,6 +97,7 @@ public class Managermainfrm extends JFrame {
 		vocabularyManageItem.add(addVocabulary);
 
 		vocabularyManage = new JMenuItem("\u7BA1\u7406");
+		vocabularyManage.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		vocabularyManage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wordlistupdateActionPerformed(e);
@@ -101,12 +106,15 @@ public class Managermainfrm extends JFrame {
 		vocabularyManageItem.add(vocabularyManage);
 
 		DBManage = new JMenu("\u6570\u636E\u5E93\u7BA1\u7406          ");
+		DBManage.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 25));
 		menuBar.add(DBManage);
 
 		dbBackUpAndRecovery = new JMenu("\u6570\u636E\u5E93\u5907\u4EFD\u4E0E\u8FD8\u539F");
+		dbBackUpAndRecovery.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		DBManage.add(dbBackUpAndRecovery);
 
 		dbBackUp = new JMenuItem("\u6570\u636E\u5E93\u5907\u4EFD");
+		dbBackUp.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		dbBackUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				backupActionPerformed(e);
@@ -115,6 +123,7 @@ public class Managermainfrm extends JFrame {
 		dbBackUpAndRecovery.add(dbBackUp);
 
 		dbRecovery = new JMenuItem("\u6570\u636E\u5E93\u8FD8\u539F");
+		dbRecovery.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		dbRecovery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dbrecoveryActionPerformed(e);
@@ -123,9 +132,11 @@ public class Managermainfrm extends JFrame {
 		dbBackUpAndRecovery.add(dbRecovery);
 
 		systemSecurity = new JMenu("\u7CFB\u7EDF\u5B89\u5168      ");
+		systemSecurity.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 25));
 		menuBar.add(systemSecurity);
 
 		modifyPwd = new JMenuItem("\u4FEE\u6539\u5BC6\u7801");
+		modifyPwd.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		modifyPwd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				updatePwdActionPerformed(e);
@@ -134,6 +145,7 @@ public class Managermainfrm extends JFrame {
 		systemSecurity.add(modifyPwd);
 
 		manageExit = new JMenuItem("\u9000\u51FA");
+		manageExit.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		manageExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int result = JOptionPane.showConfirmDialog(null, "是否要退出系统");
@@ -145,9 +157,11 @@ public class Managermainfrm extends JFrame {
 		systemSecurity.add(manageExit);
 
 		aboutUs = new JMenu("\u5173\u4E8E\u6211\u4EEC");
+		aboutUs.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 25));
 		menuBar.add(aboutUs);
 
-		aboutUsItem = new JMenuItem("\u5173\u4E8E");
+		aboutUsItem = new JMenuItem("关于我们");
+		aboutUsItem.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 20));
 		aboutUsItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				aboutUsActionPerformed(e);

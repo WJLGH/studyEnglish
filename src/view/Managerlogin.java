@@ -88,28 +88,38 @@ public class Managerlogin extends JFrame {
 				resetValueActionPerformed(e);
 			}
 		});
+		
+		JButton backBtn = new JButton("返回");
+		backBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				backActionPerformed(e);
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(249)
-					.addComponent(btnNewButton_1)
-					.addContainerGap(118, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(64, Short.MAX_VALUE)
+					.addContainerGap(74, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+							.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 								.addGap(18)
 								.addComponent(usernametext, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
-							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createSequentialGroup()
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 									.addComponent(btnNewButton)
 									.addComponent(label, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE))
-								.addGap(18)
-								.addComponent(passwordtext))))
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(18)
+										.addComponent(passwordtext))
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(46)
+										.addComponent(btnNewButton_1)
+										.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+										.addComponent(backBtn, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))))))
 					.addGap(42))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -127,12 +137,18 @@ public class Managerlogin extends JFrame {
 						.addComponent(passwordtext, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton)
 						.addComponent(btnNewButton_1)
-						.addComponent(btnNewButton))
+						.addComponent(backBtn))
 					.addGap(26))
 		);
 		contentPane.setLayout(gl_contentPane);
 		this.setVisible(true);
+	}
+
+	private void backActionPerformed(ActionEvent e) {
+		dispose();
+		new Logonform();
 	}
 
 	private void loginActionPerformed(ActionEvent e) {

@@ -16,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import dao.UserDao;
 import model.UserBean;
+import util.CharacterUtil;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -55,25 +56,32 @@ public class Uregisterfrm extends JFrame {
 		
 		JLabel pwdHeadLabel = new JLabel("密码：");
 		pwdHeadLabel.setFont(new Font("宋体", Font.PLAIN, 15));
+		
+		JButton backBtn = new JButton("返回");
+		backBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				backActionPerformed(e);
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(74)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(nameHeadLabel)
+						.addComponent(pwdHeadLabel))
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(74)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(nameHeadLabel)
-								.addComponent(pwdHeadLabel))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(lblNewLabel)
-								.addComponent(userNameTxt)
-								.addComponent(userPwdTxt, GroupLayout.PREFERRED_SIZE, 224, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(209)
-							.addComponent(registeButton)))
-					.addContainerGap(145, Short.MAX_VALUE))
+							.addComponent(registeButton)
+							.addGap(68)
+							.addComponent(backBtn, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addComponent(lblNewLabel)
+							.addComponent(userNameTxt, GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+							.addComponent(userPwdTxt, GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)))
+					.addGap(111))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -86,14 +94,21 @@ public class Uregisterfrm extends JFrame {
 						.addComponent(nameHeadLabel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 					.addGap(43)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(userPwdTxt, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-						.addComponent(pwdHeadLabel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-					.addComponent(registeButton)
-					.addGap(37))
+						.addComponent(pwdHeadLabel, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+						.addComponent(userPwdTxt, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+					.addGap(27)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(registeButton)
+						.addComponent(backBtn))
+					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
 		setVisible(true);
+	}
+
+	private void backActionPerformed(ActionEvent e) {
+		dispose();
+		new Logonform();
 	}
 
 	private void registeActionPerformed(ActionEvent e) {
@@ -101,6 +116,14 @@ public class Uregisterfrm extends JFrame {
 		String upwd = userPwdTxt.getText();
 		boolean isAvai = false;
 		boolean isSuccess = false;
+		if(CharacterUtil.isEmpty(uname)) {
+			JOptionPane.showMessageDialog(null, "用户名不能为空");
+			return;
+		}
+		if(CharacterUtil.isEmpty(upwd)) {
+			JOptionPane.showMessageDialog(null, "密码不能为空");
+			return;
+		}
 		try {
 			isAvai = UserDao.userNameAvailable(uname);
 			if(!isAvai) {

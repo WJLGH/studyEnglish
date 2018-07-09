@@ -21,7 +21,7 @@ public class WordDao {
 	 * 增删改查
 	 */
 	// 页大小
-	public static int pageSize = 3;
+	public static int pageSize = 6;
 
 	/**
 	 * 用户背单词查询 分页查询
@@ -37,7 +37,8 @@ public class WordDao {
 		QueryRunner qr = new QueryRunner();
 		List<WordBean> list = qr.query(conn, sql, new BeanListHandler<WordBean>(WordBean.class), pageSize, page);
 		for (WordBean wordBean : list) {
-			wordBean.setMeans(MeaningDao.queryMeaning(wordBean));
+			List<MeaningBean> queryMeaning = MeaningDao.queryMeaning(wordBean);
+			wordBean.setMeans(queryMeaning);
 		}
 		return list;
 	}
