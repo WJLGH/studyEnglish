@@ -38,6 +38,20 @@ public class CharacterUtil {
 		return true;
 	}
 	/**
+	 * 判断输入是否为数字
+	 * @param s
+	 * @return
+	 */
+	public static boolean isNumber(String s) {
+		for(int i = 0;i<s.length();i++) {
+			if(!Character.isDigit(s.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
 	 * 把多个释义进行分割
 	 * 最后一个意思后不能有分号
 	 * @param ml

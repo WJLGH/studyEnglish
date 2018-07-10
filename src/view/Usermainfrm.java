@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import dao.WordDao;
 import model.UserBean;
+import util.CharacterUtil;
 import util.JDBCUtils;
 
 import javax.swing.JButton;
@@ -208,7 +209,16 @@ public class Usermainfrm extends JFrame {
 
 
 	private void reciteActionPerforemd(ActionEvent e) {
-		int n = Integer.parseInt(JOptionPane.showInputDialog("请输入单词显示间隔(单位s)").trim());
+		String num = JOptionPane.showInputDialog("请输入单词显示间隔(单位s)").trim();
+		if(CharacterUtil.isEmpty(num)) {
+			JOptionPane.showMessageDialog(null, "请输入间隔");
+			return ;
+		}
+		if( !CharacterUtil.isNumber(num)) {
+			JOptionPane.showMessageDialog(null, "请输入数字");
+			return ;
+		}
+		int n = Integer.parseInt(num);
 		ReciteWordView rwv = new ReciteWordView(user,n);
 		Table.add(rwv);
 	}
