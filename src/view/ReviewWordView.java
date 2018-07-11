@@ -41,6 +41,7 @@ public class ReviewWordView extends JInternalFrame {
 	private JLabel englishLabel;
 
 	public ReviewWordView(UserBean user) {
+		setTitle("复习单词");
 		setIconifiable(true);
 		setClosable(true);
 		this.user = user;
@@ -53,7 +54,7 @@ public class ReviewWordView extends JInternalFrame {
 				isPass[i] = false;
 			}
 		}
-		setBounds(100, 100, 772, 700);
+		setBounds(100, 100, 762, 653);
 		getContentPane().setLayout(null);
 
 		englishLabel = new JLabel("New label");

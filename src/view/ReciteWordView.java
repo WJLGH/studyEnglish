@@ -29,6 +29,7 @@ public class ReciteWordView extends JInternalFrame implements ActionListener{
 	private  JLabel transLabel = new JLabel("这是一个新标签");
 	private  JLabel label = new JLabel("译：");
 	public ReciteWordView(UserBean user,int n) {
+		setTitle("背诵单词");
 		setIconifiable(true);
 		setClosable(true);
 		this.user = user;

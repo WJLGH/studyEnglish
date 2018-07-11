@@ -104,7 +104,7 @@ public class Wordadd extends JInternalFrame {
 		JLabel tip = new JLabel("如果有多个，用分号隔开");
 		tip.setFont(new Font("Dialog", Font.PLAIN, 11));
 		
-		JLabel egLabel = new JLabel("释义:");
+		JLabel egLabel = new JLabel("例句:");
 		egLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		
 		egTxt = new JTextField();

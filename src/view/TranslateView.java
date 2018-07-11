@@ -64,6 +64,7 @@ public class TranslateView extends JInternalFrame {
 	private JLabel headNetWordLabel;
 	private JLabel netWordLabel;
 	public TranslateView(UserBean user) {
+		setTitle("查找");
 		setIconifiable(true);
 		setClosable(true);
 		this.user = user;

@@ -32,6 +32,7 @@ import model.UserBean;
 import model.VocabularyBean;
 import model.WordBean;
 import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
 import java.awt.event.ActionEvent;
 
 public class Mysave extends JInternalFrame {
@@ -68,29 +69,41 @@ public class Mysave extends JInternalFrame {
 			}
 		});
 		quitSelectBtn.setFont(new Font("黑体", Font.PLAIN, 20));
+		
+		JButton printButton = new JButton("打印报表");
+		printButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				printActionPerformed(e);
+			}
+		});
+		printButton.setFont(new Font("黑体", Font.PLAIN, 20));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(191)
-					.addComponent(deleteButton)
-					.addPreferredGap(ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
-					.addComponent(quitSelectBtn)
-					.addGap(231))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(32)
-					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 814, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(32)
+							.addComponent(Table, GroupLayout.PREFERRED_SIZE, 814, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(115)
+							.addComponent(deleteButton)
+							.addGap(132)
+							.addComponent(quitSelectBtn)
+							.addGap(135)
+							.addComponent(printButton, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(62, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(22)
 					.addComponent(Table, GroupLayout.PREFERRED_SIZE, 363, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(deleteButton, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-						.addComponent(quitSelectBtn, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+						.addComponent(quitSelectBtn, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
+						.addComponent(printButton, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
 					.addGap(53))
 		);
 
@@ -98,6 +111,14 @@ public class Mysave extends JInternalFrame {
 		Table.setViewportView(mysavetable);
 		getContentPane().setLayout(groupLayout);
 		fillTableValue();
+	}
+	private void printActionPerformed(ActionEvent e) {
+		try {
+			mysavetable.print();
+		} catch (PrinterException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	/**
 	 * 取消选中
